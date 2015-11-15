@@ -4,7 +4,7 @@ augroup mAutoCmd
 augroup END
 
 
-" Visual
+" Visual Settings
 
 colorscheme molokai
 syntax on
@@ -21,7 +21,7 @@ set wrap
 set linebreak
 set breakindent
 set list
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+set listchars=tab:>.,trail:-,extends:>,precedes:<,nbsp:%,eol:↲
 
 highlight CursorColumn cterm=none ctermbg=gray
 highlight CursorLine cterm=underline ctermbg=none
@@ -29,6 +29,7 @@ highlight Normal ctermbg=none
 
 
 " Edit
+
 set backspace=start,eol,indent
 " set paste
 set mouse=a
@@ -77,6 +78,20 @@ let g:vimfiler_as_default_explorer=1
 autocmd mAutoCmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
 
 NeoBundle 'Shougo/neocomplete'
+
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'kana/vim-submode'
+
+call neobundle#end()
+NeoBundleCheck
+
+filetype plugin indent on
+set autoindent
+
+set whichwrap=b,s,<,>,[,],h,l
+
+
+" neocomplete
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#auto_completion_start_length = 3
@@ -92,14 +107,14 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
-NeoBundle 'terryma/vim-multiple-cursors'
-
-call neobundle#end()
-NeoBundleCheck
-
-filetype plugin indent on
-set autoindent
-
-set whichwrap=b,s,<,>,[,],h,l
+" submode.vim
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>-')
+call submode#map('winsize', 'n', '', '-', '<C-w>+')
 
 
