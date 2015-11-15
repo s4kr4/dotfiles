@@ -13,3 +13,9 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 alias df='df -h'
+
+alias fuck='eval $(thefuck $(fc -ln -1))'
+alias FUCK='fuck'
+
+alias tmux='tmux -2'
+
