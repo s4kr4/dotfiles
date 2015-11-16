@@ -58,12 +58,18 @@ function tmux_automatically_attach_session()
 		! is_exists 'tmux' && return 1
 
 		if is_tmux_runnning; then
-			echo "${fg_bold[red]} _____ __  __ _   ___  __ ${reset_color}"
-			echo "${fg_bold[red]}|_   _|  \/  | | | \ \/ / ${reset_color}"
-			echo "${fg_bold[red]}  | | | |\/| | | | |\  /  ${reset_color}"
-			echo "${fg_bold[red]}  | | | |  | | |_| |/  \  ${reset_color}"
-			echo "${fg_bold[red]}  |_| |_|  |_|\___//_/\_\ ${reset_color}"
-			landscape-sysinfo
+			echo "[38;5;160m _____ __  __ _   ___  __ [0m"
+			echo "[38;5;226m|_   _|  \/  | | | \ \/ / [0m"
+			echo "[38;5;046m  | | | |\/| | | | |\  /  [0m"
+			echo "[38;5;033m  | | | |  | | |_| |/  \  [0m"
+			echo "[38;5;129m  |_| |_|  |_|\___//_/\_\ [0m"
+#			echo "${fg_bold[red]} _____ __  __ _   ___  __ ${reset_color}"
+#			echo "${fg_bold[red]}|_   _|  \/  | | | \ \/ / ${reset_color}"
+#			echo "${fg_bold[red]}  | | | |\/| | | | |\  /  ${reset_color}"
+#			echo "${fg_bold[red]}  | | | |  | | |_| |/  \  ${reset_color}"
+#			echo "${fg_bold[red]}  |_| |_|  |_|\___//_/\_\ ${reset_color}"
+			echo ""
+			landscape-sysinfo --exclude-sysinfo-plugins=LandscapeLink
 		elif is_screen_running; then
 			echo "This is on screen."
 		fi
