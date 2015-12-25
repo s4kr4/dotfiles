@@ -1,10 +1,14 @@
 export LANG=ja_JP.UTF-8
+export WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>'
+export PATH=$PATH:$HOME/bin
 
 case ${UID} in
+	# root
 	0)
 		PROMPT="%{[38;5;202m%}%n%{[0m%}@%{[38;5;045m%}%m:%~%{[0m%} # "
 		;;
 
+	# other
 	*)
 		PROMPT="%{[38;5;046m%}%n%{[0m%}@%{[38;5;045m%}%m:%~%{[0m%} > "
 		;;
@@ -15,7 +19,7 @@ PROMPT2="%_%% "
 
 autoload -U compinit && compinit
 zstyle ':completion:*' list-colors ''
-autoload predict-on && predict-on
+autoload predict-on
 
 # command history
 HISTFILE=~/.zsh_history
@@ -58,18 +62,17 @@ function tmux_automatically_attach_session()
 		! is_exists 'tmux' && return 1
 
 		if is_tmux_runnning; then
-			echo "[38;5;160m _____ __  __ _   ___  __ [0m"
-			echo "[38;5;226m|_   _|  \/  | | | \ \/ / [0m"
-			echo "[38;5;046m  | | | |\/| | | | |\  /  [0m"
-			echo "[38;5;033m  | | | |  | | |_| |/  \  [0m"
-			echo "[38;5;129m  |_| |_|  |_|\___//_/\_\ [0m"
-#			echo "${fg_bold[red]} _____ __  __ _   ___  __ ${reset_color}"
-#			echo "${fg_bold[red]}|_   _|  \/  | | | \ \/ / ${reset_color}"
-#			echo "${fg_bold[red]}  | | | |\/| | | | |\  /  ${reset_color}"
-#			echo "${fg_bold[red]}  | | | |  | | |_| |/  \  ${reset_color}"
-#			echo "${fg_bold[red]}  |_| |_|  |_|\___//_/\_\ ${reset_color}"
-			echo ""
-			landscape-sysinfo --exclude-sysinfo-plugins=LandscapeLink
+			if [ $UID -ne 0 ]; then
+				echo "[38;5;160m _   _      _ _                               _     _   _ [0m"
+				echo "[38;5;226m| | | | ___| | | ___      __      _____  _ __| | __| | | |[0m"
+				echo "[38;5;046m| |_| |/ _ \ | |/ _ \     \ \ /\ / / _ \| '__| |/ _  | | |[0m"
+				echo "[38;5;033m|  _  |  __/ | | (_) | _   \ V  V / (_) | |  | | (_| | |_|[0m"
+				echo "[38;5;129m|_| |_|\___|_|_|\___/ | )   \_/\_/ \___/|_|  |_|\__,_| (_)[0m"
+				echo "[38;5;129m                      |/                                  [0m"
+
+				echo ""
+				landscape-sysinfo --exclude-sysinfo-plugins=LandscapeLink
+			fi
 		elif is_screen_running; then
 			echo "This is on screen."
 		fi
