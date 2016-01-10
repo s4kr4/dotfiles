@@ -19,7 +19,7 @@ set statusline=%F%m%r%h%w%=[TYPE:%Y][FMT:%{&fileformat}][ENC:%{&fileencoding}][L
 set showmatch
 set wrap
 set linebreak
-set breakindent
+" set breakindent
 set list
 set listchars=tab:>.,trail:-,extends:>,precedes:<,nbsp:%,eol:↲
 
@@ -45,6 +45,11 @@ set nobackup
 set noswapfile
 
 
+" Other settings
+
+set completeopt=menuone
+set vb t_vb=
+
 " Key map
 
 let mapleader='\<Space>'
@@ -65,12 +70,13 @@ set nocompatible
 filetype plugin indent off
 
 if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
 	call neobundle#begin(expand('~/.vim/bundle/'))
 endif
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'sudo.vim'
 NeoBundle 'Shougo/unite.vim'
 
 NeoBundle 'Shougo/vimfiler'
@@ -94,10 +100,9 @@ set whichwrap=b,s,<,>,[,],h,l
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#auto_completion_start_length = 3
+let g:neocomplete#auto_completion_start_length = 2
 let g:neocomplete#enable_underbar_completion = 1
 let g:neocomplete#lock_buffer_name_pettern = '\*ku\*'
-let g:neocomplete#enable_quick_match = 1
 let g:neocomplete#max_list = 10
 if !exists('g:neocomplete#keyword_patterns')
 	let g:neocomplete#keyword_patterns = {}

@@ -21,6 +21,8 @@ autoload -U compinit && compinit
 zstyle ':completion:*' list-colors ''
 autoload predict-on
 
+setopt no_beep
+
 # command history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -70,8 +72,8 @@ function tmux_automatically_attach_session()
 				echo "[38;5;129m|_| |_|\___|_|_|\___/ | )   \_/\_/ \___/|_|  |_|\__,_| (_)[0m"
 				echo "[38;5;129m                      |/                                  [0m"
 
-				echo ""
 				landscape-sysinfo --exclude-sysinfo-plugins=LandscapeLink
+				echo ""
 			fi
 		elif is_screen_running; then
 			echo "This is on screen."
