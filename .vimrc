@@ -30,12 +30,14 @@ highlight Normal ctermbg=none
 
 " Edit
 
+filetype plugin indent on
 set backspace=start,eol,indent
 " set paste
 set mouse=a
 set incsearch
 set wildmenu wildmode=list:full
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set shiftround
 set hidden
