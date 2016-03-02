@@ -23,3 +23,5 @@ alias tmux='tmux -2'
 
 alias vi='vim'
 
+alias em='emacs -nw'
+
