@@ -4,31 +4,50 @@ augroup mAutoCmd
 augroup END
 
 
-" Visual Settings
+" ########## Visual Settings ##########
 
 colorscheme molokai
+
+" enable syntax highlight
 syntax on
 set t_Co=256
 let g:hybrid_original = 1
 let g:rehash256 = 1
+
+" display row number and ruler
 set number
-set cursorline
 set ruler
+
+" display cursor line
+set cursorline
+
+" display statusline 
 set laststatus=2
+
+" statusline settings
 set statusline=%F%m%r%h%w%=[TYPE:%Y][FMT:%{&fileformat}][ENC:%{&fileencoding}][LOW:%l/%L]
+
+" highlight corresponding brakets
 set showmatch
+
+" wrap line
 set wrap
+
+" no break in the middle of words
 set linebreak
 " set breakindent
+
+" visible whitespace
 set list
 set listchars=tab:>.,trail:-,extends:>,precedes:<,nbsp:%,eol:↲
 
+" highlight colors
 highlight CursorColumn cterm=none ctermbg=gray
 highlight CursorLine cterm=underline ctermbg=none
 highlight Normal ctermbg=none
 
 
-" Edit
+" ########## Edit ##########
 
 filetype plugin indent on
 set backspace=start,eol,indent
