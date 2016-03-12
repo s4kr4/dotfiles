@@ -20,6 +20,7 @@ alias fuck='eval $(thefuck $(fc -ln -1))'
 #alias FUCK='fuck'
 
 alias tmux='tmux -2'
+alias tmat='tmux a -t'
 
 alias vi='vim'
 

@@ -1,0 +1,5 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+repo = 'terryma/vim-multiple-cursors'
+repo = 'kchmck/vim-coffee-script'
+

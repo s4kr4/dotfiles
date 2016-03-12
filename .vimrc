@@ -6,7 +6,8 @@ augroup END
 
 " ########## Visual Settings ##########
 
-colorscheme molokai
+"colorscheme molokai
+colorscheme badwolf
 
 " enable syntax highlight
 syntax on
@@ -84,6 +85,40 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap " ""<Left>
 inoremap ' ''<Left>
 
+"" プラグインが実際にインストールされるディレクトリ
+"let s:dein_dir = expand('~/.cache/dein')
+"" dein.vim 本体
+"let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+"
+"" dein.vim がなければ github から落としてくる
+"if &runtimepath !~# '/dein.vim'
+"  if !isdirectory(s:dein_repo_dir)
+"    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+"  endif
+"  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+"endif
+"
+"" 設定開始
+"call dein#begin(s:dein_dir)
+"
+"" プラグインリストを収めた TOML ファイル
+"let s:toml      = '~/.vim/rc/dein.toml'
+"let s:lazy_toml = '~/.vim/rc/dein_lazy.toml'
+"
+"" TOML を読み込み、キャッシュしておく
+"if dein#load_cache([expand('<sfile>'), s:toml, s:lazy_toml])
+"  call dein#load_toml(s:toml,      {'lazy': 0})
+"  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+"  call dein#save_cache()
+"endif
+"
+"" 設定終了
+"call dein#end()
+"
+"" もし、未インストールものものがあったらインストール
+"if dein#check_install()
+"  call dein#install()
+"endif
 
 " NeoBundle settings
 
@@ -105,9 +140,9 @@ let g:vimfiler_as_default_explorer=1
 autocmd mAutoCmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
 
 NeoBundle 'Shougo/neocomplete'
-
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'kana/vim-submode'
+NeoBundle 'kchmck/vim-coffee-script'
 
 call neobundle#end()
 NeoBundleCheck
@@ -143,4 +178,15 @@ call submode#map('winsize', 'n', '', '<', '<C-w><')
 call submode#map('winsize', 'n', '', '+', '<C-w>-')
 call submode#map('winsize', 'n', '', '-', '<C-w>+')
 
+" vim-coffee-script
+au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+" インデント設定
+autocmd FileType coffee    setlocal sw=2 sts=2 ts=2 et
+" オートコンパイル
+"保存と同時にコンパイルする
+autocmd BufWritePost *.coffee silent make! 
+"エラーがあったら別ウィンドウで表示
+autocmd QuickFixCmdPost * nested cwindow | redraw! 
+" Ctrl-cで右ウィンドウにコンパイル結果を一時表示する
+nnoremap <silent> <C-C> :CoffeeCompile vert <CR><C-w>h
 
