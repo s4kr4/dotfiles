@@ -14,12 +14,19 @@ case ${UID} in
 		;;
 
 esac
+
 RPROMPT="%{[38;5;242m%}%y [%D{%m/%d} %*]%{[0m%}"
 PROMPT2="%_%% "
 
 autoload -U compinit && compinit
 zstyle ':completion:*' list-colors ''
 autoload predict-on
+#predict-on
+
+autoload -Uz select-word-style
+select-word-style default 
+zstyle ':zle:*' word-chars ' /=;@:{}[]()<>,|.'
+zstyle ':zle:*' word-style unspecified
 
 setopt no_beep
 
