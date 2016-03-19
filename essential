@@ -271,3 +271,16 @@ contains() {
     fi
 }
 
+install() {
+	if has "yum"; then
+		log_echo "Install ${1} with Yellowdog Updater Modified"
+		sudo yum -y install "$1"
+	elif has "apt-get"; then
+		log_echo "Install ${1} with Advanced Packaging Tool"
+		sudo apt-get -y install "$1"
+	else
+		log_fail "ERROR: require yum or apt"
+		return 1
+	fi
+}
+
