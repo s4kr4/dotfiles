@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. "$DOTPATH"/essential
+. "$DOTPATH"/etc/lib/essential
 
 if [ -z "$DOTPATH" ]; then
 	echo "$DOTPATH is not set" >&2
