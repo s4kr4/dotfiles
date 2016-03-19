@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. "$DOTPATH"/essential
+. "$DOTPATH"/etc/lib/essential
 
 if ! has "zsh"; then
 	case "$(get_os)" in

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. "$DOTPATH"/essential
+. "$DOTPATH"/etc/lib/essential
 
 if ! has "git"; then
 	case "$(get_os)" in
