@@ -309,7 +309,7 @@ dotfiles_download() {
 			wget -O - "$tarball"
 		fi | tar xvz
 
-		if [ !-d dotfiles-master ]; then
+		if [ ! -d dotfiles-master ]; then
 			log_fail "dotfiles-master: not found"
 			exit 1
 		fi
