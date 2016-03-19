@@ -17,7 +17,7 @@ done 2>/dev/null &
 
 for f in "$DOTPATH"/etc/init/"$(get_os)"/*.sh; do
 	if [ -f "$f" ]; then
-		log_info "$(e_arrow "$(basename "$i")")"
+		log_info "$(e_arrow "$(basename "$f")")"
 		bash "$f"
 	else
 		continue
