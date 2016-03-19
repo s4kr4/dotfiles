@@ -56,81 +56,12 @@ if [ -f "/home/mana/.enhancd/zsh/enhancd.zsh" ]; then
     source "/home/mana/.enhancd/zsh/enhancd.zsh"
 fi
 
-# tmux
-function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
-function is_osx() { [[ $OSTYPE == darwin* ]]; }
-function is_screen_running() { [ ! -z "$STY" ]; }
-function is_tmux_runnning() { [ ! -z "$TMUX" ]; }
-function is_screen_or_tmux_running() { is_screen_running || is_tmux_runnning; }
-function shell_has_started_interactively() { [ ! -z "$PS1" ]; }
-function is_ssh_running() { [ ! -z "$SSH_CONECTION" ]; }
+if [ -z "${DOTPATH:-}" ]; then
+	DOTPATH=~/.dotfiles; export DOTPATH
+fi
 
-function tmux_automatically_attach_session()
-{
-	if is_screen_or_tmux_running; then
-		! is_exists 'tmux' && return 1
+. "$DOTPATH"/essential
 
-		if is_tmux_runnning; then
-			if [ $UID -ne 0 ]; then
-				if [ `expr $RANDOM % 2` -eq 1 ]; then
-					echo "[38;5;160m _   _      _ _                               _     _   _ [0m"
-					echo "[38;5;226m| | | | ___| | | ___      __      _____  _ __| | __| | | |[0m"
-					echo "[38;5;046m| |_| |/ _ \ | |/ _ \     \ \ /\ / / _ \| '__| |/ _  | | |[0m"
-					echo "[38;5;033m|  _  |  __/ | | (_) | _   \ V  V / (_) | |  | | (_| | |_|[0m"
-					echo "[38;5;129m|_| |_|\___|_|_|\___/ | )   \_/\_/ \___/|_|  |_|\__,_| (_)[0m"
-					echo "[38;5;129m                      |/                                  [0m"
-				else
-					echo "[38;5;160m _    _           _                                       _      [0m"
-					echo "[38;5;226m| | _(_)_ __     (_)_ __ ___    _ __ ___   ___  ___  __ _(_) ___ [0m"
-					echo "[38;5;046m| |/ / | '_ \ ___| | '__/ _ \  | '_ \ _ \ / _ \/ __|/ _\ | |/ __|[0m"
-					echo "[38;5;033m|   <| | | | |___| | | | (_) | | | | | | | (_) \__ \ (_| | | (__ [0m"
-					echo "[38;5;129m|_|\_\_|_| |_|   |_|_|  \___/  |_| |_| |_|\___/|___/\__,_|_|\___|[0m"
-				fi
+tmuxx
 
-				echo
-				landscape-sysinfo --exclude-sysinfo-plugins=LandscapeLink
-				echo
-			fi
-		elif is_screen_running; then
-			echo "This is on screen."
-		fi
-	else
-		if shell_has_started_interactively && ! is_ssh_running; then
-			if ! is_exists 'tmux'; then
-				echo 'Error: tmux command not found' 2>&1
-				return 1
-			fi
-			
-			if tmux has-session >/dev/null 2>&1 && tmux list-sessions | grep -qE '.*]$'; then
-				# detached session exists
-				tmux list-sessions
-				echo -n "Tmux: attach? (y/N/num) "
-				read
-				if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
-					tmux attach-session
-					if [ $? -eq 0 ]; then
-						echo "$(tmux -V) attached session"
-						return 0
-					fi
-				elif [[ "$REPLY" =~ ^[0-9]+$ ]]; then
-					tmux attach -t "$REPLY"
-					if [ $? -eq 0 ]; then
-						echo "$(tmux -V) attached session"
-						return 0
-					fi
-				fi
-			fi
-			
-			if is_osx && is_exists 'reattach-to-user-namespace'; then
-				# on OS X force tmux's default command
-				# to spawn a shell in the user's namespace
-				tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
-				tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
-			else
-				tmux new-session && echo "tmux created new session"
-			fi
-		fi
-	fi
-}
-tmux_automatically_attach_session
 
