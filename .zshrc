@@ -1,6 +1,7 @@
 export LANG=ja_JP.UTF-8
 export WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>'
 export PATH=$PATH:$HOME/bin
+export LANG="en_US.UTF-8"
 
 case ${UID} in
 	# root
