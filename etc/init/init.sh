@@ -9,11 +9,11 @@ fi
 
 sudo -v
 
-#while true; do
-#	sudo -n true
-#	sleep 60;
-#	kill -0 "$$" || exit
-#done 2>/dev/null &
+while true; do
+	sudo -n true
+	sleep 60;
+	kill -0 "$$" || exit
+done 2>/dev/null &
 
 for f in "$DOTPATH"/etc/init/"$(get_os)"/*.sh; do
 	if [ -f "$f" ]; then
