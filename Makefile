@@ -3,8 +3,6 @@ CANDIDATES := $(wildcard .??*) bin
 EXCLUSIONS := .git
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
-all: install
-
 deploy:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
@@ -14,6 +12,6 @@ init:
 update:
 	git pull origin master
 
-install: update deploy
+install: update deploy init
 	@exec $$SHELL
 
