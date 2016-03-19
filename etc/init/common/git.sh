@@ -9,14 +9,8 @@ if ! has "git"; then
 			;;
 
 		linux)
-			if has "yum"; then
-				log_echo "Install git with Yellowdog Updater Modified"
-				sudo yum -y install git
-			elif "port"; then
-				log_echo "Install git with Advanced Packaging Tool"
-				sudo apt-get -y install git
-			else
-				log_fail "ERROR: require yum or apt"
+			install git
+			if [ "$?" -eq 1 ]; then
 				exit 1
 			fi
 			;;
