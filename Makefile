@@ -17,6 +17,6 @@ install: update deploy init
 
 clean:
 	@echo "Remove dotfiles in your home directory..."
-	@-$(foreach val, $(DOTFIELS), rm -vrf $(HOME)/$(val);)
-	@-rm -rf $(DOTPATH)
+	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
+	-rm -rf $(DOTPATH)
 
