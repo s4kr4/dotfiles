@@ -61,7 +61,7 @@ if [ -z "${DOTPATH:-}" ]; then
 	DOTPATH=~/.dotfiles; export DOTPATH
 fi
 
-. "$DOTPATH"/essential
+. "$DOTPATH"/etc/lib/essential
 
 tmuxx
 
