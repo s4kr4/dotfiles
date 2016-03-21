@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. "$DOTPATH"/essential
+. "$DOTPATH"/etc/lib/essential
 
 if is_screen_or_tmux_running; then
 	! is_exists 'tmux' && exit 1
