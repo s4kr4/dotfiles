@@ -45,6 +45,8 @@ setopt pushd_ignore_dups
 setopt correct
 setopt list_packed
 
+[ -f ~/.dotfiles/.zsh/essential.zsh ] && source ~/.dotfiles/.zsh/essential.zsh
+
 # aliases
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 

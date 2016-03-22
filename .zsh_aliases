@@ -1,4 +1,3 @@
-alias lxterminal='lxterminal --geometry=100x35'
 alias e='exit'
 alias crontab='crontab -i'
 
@@ -16,13 +15,24 @@ alias egrep='egrep --color=auto'
 
 alias df='df -h'
 
-alias fuck='eval $(thefuck $(fc -ln -1))'
-#alias FUCK='fuck'
+if has 'tmux'; then
+	alias tmux='tmux -2'
+	alias tmls='tmux ls'
+	alias tmat='tmux a -t'
+fi
 
-alias tmux='tmux -2'
-alias tmat='tmux a -t'
+if has 'vim'; then
+	alias vi='vim'
+fi
 
-alias vi='vim'
+if has 'git'; then
+	alias gadd='git add'
+	alias gcmt='git commit -m'
+	alias gpsh='git push'
+	alias gsts='git status'
+fi
 
-alias em='emacs -nw'
+if has 'lxterminal'; then
+	alias lxterminal='lxterminal --geometry=100x35'
+fi
 
