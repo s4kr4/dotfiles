@@ -29,6 +29,7 @@ if ! has "tmux"; then
 		cdirectory=`pwd`
 		git clone https://github.com/tmux/tmux.git ${HOME}/tmp/tmux
 		cd ${HOME}/tmp/tmux
+		sh autogen.sh
 		./configure && make && make install
 		cd "$cdirectory"
 	fi
