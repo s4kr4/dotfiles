@@ -6,14 +6,8 @@ augroup END
 
 " ########## Visual Settings ##########
 
-"colorscheme molokai
-colorscheme badwolf
-
-" enable syntax highlight
-syntax on
+" use 256 colors
 set t_Co=256
-let g:hybrid_original = 1
-let g:rehash256 = 1
 
 " display row number and ruler
 set number
@@ -41,11 +35,6 @@ set linebreak
 " visible whitespace
 set list
 set listchars=tab:>.,trail:-,extends:>,precedes:<,nbsp:%,eol:↲
-
-" highlight colors
-highlight CursorColumn cterm=none ctermbg=gray
-highlight CursorLine cterm=underline ctermbg=none
-highlight Normal ctermbg=none
 
 
 " ########## Edit ##########
@@ -117,35 +106,16 @@ if dein#check_install()
   call dein#install()
 endif
 
-" NeoBundle settings
-
-"set nocompatible
-"filetype plugin indent off
-"
-"if has('vim_starting')
-"	set runtimepath+=~/.vim/bundle/neobundle.vim/
-"	call neobundle#begin(expand('~/.vim/bundle/'))
-"endif
-"
-"NeoBundleFetch 'Shougo/neobundle.vim'
-"
-"NeoBundle 'sudo.vim'
-"NeoBundle 'Shougo/unite.vim'
-"
-"NeoBundle 'Shougo/vimfiler'
-"let g:vimfiler_as_default_explorer=1
-"autocmd mAutoCmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
-"
-"NeoBundle 'Shougo/neocomplete'
-"NeoBundle 'terryma/vim-multiple-cursors'
-"NeoBundle 'kana/vim-submode'
-"NeoBundle 'kchmck/vim-coffee-script'
-"
-"call neobundle#end()
-"NeoBundleCheck
-"
 filetype plugin indent on
 set autoindent
+
+syntax on
+colorscheme badwolf
+hi Normal ctermbg=none
+hi NonText ctermbg=none
+hi SpecialKey ctermbg=none
+hi CursorColumn cterm=none ctermbg=gray
+hi CursorLine cterm=underline ctermfg=none ctermbg=none
 
 set whichwrap=b,s,<,>,[,],h,l
 
@@ -176,9 +146,9 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 "call submode#map('winsize', 'n', '', '-', '<C-w>+')
 
 " vim-coffee-script
-au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
 " インデント設定
-autocmd FileType coffee    setlocal sw=2 sts=2 ts=2 et
+autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
 " オートコンパイル
 "保存と同時にコンパイルする
 autocmd BufWritePost *.coffee silent make! 
