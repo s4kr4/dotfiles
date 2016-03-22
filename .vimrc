@@ -85,68 +85,65 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap " ""<Left>
 inoremap ' ''<Left>
 
-"" プラグインが実際にインストールされるディレクトリ
-"let s:dein_dir = expand('~/.cache/dein')
-"" dein.vim 本体
-"let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-"
-"" dein.vim がなければ github から落としてくる
-"if &runtimepath !~# '/dein.vim'
-"  if !isdirectory(s:dein_repo_dir)
-"    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-"  endif
-"  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-"endif
-"
-"" 設定開始
-"call dein#begin(s:dein_dir)
-"
-"" プラグインリストを収めた TOML ファイル
-"let s:toml      = '~/.vim/rc/dein.toml'
-"let s:lazy_toml = '~/.vim/rc/dein_lazy.toml'
-"
-"" TOML を読み込み、キャッシュしておく
-"if dein#load_cache([expand('<sfile>'), s:toml, s:lazy_toml])
-"  call dein#load_toml(s:toml,      {'lazy': 0})
-"  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-"  call dein#save_cache()
-"endif
-"
-"" 設定終了
-"call dein#end()
-"
-"" もし、未インストールものものがあったらインストール
-"if dein#check_install()
-"  call dein#install()
-"endif
+
+" dein.vim
+
+set nocompatible
+
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+endif
+
+call dein#begin(s:dein_dir)
+
+let s:toml      = '~/.vim/rc/dein.toml'
+let s:lazy_toml = '~/.vim/rc/dein_lazy.toml'
+
+if dein#load_cache([expand('<sfile>'), s:toml, s:lazy_toml])
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+  call dein#save_cache()
+endif
+
+call dein#end()
+
+if dein#check_install()
+  call dein#install()
+endif
 
 " NeoBundle settings
 
-set nocompatible
-filetype plugin indent off
-
-if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
-	call neobundle#begin(expand('~/.vim/bundle/'))
-endif
-
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'sudo.vim'
-NeoBundle 'Shougo/unite.vim'
-
-NeoBundle 'Shougo/vimfiler'
-let g:vimfiler_as_default_explorer=1
-autocmd mAutoCmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
-
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'kana/vim-submode'
-NeoBundle 'kchmck/vim-coffee-script'
-
-call neobundle#end()
-NeoBundleCheck
-
+"set nocompatible
+"filetype plugin indent off
+"
+"if has('vim_starting')
+"	set runtimepath+=~/.vim/bundle/neobundle.vim/
+"	call neobundle#begin(expand('~/.vim/bundle/'))
+"endif
+"
+"NeoBundleFetch 'Shougo/neobundle.vim'
+"
+"NeoBundle 'sudo.vim'
+"NeoBundle 'Shougo/unite.vim'
+"
+"NeoBundle 'Shougo/vimfiler'
+"let g:vimfiler_as_default_explorer=1
+"autocmd mAutoCmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
+"
+"NeoBundle 'Shougo/neocomplete'
+"NeoBundle 'terryma/vim-multiple-cursors'
+"NeoBundle 'kana/vim-submode'
+"NeoBundle 'kchmck/vim-coffee-script'
+"
+"call neobundle#end()
+"NeoBundleCheck
+"
 filetype plugin indent on
 set autoindent
 
@@ -168,15 +165,15 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
-" submode.vim
-call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
-call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
-call submode#map('winsize', 'n', '', '>', '<C-w>>')
-call submode#map('winsize', 'n', '', '<', '<C-w><')
-call submode#map('winsize', 'n', '', '+', '<C-w>-')
-call submode#map('winsize', 'n', '', '-', '<C-w>+')
+"" submode.vim
+"call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+"call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+"call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
+"call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
+"call submode#map('winsize', 'n', '', '>', '<C-w>>')
+"call submode#map('winsize', 'n', '', '<', '<C-w><')
+"call submode#map('winsize', 'n', '', '+', '<C-w>-')
+"call submode#map('winsize', 'n', '', '-', '<C-w>+')
 
 " vim-coffee-script
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
