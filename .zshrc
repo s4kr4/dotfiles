@@ -45,25 +45,16 @@ setopt pushd_ignore_dups
 setopt correct
 setopt list_packed
 
-[ -f ~/.dotfiles/.zsh/essential.zsh ] && source ~/.dotfiles/.zsh/essential.zsh
-
-# aliases
-[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
-
-# zsh-syntax-highlighting
-[ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
-# enhancd
-if [ -f "/home/mana/.enhancd/zsh/enhancd.zsh" ]; then
-    source "/home/mana/.enhancd/zsh/enhancd.zsh"
-fi
 
 if [ -z "${DOTPATH:-}" ]; then
 	DOTPATH=~/.dotfiles; export DOTPATH
 fi
 
 . "$DOTPATH"/etc/lib/essential
+. "${DOTPATH}"/.zsh/essential.zsh
+. "${DOTPATH}"/.zsh_aliases
+. "${DOTPATH}"/.zplug/zplug
+. "${DOTPATH}"/.zsh/zplug.zsh
 
 tmuxx
 
