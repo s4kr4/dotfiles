@@ -19,6 +19,7 @@ if has 'tmux'; then
 	alias tmux='tmux -2'
 	alias tmls='tmux ls'
 	alias tmat='tmux a -t'
+	alias tmns='tmux new-session -s'
 fi
 
 if has 'vim'; then
