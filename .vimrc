@@ -91,8 +91,8 @@ endif
 
 call dein#begin(s:dein_dir)
 
-let s:toml      = $DOTPATH.'/.vim/rc/dein.toml'
-let s:lazy_toml = $DOTPATH.'/.vim/rc/dein_lazy.toml'
+let s:toml      = $DOTPATH.'/.vim/dein.toml'
+let s:lazy_toml = $DOTPATH.'/.vim/dein_lazy.toml'
 
 if dein#load_cache([expand('<sfile>'), s:toml, s:lazy_toml])
   call dein#load_toml(s:toml,      {'lazy': 0})
