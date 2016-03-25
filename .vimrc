@@ -20,7 +20,7 @@ set cursorline
 set laststatus=2
 
 " statusline settings
-set statusline=%F%m%r%h%w%=[TYPE:%Y][FMT:%{&fileformat}][ENC:%{&fileencoding}][LOW:%l/%L]
+set statusline=%F%m%r%h%w%{fugitive#statusline()}%=[TYPE:%Y][FMT:%{&fileformat}][ENC:%{&fileencoding}][LOW:%l/%L]
 
 " highlight corresponding brakets
 set showmatch
@@ -91,8 +91,8 @@ endif
 
 call dein#begin(s:dein_dir)
 
-let s:toml      = '~/.vim/rc/dein.toml'
-let s:lazy_toml = '~/.vim/rc/dein_lazy.toml'
+let s:toml      = $DOTPATH.'/.vim/rc/dein.toml'
+let s:lazy_toml = $DOTPATH.'/.vim/rc/dein_lazy.toml'
 
 if dein#load_cache([expand('<sfile>'), s:toml, s:lazy_toml])
   call dein#load_toml(s:toml,      {'lazy': 0})

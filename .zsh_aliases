@@ -27,10 +27,12 @@ if has 'vim'; then
 fi
 
 if has 'git'; then
-	alias gadd='git add'
-	alias gcmt='git commit -m'
-	alias gpsh='git push'
-	alias gsts='git status'
+	alias ga='git add'
+	alias gc='git commit -m'
+	alias gp='git push'
+	alias gs='git status'
+	alias gd='git diff'
+	alias gc='git checkout'
 fi
 
 if has 'lxterminal'; then
