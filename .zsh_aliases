@@ -28,11 +28,11 @@ fi
 
 if has 'git'; then
 	alias ga='git add'
-	alias gc='git commit -m'
+	alias gc='git commit'
 	alias gp='git push'
 	alias gs='git status'
 	alias gd='git diff'
-	alias gc='git checkout'
+	alias gco='git checkout'
 fi
 
 if has 'lxterminal'; then
