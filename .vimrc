@@ -69,6 +69,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <Space>e :VimFilerExplorer -winwidth=30<CR>
 
+""inoremap <silent> jj <ESC>
+inoremap <C-j> <ESC>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap " ""<Left>
