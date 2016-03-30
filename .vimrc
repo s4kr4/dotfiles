@@ -36,6 +36,13 @@ set linebreak
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:%,eol:¬
 
+" highlight full-width characters
+augroup highlightSpace
+    autocmd!
+    autocmd Colorscheme * hi IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+    autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+augroup END
+
 
 " ########## Edit ##########
 
