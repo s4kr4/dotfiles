@@ -37,8 +37,8 @@ if ! contains "${SHELL:-}" "zsh"; then
 		if chsh -s "$zsh_path" "${USER:-root}"; then
 			log_pass "Change shell to $zsh_path for ${USER:-root} successfully"
 		else
-			log_fail "Cannot set '$path' as \$SHELL"
-			log_fail "Check with '$path' to be described in /etc/shells"
+			log_fail "Cannot set '$zsh_path' as \$SHELL"
+			log_fail "Check with '$zsh_path' to be described in /etc/shells"
 			exit 1
 		fi
 
