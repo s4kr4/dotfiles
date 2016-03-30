@@ -56,6 +56,7 @@ fi
 . "${DOTPATH}"/.zplug/zplug
 . "${DOTPATH}"/.zsh/zplug.zsh
 
-tmuxx
-
+if has tmux; then
+    tmuxx
+fi
 
