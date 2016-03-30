@@ -1,6 +1,6 @@
 " autogroup
 augroup mAutoCmd
-	autocmd!
+    autocmd!
 augroup END
 
 
@@ -45,6 +45,7 @@ set backspace=start,eol,indent
 set mouse=a
 set incsearch
 set wildmenu wildmode=list:full
+set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -130,7 +131,7 @@ let g:neocomplete#enable_underbar_completion = 1
 let g:neocomplete#lock_buffer_name_pettern = '\*ku\*'
 let g:neocomplete#max_list = 10
 if !exists('g:neocomplete#keyword_patterns')
-	let g:neocomplete#keyword_patterns = {}
+    let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
