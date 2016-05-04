@@ -34,7 +34,7 @@ set linebreak
 
 " visible whitespace
 set list
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:%,eol:¬
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:%,eol:<
 
 " highlight full-width characters
 augroup highlightSpace

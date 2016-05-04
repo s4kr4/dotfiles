@@ -22,3 +22,6 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 
+[[plugins]]
+repo = 'slim-template/vim-slim'
+
