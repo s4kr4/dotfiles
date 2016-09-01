@@ -166,15 +166,15 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-"" submode.vim
-"call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-"call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-"call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
-"call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
-"call submode#map('winsize', 'n', '', '>', '<C-w>>')
-"call submode#map('winsize', 'n', '', '<', '<C-w><')
-"call submode#map('winsize', 'n', '', '+', '<C-w>-')
-"call submode#map('winsize', 'n', '', '-', '<C-w>+')
+" submode.vim
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>-')
+call submode#map('winsize', 'n', '', '-', '<C-w>+')
 
 " vim-coffee-script
 au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee

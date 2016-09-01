@@ -25,3 +25,9 @@ repo = 'nathanaelkane/vim-indent-guides'
 [[plugins]]
 repo = 'slim-template/vim-slim'
 
+[[plugins]]
+repo = 'vim-scripts/sudo.vim'
+
+[[plugins]]
+repo = 'kana/vim-submode'
+
