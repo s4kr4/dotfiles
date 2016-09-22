@@ -99,18 +99,25 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-call dein#begin(s:dein_dir)
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-let s:toml      = $DOTPATH.'/.vim/dein.toml'
-let s:lazy_toml = $DOTPATH.'/.vim/dein_lazy.toml'
+  let g:rc_dir    = expand($DOTPATH.'/.vim/rc')
+  let s:toml      = $DOTPATH.'/.vim/dein.toml'
+  let s:lazy_toml = $DOTPATH.'/.vim/dein_lazy.toml'
 
-if dein#load_cache([expand('<sfile>'), s:toml, s:lazy_toml])
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
-  call dein#save_cache()
-endif
 
-call dein#end()
+"  if dein#load_cache([expand('<sfile>'), s:toml, s:lazy_toml])
+"    call dein#load_toml(s:toml,      {'lazy': 0})
+"    call dein#load_toml(s:lazy_toml, {'lazy': 1})
+"    call dein#save_cache()
+"  endif
+
+  call dein#end()
+  call dein#save_state()
+endif
 
 if dein#check_install()
   call dein#install()
