@@ -52,7 +52,6 @@ set backspace=start,eol,indent
 set mouse=a
 set incsearch
 set wildmenu wildmode=list:full
-set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
