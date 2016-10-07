@@ -55,6 +55,7 @@ fi
 . "${DOTPATH}"/.zsh_aliases
 . "${DOTPATH}"/.zplug/zplug
 . "${DOTPATH}"/.zsh/zplug.zsh
+. "${DOTPATH}"/.zsh/env.zsh
 
 if has tmux; then
     tmuxx
