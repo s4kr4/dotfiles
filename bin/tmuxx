@@ -21,11 +21,11 @@ if is_screen_or_tmux_running; then
 			echo "[38;5;129m|_|\_\_|_| |_|   |_|_|  \___/  |_| |_| |_|\___/|___/\__,_|_|\___|[0m"
 		fi
 
-		echo
 		if has 'landscape-sysinfo'; then
+			echo
 			landscape-sysinfo --exclude-sysinfo-plugins=LandscapeLink
+			echo
 		fi
-		echo
 	elif is_screen_running; then
 		echo "This is on screen."
 	fi
@@ -35,9 +35,10 @@ else
 		echo 'Error: tmux command not found' 2>&1
 		exit 1
 	fi
-	
+
 	if tmux has-session >/dev/null 2>&1 && tmux list-sessions | grep -qE '.*]$'; then
 		# detached session exists
+
 		tmux list-sessions
 		echo -n "Tmux: attach? (y/N/num) "
 		read
@@ -54,15 +55,15 @@ else
 				exit
 			fi
 		fi
-	fi
-	
-	if is_osx && is_exists 'reattach-to-user-namespace'; then
-		# on OS X force tmux's default command
-		# to spawn a shell in the user's namespace
-		tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
-		tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
 	else
-		tmux -2 new-session && echo "tmux created new session"
+		if is_osx && is_exists 'reattach-to-user-namespace'; then
+			# on OS X force tmux's default command
+			# to spawn a shell in the user's namespace
+			tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
+			tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
+		else
+			tmux -2 new-session && echo "tmux created new session"
+		fi
 	fi
 #	fi
 fi
