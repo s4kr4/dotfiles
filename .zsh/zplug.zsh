@@ -1,10 +1,20 @@
+source ~/.zplug/init.zsh
 
-zplug "b4b4r07/zplug"
+zplug "zplug/zplug"
 
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-syntax-highlighting", \
+	nice:19
+
 zplug "b4b4r07/enhancd"
 
+zplug "hchbaw/auto-fu.zsh", \
+	at:pu
+
 zplug "b4b4r07/http_code"
+
+zplug "peco/peco", \
+	as:command, \
+	from:gh-r
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
