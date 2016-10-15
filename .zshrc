@@ -53,7 +53,6 @@ fi
 . "$DOTPATH"/etc/lib/essential
 . "${DOTPATH}"/.zsh/essential.zsh
 . "${DOTPATH}"/.zsh_aliases
-. "${DOTPATH}"/.zplug/zplug
 . "${DOTPATH}"/.zsh/zplug.zsh
 . "${DOTPATH}"/.zsh/env.zsh
 
