@@ -1,3 +1,7 @@
+if [ ! -e "${ZPLUG_HOME}"/init.zsh ]; then
+	git clone https://github.com/zplug/zplug $ZPLUG_HOME
+fi
+
 source ~/.zplug/init.zsh
 
 zplug "zplug/zplug"
@@ -5,16 +9,22 @@ zplug "zplug/zplug"
 zplug "zsh-users/zsh-syntax-highlighting", \
 	nice:19
 
-zplug "b4b4r07/enhancd"
+zplug "b4b4r07/enhancd", \
+	use:init.sh
 
-zplug "hchbaw/auto-fu.zsh", \
-	at:pu
+#zplug "hchbaw/auto-fu.zsh", \
+#	at:pu
 
 zplug "b4b4r07/http_code"
 
-zplug "peco/peco", \
+#zplug "peco/peco", \
+#	as:command, \
+#	from:gh-r
+
+zplug "junegunn/fzf-bin", \
 	as:command, \
-	from:gh-r
+	from:gh-r, \
+	rename-to:fzf
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
