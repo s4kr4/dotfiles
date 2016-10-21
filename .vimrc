@@ -91,22 +91,23 @@ inoremap ' ''<Left>
 
 set nocompatible
 
-let s:dein_dir = expand('~/.cache/dein')
+let s:dein_dir = expand($HOME.'/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_repo_dir)
     execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
   endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+  "execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+  execute 'set runtimepath+=' . s:dein_repo_dir
 endif
 
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  let g:rc_dir    = expand($DOTPATH.'/.vim/rc')
-  let s:toml      = $DOTPATH.'/.vim/dein.toml'
-  let s:lazy_toml = $DOTPATH.'/.vim/dein_lazy.toml'
+  let g:rc_dir    = expand($HOME.'/.vim/rc')
+  let s:toml      = $HOME.'/.vim/dein.toml'
+  let s:lazy_toml = $HOME.'/.vim/dein_lazy.toml'
 
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
@@ -139,7 +140,37 @@ hi CursorLine cterm=underline ctermfg=none ctermbg=none
 set whichwrap=b,s,<,>,[,],h,l
 
 
+" --------------------------------------------------------------------
+" Unite.vim
+" --------------------------------------------------------------------
+let g:unite_enable_start_insert = 1
+
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+
+" grep search
+nnoremap <silent> ,g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+" grep search in specified directory
+nnoremap <silent> ,dg  :<C-u>Unite grep -buffer-name=search-buffer<CR>
+" grep search with a word on cursor
+nnoremap <silent> ,wg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><CR>
+" grep resume
+nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
+
+au FileType unite nnoremap <silent> <buffer> <expr> <CR> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <CR> unite#do_action('split')
+
+" search using ag
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+
+" --------------------------------------------------------------------
 " neocomplete
+" --------------------------------------------------------------------
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#auto_completion_start_length = 2
@@ -155,7 +186,9 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 
+" --------------------------------------------------------------------
 " neosnippet
+" --------------------------------------------------------------------
 
 " Plugin key-mappings.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -175,7 +208,9 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
+" --------------------------------------------------------------------
 " submode.vim
+" --------------------------------------------------------------------
 call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
 call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
 call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
@@ -185,7 +220,9 @@ call submode#map('winsize', 'n', '', '<', '<C-w><')
 call submode#map('winsize', 'n', '', '+', '<C-w>-')
 call submode#map('winsize', 'n', '', '-', '<C-w>+')
 
+" --------------------------------------------------------------------
 " vim-coffee-script
+" --------------------------------------------------------------------
 au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
 " インデント設定
 autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et

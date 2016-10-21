@@ -2,10 +2,14 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'Shougo/unite.vim'
 
 [[plugins]]
-repo = 'kchmck/vim-coffee-script'
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'rking/ag.vim'
 
 [[plugins]]
 repo = 'sjl/badwolf'
@@ -18,12 +22,6 @@ repo = 'tpope/vim-rails'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-
-[[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-
-[[plugins]]
-repo = 'slim-template/vim-slim'
 
 [[plugins]]
 repo = 'vim-scripts/sudo.vim'
