@@ -21,10 +21,10 @@ zplug "b4b4r07/http_code"
 #	as:command, \
 #	from:gh-r
 
-zplug "junegunn/fzf-bin", \
-	as:command, \
-	from:gh-r, \
-	rename-to:fzf
+#zplug "junegunn/fzf-bin", \
+#	as:command, \
+#	from:gh-r, \
+#	rename-to:fzf
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
