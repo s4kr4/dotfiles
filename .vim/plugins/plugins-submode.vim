@@ -1,6 +1,7 @@
 " --------------------------------------------------------------------
-" submode.vim
+" kana/vim-submode
 " --------------------------------------------------------------------
+
 call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
 call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
 call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')

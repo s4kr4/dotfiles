@@ -1,6 +1,7 @@
 " --------------------------------------------------------------------
-" neocomplete
+" Shougo/neocomplete.vim
 " --------------------------------------------------------------------
+
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#auto_completion_start_length = 2

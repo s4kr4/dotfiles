@@ -1,8 +1,6 @@
 " --------------------------------------------------------------------
-" dein.vim
+" Shougo/dein.vim
 " --------------------------------------------------------------------
-
-set nocompatible
 
 let s:dein_dir = expand($HOME.'/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
