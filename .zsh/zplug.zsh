@@ -1,5 +1,5 @@
 if [ ! -e "${ZPLUG_HOME}"/init.zsh ]; then
-	git clone https://github.com/zplug/zplug $ZPLUG_HOME
+	curl -sL zplug.sh/installer | zsh
 fi
 
 source ~/.zplug/init.zsh
