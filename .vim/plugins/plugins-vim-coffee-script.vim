@@ -3,9 +3,6 @@
 " --------------------------------------------------------------------
 
 if dein#is_sourced('vim-coffee-script')
-  au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
-  " インデント設定
-  autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
   " オートコンパイル
   "保存と同時にコンパイルする
   autocmd BufWritePost *.coffee silent make! 
