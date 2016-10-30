@@ -45,12 +45,15 @@ setopt pushd_ignore_dups
 setopt correct
 setopt list_packed
 
+bindkey -d
+bindkey -e
+
 
 if [ -z "${DOTPATH:-}" ]; then
 	DOTPATH=~/.dotfiles; export DOTPATH
 fi
 
-. "$DOTPATH"/etc/lib/essential
+. "${DOTPATH}"/etc/lib/essential
 . "${DOTPATH}"/.zsh/essential.zsh
 . "${DOTPATH}"/.zsh_aliases
 . "${DOTPATH}"/.zsh/zplug.zsh
