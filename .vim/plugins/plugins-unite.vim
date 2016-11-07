@@ -29,5 +29,10 @@ if dein#is_sourced('unite.vim')
     let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
     let g:unite_source_grep_recursive_opt = ''
   endif
+
+  if dein#is_sourced('unite-outline')
+    nnoremap <silent> ,o :<C-u>Unite -no-quit -vertical -winwidth=50 outline<CR>
+  endif
+
 endif
 
