@@ -13,7 +13,7 @@ scriptencoding utf-8
 " Enable using mouse
 set mouse=a
 
-" Enable settings depends on filetile
+" Enable settings depends on filetype
 filetype plugin indent on
 
 " Enable incremental search
@@ -23,6 +23,7 @@ set incsearch
 set nowritebackup
 set nobackup
 set noswapfile
+set noundofile
 
 " Disable ring beep
 set vb t_vb=
@@ -30,3 +31,8 @@ set vb t_vb=
 set whichwrap=b,s,h,l,<,>,[,]
 
 set completeopt=menuone
+
+if has('win32') || has('win64') || has('win32unix')
+	set runtimepath+=$HOME/.vim
+endif
+
