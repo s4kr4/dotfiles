@@ -4,8 +4,8 @@
 noremap <C-j> <ESC>
 noremap! <C-j> <ESC>
 
-nnoremap j gj
-nnoremap k gk
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 
 nnoremap <Space>h <C-w>h
 nnoremap <Space>j <C-w>j
@@ -19,4 +19,9 @@ inoremap ' ''<Left>
 
 nnoremap day <ESC>a<C-r>=strftime("%Y-%m-%d ")<CR>
 nnoremap time <ESC>a<C-r>=strftime("%H:%M:%S ")<CR>
+
+nnoremap <silent> <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <silent> <C-l> :vsplit<CR> :exe("tjump ".expand('<cword>'))<CR>
+
+nnoremap <silent> <S-CR> :<C-u>call append(expand('.'), '')<CR>j
 
