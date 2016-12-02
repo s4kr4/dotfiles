@@ -32,7 +32,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 
 set completeopt=menuone
 
-if has('win32') || has('win64') || has('win32unix')
-	set runtimepath+=$HOME/.vim
-endif
+" Open new panes in the below or right
+set splitbelow
+set splitright
 
