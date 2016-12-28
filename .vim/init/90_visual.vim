@@ -30,7 +30,5 @@ augroup highlightSpace
 augroup END
 
 colorscheme badwolf
-"hi Normal ctermbg=none
-"hi NonText ctermbg=none
 hi CursorLine cterm=underline ctermfg=none ctermbg=none
 
