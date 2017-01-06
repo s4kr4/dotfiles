@@ -32,3 +32,15 @@ augroup END
 colorscheme badwolf
 hi CursorLine cterm=underline ctermfg=none ctermbg=none
 
+if has('gui')
+    " Disable toolbar
+    set guioptions-=T
+
+    " Disable scroll bars
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=b
+endif
+
