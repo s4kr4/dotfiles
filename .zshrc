@@ -3,6 +3,16 @@ export WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>'
 export PATH=$PATH:$HOME/bin
 export LANG="en_US.UTF-8"
 
+if [ -z "${DOTPATH:-}" ]; then
+	DOTPATH=~/.dotfiles; export DOTPATH
+fi
+
+. "${DOTPATH}"/etc/lib/essential
+. "${DOTPATH}"/.zsh/essential.zsh
+. "${DOTPATH}"/.zsh_aliases
+. "${DOTPATH}"/.zsh/zplug.zsh
+. "${DOTPATH}"/.zsh/env.zsh
+
 case ${UID} in
 	# root
 	0)
@@ -19,7 +29,14 @@ esac
 RPROMPT="%{[38;5;242m%}%y [%D{%m/%d} %*]%{[0m%}"
 PROMPT2="%_%% "
 
-autoload -U compinit && compinit
+autoload -Uz compinit
+os_detect
+if [ is_cygwin ]; then
+	compinit -u
+else
+	compinit
+fi
+
 zstyle ':completion:*' list-colors ''
 autoload predict-on
 #predict-on
@@ -48,16 +65,6 @@ setopt list_packed
 bindkey -d
 bindkey -e
 
-
-if [ -z "${DOTPATH:-}" ]; then
-	DOTPATH=~/.dotfiles; export DOTPATH
-fi
-
-. "${DOTPATH}"/etc/lib/essential
-. "${DOTPATH}"/.zsh/essential.zsh
-. "${DOTPATH}"/.zsh_aliases
-. "${DOTPATH}"/.zsh/zplug.zsh
-. "${DOTPATH}"/.zsh/env.zsh
 
 if has tmux; then
     tmuxx

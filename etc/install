@@ -29,6 +29,7 @@ os_detect() {
 		*'linux'*)  PLATFORM='linux'   ;;
 		*'darwin'*) PLATFORM='osx'     ;;
 		*'bsd'*)    PLATFORM='bsd'     ;;
+		*'cygwin'*) PLATFORM='cygwin'  ;;
 		*)          PLATFORM='unknown' ;;
 	esac
 }
@@ -58,6 +59,16 @@ is_linux() {
 is_bsd() {
 	os_detect
 	if [ "$PLATFORM" = "bsd" ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+# is_cygwin returns true if running OS is cygwin
+is_cygwin() {
+	os_detect
+	if [ "$PLATFORM" = "cygwin" ]; then
 		return 0
 	else
 		return 1
