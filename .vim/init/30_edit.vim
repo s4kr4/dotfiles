@@ -12,6 +12,10 @@ set autoindent
 set hidden
 set switchbuf=useopen
 
+set incsearch
+set ignorecase
+set smartcase
+
 " highlight corresponding brakets
 set showmatch
 
@@ -20,4 +24,7 @@ set wrap
 
 " no break in the middle of words
 set linebreak
+
+" Share clipboard with other editor
+set clipboard=unnamed,autoselect
 
