@@ -35,3 +35,6 @@ repo = 'kana/vim-submode'
 [[plugins]]
 repo = 'tyru/caw.vim'
 
+[[plugins]]
+repo = 'thinca/vim-splash'
+
