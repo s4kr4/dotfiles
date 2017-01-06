@@ -7,7 +7,7 @@ source ~/.zplug/init.zsh
 zplug "zplug/zplug"
 
 zplug "zsh-users/zsh-syntax-highlighting", \
-	nice:19
+	defer:2
 
 zplug "b4b4r07/enhancd", \
 	use:init.sh
