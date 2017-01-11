@@ -1,8 +1,3 @@
-export LANG=ja_JP.UTF-8
-export WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>'
-export PATH=$PATH:$HOME/bin
-export LANG="en_US.UTF-8"
-
 if [ -z "${DOTPATH:-}" ]; then
 	DOTPATH=~/.dotfiles; export DOTPATH
 fi
@@ -12,6 +7,15 @@ fi
 . "${DOTPATH}"/.zsh_aliases
 . "${DOTPATH}"/.zsh/zplug.zsh
 . "${DOTPATH}"/.zsh/env.zsh
+
+export LANG=ja_JP.UTF-8
+export WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>'
+export LANG="en_US.UTF-8"
+export PATH=$PATH:$HOME/bin
+
+if [[ is_osx ]]; then
+	export PATH=$PATH:/usr/local/bin:/bin
+fi
 
 case ${UID} in
 	# root
