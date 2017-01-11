@@ -1,7 +1,15 @@
 alias e='exit'
 alias crontab='crontab -i'
 
-alias ls='ls --color=auto'
+case "${OSTYPE}" in
+darwin*)
+	alias ls='ls -G'
+	;;
+linux*)
+	alias ls='ls --color=auto'
+	;;
+esac
+
 alias lr='ls -R'
 alias ll='ls -alF'
 alias la='ls -A'
