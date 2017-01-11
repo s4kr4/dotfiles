@@ -42,6 +42,8 @@ else
 fi
 
 zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' list-separator '-->'
 autoload predict-on
 #predict-on
 
