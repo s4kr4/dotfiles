@@ -49,3 +49,7 @@ if has 'lxterminal'; then
 	alias lxterminal='lxterminal --geometry=100x35'
 fi
 
+if [[ -e ${HOME}/.local_aliases ]]; then
+	source .local_aliases
+fi
+
