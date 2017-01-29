@@ -5,8 +5,8 @@ fi
 . "${DOTPATH}"/etc/lib/essential
 . "${DOTPATH}"/.zsh/essential.zsh
 . "${DOTPATH}"/.zsh_aliases
-. "${DOTPATH}"/.zsh/zplug.zsh
 . "${DOTPATH}"/.zsh/env.zsh
+. "${DOTPATH}"/.zsh/zplug.zsh
 
 export LANG=ja_JP.UTF-8
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'

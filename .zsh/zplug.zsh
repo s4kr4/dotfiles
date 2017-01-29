@@ -1,4 +1,4 @@
-if [ ! -e "${ZPLUG_HOME}"/init.zsh ]; then
+if [[ ! -e ~/.zplug/init.zsh ]]; then
 	curl -sL zplug.sh/installer | zsh
 fi
 
