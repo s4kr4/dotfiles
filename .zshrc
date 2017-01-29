@@ -9,7 +9,7 @@ fi
 . "${DOTPATH}"/.zsh/env.zsh
 
 export LANG=ja_JP.UTF-8
-export WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>'
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export LANG="en_US.UTF-8"
 export PATH=$PATH:$HOME/bin
 
