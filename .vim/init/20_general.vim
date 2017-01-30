@@ -36,3 +36,5 @@ set completeopt=menuone
 set splitbelow
 set splitright
 
+set clipboard=unnamed
+

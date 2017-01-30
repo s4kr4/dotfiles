@@ -3,12 +3,12 @@ repo = 'Shougo/neocomplete.vim'
 on_i = 1
 
 [[plugins]]
-repo = 'Shougo/neosnippet'
-depends = ['neosnippet-snippets']
+repo = 'Shougo/neosnippet-snippets'
 on_i = 1
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'Shougo/neosnippet'
+depends = ['neosnippet-snippets']
 on_i = 1
 
 [[plugins]]
@@ -25,6 +25,14 @@ on_ft = 'coffee'
 [[plugins]]
 repo = 'slim-template/vim-slim'
 on_ft = 'slim'
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'mxw/vim-jsx'
+on_ft = 'javascript'
 
 [[plugins]]
 repo = 'StanAngeloff/php.vim'
