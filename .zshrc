@@ -68,8 +68,14 @@ setopt pushd_ignore_dups
 setopt correct
 setopt list_packed
 
+stty -ixon
+
 bindkey -d
-bindkey -e
+bindkey -v
+
+bindkey '^A' beginning-of-line
+bindkey '^N' down-line-or-history
+bindkey '^P' up-line-or-history
 
 
 if has tmux; then
