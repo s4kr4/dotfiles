@@ -1,4 +1,4 @@
-alias e='exit'
+alias q='exit'
 alias crontab='crontab -i'
 
 case "${OSTYPE}" in
