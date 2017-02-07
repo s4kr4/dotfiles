@@ -50,6 +50,6 @@ if has 'lxterminal'; then
 fi
 
 if [[ -e ${HOME}/.local_aliases ]]; then
-	source .local_aliases
+	source ${HOME}/.local_aliases
 fi
 
