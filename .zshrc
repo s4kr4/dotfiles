@@ -2,12 +2,6 @@ if [ -z "${DOTPATH:-}" ]; then
 	DOTPATH=~/.dotfiles; export DOTPATH
 fi
 
-. "${DOTPATH}"/etc/lib/essential
-. "${DOTPATH}"/.zsh/essential.zsh
-. "${DOTPATH}"/.zsh_aliases
-. "${DOTPATH}"/.zsh/env.zsh
-. "${DOTPATH}"/.zsh/zplug.zsh
-
 export LANG=ja_JP.UTF-8
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export LANG="en_US.UTF-8"
@@ -16,6 +10,12 @@ export PATH=$PATH:$HOME/bin
 if [[ is_osx ]]; then
 	export PATH=$PATH:/usr/local/bin:/bin
 fi
+
+. "${DOTPATH}"/etc/lib/essential
+. "${DOTPATH}"/.zsh/essential.zsh
+. "${DOTPATH}"/.zsh_aliases
+. "${DOTPATH}"/.zsh/env.zsh
+. "${DOTPATH}"/.zsh/zplug.zsh
 
 case ${UID} in
 	# root
@@ -41,11 +41,24 @@ else
 	compinit
 fi
 
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*' list-separator '-->'
+
+# --------------------------------------------------------------------
+#  Completion settings
+# --------------------------------------------------------------------
+
 autoload predict-on
 #predict-on
+
+# Hilight ls command
+export LS_COLORS='no=00:fi=00:di=34:ln=36:pi=31:so=33:bd=44;37:cd=44;37:ex=32:mi=00:or=36'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# Ignore upper/lower cases
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# Set separator between lists and descriptions
+zstyle ':completion:*' list-separator '-->'
+
 
 autoload -Uz select-word-style
 select-word-style default 
