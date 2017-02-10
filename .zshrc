@@ -59,29 +59,65 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # Set separator between lists and descriptions
 zstyle ':completion:*' list-separator '-->'
 
+# Suggest typoed commands
+setopt correct
+
+# Pack lists
+setopt list_packed
+
+# Enable complete for arguments
+setopt magic_equal_subst
+
+# Enable brace expansion
+setopt brace_ccl
+
+
+# --------------------------------------------------------------------
+#  Delimiter
+# --------------------------------------------------------------------
 
 autoload -Uz select-word-style
 select-word-style default 
+
+# Set delimiter characters
 zstyle ':zle:*' word-chars ' /=;@:{}[]()<>,|.'
 zstyle ':zle:*' word-style unspecified
 
-setopt no_beep
 
-# command history
+# --------------------------------------------------------------------
+#  Command history
+# --------------------------------------------------------------------
+
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_dups
-setopt share_history
+#setopt share_history
+
+
+# --------------------------------------------------------------------
+#  Make cd useful
+# --------------------------------------------------------------------
 
 setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
 
-setopt correct
-setopt list_packed
 
+# --------------------------------------------------------------------
+#  Others
+# --------------------------------------------------------------------
+
+# Suppress alert
+setopt no_beep
+
+# To enable keymap 'Ctrl+q' on Vim
 stty -ixon
+
+
+# --------------------------------------------------------------------
+#  Key binds
+# --------------------------------------------------------------------
 
 bindkey -d
 bindkey -v
@@ -91,6 +127,8 @@ bindkey '^N' down-line-or-history
 bindkey '^P' up-line-or-history
 
 
+
+# Start TMUX
 if has tmux; then
     tmuxx
 fi
