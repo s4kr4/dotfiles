@@ -78,7 +78,7 @@ is_cygwin() {
 # get_os returns OS name of the platform that is running
 get_os() {
 	local os
-	for os in osx linux bsd; do
+	for os in osx linux bsd cygwin; do
 		if is_$os; then
 			echo $os
 		fi
@@ -289,6 +289,9 @@ install() {
 	elif has "apt-get"; then
 		log_echo "Install ${1} with Advanced Packaging Tool"
 		sudo apt-get -y install "$1"
+	elif has "apt-cyg"; then
+		log_echo "Install ${1} with Advanced Packaging Tool for Cygwin"
+		apt-cyg install "$1"
 	else
 		log_fail "ERROR: require yum or apt"
 		return 1
