@@ -123,6 +123,7 @@ bindkey -d
 bindkey -v
 
 bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
 bindkey '^N' down-line-or-history
 bindkey '^P' up-line-or-history
 
