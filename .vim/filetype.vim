@@ -5,6 +5,7 @@ augroup filetypedetect
   au BufRead,BufNewFile *.js setfiletype javascript
   au BufRead,BufNewFile *.json setfiletype json
   au BufRead,BufNewFile *.coffee setfiletype coffee
+  au BufRead,BufNewFile *.ts setfiletype typescript
   au BufRead,BufNewFile *.slim setfiletype slim
   au BufRead,BufNewFile *.vim setfiletype vim
 augroup END

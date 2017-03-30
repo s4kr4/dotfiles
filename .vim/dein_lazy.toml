@@ -42,3 +42,7 @@ on_ft = 'php'
 repo = 'elzr/vim-json'
 on_ft = 'json'
 
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = 'typescript'
+
