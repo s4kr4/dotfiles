@@ -7,5 +7,7 @@ augroup filetypedetect
   au BufRead,BufNewFile *.coffee setfiletype coffee
   au BufRead,BufNewFile *.ts setfiletype typescript
   au BufRead,BufNewFile *.slim setfiletype slim
+  au BufRead,BufNewFile *.jade setfiletype pug
+  au BufRead,BufNewFile *.pug setfiletype pug
   au BufRead,BufNewFile *.vim setfiletype vim
 augroup END

@@ -46,3 +46,7 @@ on_ft = 'json'
 repo = 'leafgarland/typescript-vim'
 on_ft = 'typescript'
 
+[[plugins]]
+repo = 'digitaltoad/vim-pug'
+on_ft = 'pug'
+
