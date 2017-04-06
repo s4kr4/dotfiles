@@ -38,3 +38,15 @@ on_ft = 'javascript'
 repo = 'StanAngeloff/php.vim'
 on_ft = 'php'
 
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = 'typescript'
+
+[[plugins]]
+repo = 'digitaltoad/vim-pug'
+on_ft = 'pug'
+
