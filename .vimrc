@@ -5,4 +5,5 @@ endif
 
 runtime! init/*.vim
 runtime! plugins/*.vim
+runtime! functions.vim
 
