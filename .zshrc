@@ -17,20 +17,30 @@ fi
 . "${DOTPATH}"/.zsh/env.zsh
 . "${DOTPATH}"/.zsh/zplug.zsh
 
+color_end="%{[0m%}"
 case ${UID} in
 	# root
 	0)
-		PROMPT="%{[38;5;202m%}%n%{[0m%}@%{[38;5;045m%}%m:%~%{[0m%} # "
+		PROMPT_USER="%{[38;5;196m%}%n${color_end}"
 		;;
 
 	# other
 	*)
-		PROMPT="%{[38;5;046m%}%n%{[0m%}@%{[38;5;045m%}%m:%~%{[0m%} > "
+		PROMPT_USER="%{[38;5;046m%}%n${color_end}"
 		;;
 
 esac
 
-RPROMPT="%{[38;5;242m%}%y [%D{%m/%d} %*]%{[0m%}"
+if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
+	# remote connection
+	PROMPT_PATH="%{[38;5;202m%}%m:%(5~,.../%3~,%~)${color_end}"
+else
+	# local
+	PROMPT_PATH="%{[38;5;045m%}%m:%(5~,.../%3~,%~)${color_end}"
+fi
+
+PROMPT="${PROMPT_USER}@${PROMPT_PATH} > "
+RPROMPT="%{[38;5;242m%}%y [%D{%m/%d} %*]${color_end}"
 PROMPT2="%_%% "
 
 autoload -Uz compinit
