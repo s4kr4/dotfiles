@@ -12,19 +12,18 @@ zplug "zsh-users/zsh-syntax-highlighting", \
 zplug "b4b4r07/enhancd", \
 	use:init.sh
 
-#zplug "hchbaw/auto-fu.zsh", \
-#	at:pu
-
 zplug "b4b4r07/http_code"
 
-#zplug "peco/peco", \
-#	as:command, \
-#	from:gh-r
+zplug "jhawthorn/fzy", \
+    as:command, \
+    rename-to:fzy, \
+    hook-build:"make && sudo make install"
 
-#zplug "junegunn/fzf-bin", \
-#	as:command, \
-#	from:gh-r, \
-#	rename-to:fzf
+# zplug "junegunn/fzf-bin", \
+# 	from:gh-r, \
+# 	as:command, \
+# 	rename-to:fzf, \
+# 	use:"*darwin*amd64*"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
