@@ -1,6 +1,9 @@
 " --------------------------------------------------------------------
 "  Keymap Settings
 " --------------------------------------------------------------------
+
+let mapleader = "\<space>"
+
 noremap <C-j> <ESC>
 noremap! <C-j> <ESC>
 
@@ -25,4 +28,8 @@ nnoremap time <ESC>a<C-r>=strftime("%H:%M:%S ")<CR><ESC>
 nnoremap <silent> <S-CR> :<C-u>call append(expand('.'), '')<CR>j
 
 nnoremap <C-q> :q<CR>
+
+nnoremap <leader>e :call FzyCommand("find -type f", ":e")<cr>
+nnoremap <leader>v :call FzyCommand("find -type f", ":vs")<cr>
+nnoremap <leader>s :call FzyCommand("find -type f", ":sp")<cr>
 
