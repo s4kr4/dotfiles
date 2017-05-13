@@ -36,3 +36,6 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
+if zplug check --verbose "b4b4r07/enhancd"; then
+    add-zsh-hook chpwd __enhancd::cd::after
+fi

@@ -125,6 +125,8 @@ setopt no_beep
 # To enable keymap 'Ctrl+q' on Vim
 stty -ixon
 
+autoload -Uz add-zsh-hook
+
 
 # --------------------------------------------------------------------
 #  Key binds
