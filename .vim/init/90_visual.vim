@@ -16,9 +16,6 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:%,eol:<
 set laststatus=2
 set statusline=%F%m%r%h%w%{fugitive#statusline()}%=[TYPE:%Y][FMT:%{&fileformat}][ENC:%{&fileencoding}][LOW:%l/%L]
 
-" use 256 colors
-set t_Co=256
-
 " Enable syntax highlight
 syntax on
 
