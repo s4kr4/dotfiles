@@ -12,9 +12,6 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'rking/ag.vim'
-
-[[plugins]]
 repo = 'sjl/badwolf'
 
 [[plugins]]
@@ -34,7 +31,4 @@ repo = 'tyru/caw.vim'
 
 [[plugins]]
 repo = 'thinca/vim-splash'
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim.git'
 
