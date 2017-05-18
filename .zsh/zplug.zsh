@@ -19,11 +19,8 @@ zplug "jhawthorn/fzy", \
     rename-to:fzy, \
     hook-build:"make && sudo make install"
 
-# zplug "junegunn/fzf-bin", \
-# 	from:gh-r, \
-# 	as:command, \
-# 	rename-to:fzf, \
-# 	use:"*darwin*amd64*"
+zplug "zsh-users/zsh-autosuggestions"
+
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
