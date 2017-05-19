@@ -23,6 +23,10 @@ alias egrep='egrep --color=auto'
 
 alias df='df -h'
 
+if is_cygwin; then
+	alias open='cygstart'
+fi
+
 if has 'tmux'; then
 	alias tmux='tmux -2'
 	alias tmls='tmux ls'
