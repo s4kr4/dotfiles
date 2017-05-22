@@ -17,7 +17,7 @@ set laststatus=2
 set statusline=%F%m%r%h%w%{fugitive#statusline()}%=[TYPE:%Y][FMT:%{&fileformat}][ENC:%{&fileencoding}][LOW:%l/%L]
 
 " Enable syntax highlight
-syntax on
+syntax enable
 
 " highlight ideographic spaces
 augroup highlightSpace
@@ -26,7 +26,11 @@ augroup highlightSpace
     autocmd VimEnter,WinEnter * match IdeographicSpace /　/
 augroup END
 
-colorscheme badwolf
+" colorscheme badwolf
+set background=dark
+colorscheme solarized
+
+highlight Normal ctermbg=none
 hi CursorLine cterm=underline ctermfg=none ctermbg=none
 
 if has('gui')
