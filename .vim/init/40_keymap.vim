@@ -12,10 +12,13 @@ nnoremap <silent> k gk
 nnoremap <silent> <C-k> <C-e>
 nnoremap <silent> <C-j> <C-y>
 
-nnoremap <Space>h <C-w>h
-nnoremap <Space>j <C-w>j
-nnoremap <Space>k <C-w>k
-nnoremap <Space>l <C-w>l
+noremap <silent> <C-a> ^
+noremap <silent> <C-e> $
+
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
 
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
