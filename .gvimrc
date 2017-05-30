@@ -2,7 +2,11 @@
 "  .vimrc for GVim
 " --------------------------------------------------------------------
 
-autocmd GUIEnter * set transparency=230
+if has("mac")
+	set transparency=15
+elseif has("win64") || has("win32unix") || has("win32")
+	autocmd GUIEnter * set transparency=230
+endif
 
 set columns=110
 set lines=35
