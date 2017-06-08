@@ -9,8 +9,8 @@ noremap! <C-j> <ESC>
 
 nnoremap <silent> j gj
 nnoremap <silent> k gk
-nnoremap <silent> <C-k> <C-e>
-nnoremap <silent> <C-j> <C-y>
+nnoremap <silent> <C-j> <C-e>
+nnoremap <silent> <C-k> <C-y>
 
 noremap <silent> <C-a> ^
 noremap <silent> <C-e> $
