@@ -12,7 +12,7 @@ set cursorline
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:%,eol:<
 
-" display statusline 
+" display statusline
 set laststatus=2
 set statusline=%F%m%r%h%w%{fugitive#statusline()}%=[TYPE:%Y][FMT:%{&fileformat}][ENC:%{&fileencoding}][LOW:%l/%L]
 
@@ -24,6 +24,7 @@ augroup highlightSpace
     autocmd!
     autocmd Colorscheme * hi IdeographicSpace term=underline ctermbg=DarkRed guibg=DarkRed
     autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+    autocmd VimEnter,WinEnter * match IdeographicSpace /\s\+$/
 augroup END
 
 " colorscheme badwolf
