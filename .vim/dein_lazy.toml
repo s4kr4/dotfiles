@@ -19,10 +19,6 @@ on_ft = 'html'
 repo = 'hail2u/vim-css3-syntax'
 
 [[plugins]]
-repo = 'kchmck/vim-coffee-script'
-on_ft = 'coffee'
-
-[[plugins]]
 repo = 'slim-template/vim-slim'
 on_ft = 'slim'
 
