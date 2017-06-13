@@ -44,3 +44,18 @@ mkcd() {
 	[ $? -eq 0 ] && cd "$1"
 }
 
+complete_action() {
+	if ! has "$0"; then
+		suffix=(c config cpp cc cs conf html jade java js json jsx lock log md php pug py rb sh slim toml ts txt vim yml zsh babelrc bashrc eslintrc gvimrc vimrc zsh_aliases zsh_history zshrc)
+		if [ -f "$1" ]; then
+			if echo "${suffix[*]}" | grep -q "${1##*.}"; then
+				if has vim; then
+					vim "$1"
+					return $?
+				fi
+			fi
+		fi
+		return 127
+	fi
+}
+

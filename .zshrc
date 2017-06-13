@@ -65,7 +65,10 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Ignore upper/lower cases
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{a-z}={A-Z}'
+
+# Complete PID for killing
+zstyle ':completion:*:processes' menu yes select=2
 
 # Set separator between lists and descriptions
 zstyle ':completion:*' list-separator '-->'
@@ -126,6 +129,8 @@ setopt no_beep
 stty -ixon
 
 autoload -Uz add-zsh-hook
+
+add-zsh-hook preexec complete_action
 
 
 # --------------------------------------------------------------------
