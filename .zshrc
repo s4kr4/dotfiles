@@ -43,14 +43,6 @@ PROMPT="${PROMPT_USER}@${PROMPT_PATH} > "
 RPROMPT="%{[38;5;242m%}%y [%D{%m/%d} %*]${color_end}"
 PROMPT2="%_%% "
 
-autoload -Uz compinit
-os_detect
-if [ is_cygwin ]; then
-	compinit -u
-else
-	compinit
-fi
-
 
 # --------------------------------------------------------------------
 #  Completion settings
