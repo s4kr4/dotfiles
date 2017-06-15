@@ -14,7 +14,6 @@ fi
 . "${DOTPATH}"/etc/lib/essential
 . "${DOTPATH}"/.zsh/essential.zsh
 . "${DOTPATH}"/.zsh_aliases
-. "${DOTPATH}"/.zsh/env.zsh
 . "${DOTPATH}"/.zsh/zplug.zsh
 
 color_end="%{[0m%}"
