@@ -2,16 +2,8 @@ if [ -z "${DOTPATH:-}" ]; then
 	DOTPATH=~/.dotfiles; export DOTPATH
 fi
 
-export LANG=ja_JP.UTF-8
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-export LANG="en_US.UTF-8"
-export PATH=$PATH:$HOME/bin
-
-if [[ is_osx ]]; then
-	export PATH=$PATH:/usr/local/bin:/bin
-fi
-
 . "${DOTPATH}"/etc/lib/essential
+. "${DOTPATH}"/.zsh/env.zsh
 . "${DOTPATH}"/.zsh/essential.zsh
 . "${DOTPATH}"/.zsh_aliases
 . "${DOTPATH}"/.zsh/zplug.zsh
