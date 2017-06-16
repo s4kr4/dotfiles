@@ -298,11 +298,6 @@ install() {
 	fi
 }
 
-DOTFILES_GITHUB="https://github.com/s4kr4/dotfiles.git"
-export DOTFILES_GITHUB
-
-dotfiles_logo='d o t f i l e s'
-
 dotfiles_download() {
 	if [ -d "$DOTPATH" ]; then
 		log_fail "$DOTPATH: already exists"
@@ -373,33 +368,4 @@ dotfiles_install() {
 	dotfiles_deploy &&
 	dotfiles_initialize "$@"
 }
-
-if echo "$-" | grep -q "i"; then
-	VITALIZED=1
-	export VITALIZED
-
-	: return
-else
-	if [ "$0" = "${BASH_SOURCE:-}" ]; then
-		exit
-	fi
-
-	if [ -n "${BASH_EXECUTION_STRING}" ] || [ -p /dev/stdin ]; then
-		if [ "${VITALIZED:=0}" = 1 ]; then
-			exit
-		fi
-
-		trap "e_error 'terminated'; exit 1" INT ERR
-		echo "$dotfiles_logo"
-		dotfiles_install "$@"
-
-		if [ -p /dev/stdin ]; then
-			e_warning "Now continue with Rebooting your shell..."
-		else
-			e_newline
-			e_arrow "Restarting your shell..."
-			exec "${SHELL:-/bin/zsh}"
-		fi
-	fi
-fi
 
