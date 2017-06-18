@@ -7,6 +7,9 @@ for file in "${DOTPATH}"/.zsh/*.zsh; do
 	. "$file"
 done
 
+# if (which zprof > /dev/null); then
+#   zprof | less
+# fi
 
 # Start TMUX
 if has tmux; then
