@@ -1,10 +1,8 @@
 if [[ ! -e ~/.zplug/init.zsh ]]; then
-	curl -sL zplug.sh/installer | zsh
+	git clone https://github.com/zplug/zplug ~/.zplug
 fi
 
 source ~/.zplug/init.zsh
-
-zplug "zplug/zplug"
 
 zplug "zsh-users/zsh-syntax-highlighting", \
 	defer:2

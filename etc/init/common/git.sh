@@ -1,29 +1,17 @@
 #!/bin/bash
 
-. "$DOTPATH"/etc/lib/essential
+. "$DOTPATH"/.zsh/20_functions.zsh
 
 if ! has "git"; then
-	case "$(get_os)" in
-		osx)
-			exit 1
-			;;
+    install git
 
-		linux)
-			install git
-			if [ "$?" -eq 1 ]; then
-				exit 1
-			fi
-			;;
+    if [ "$?" -eq 1 ]; then
+        exit 1
+    fi
 
-		*)
-			log_fail "ERROR: This script is only supported OSX or Linux"
-			exit 1
-			;;
-	esac
-
-	log_pass "git: Installed git successfully"
+    log_pass "git: Installed git successfully"
 else
-	log_pass "git: Already installed"
+    log_pass "git: Already installed"
 fi
 
 

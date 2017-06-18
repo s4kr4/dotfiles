@@ -280,19 +280,38 @@ contains() {
 }
 
 install() {
-	if has "yum"; then
-		log_echo "Install ${1} with Yellowdog Updater Modified"
-		sudo yum -y install "$1"
-	elif has "apt-get"; then
-		log_echo "Install ${1} with Advanced Packaging Tool"
-		sudo apt-get -y install "$1"
-	elif has "apt-cyg"; then
-		log_echo "Install ${1} with Advanced Packaging Tool for Cygwin"
-		apt-cyg install "$1"
-	else
-		log_fail "ERROR: require yum or apt"
-		return 1
-	fi
+    case "$(get_os)" in
+        osx)
+            if has "brew"; then
+                log_echo "Installing ${@} with Homebrew..."
+                brew install "$@"
+            else
+                log_fail "ERROR: Require homebrew!"
+                return 1
+            fi
+            ;;
+        linux)
+            if has "yum"; then
+                log_echo "Install ${@} with Yellowdog Updater Modified"
+                sudo yum -y install "$@"
+            elif has "apt-get"; then
+                log_echo "Install ${@} with Advanced Packaging Tool"
+                sudo apt-get -y install "$@"
+            else
+                log_fail "ERROR: Require yum or apt"
+                return 1
+            fi
+            ;;
+        cygwin)
+            if has "apt-cyg"; then
+                log_echo "Install ${@} with Advanced Packaging Tool for Cygwin"
+                apt-cyg install "$@"
+            else
+                log_fail "ERROR: Require apt-cyg"
+                return 1
+            fi
+            ;;
+    esac
 }
 
 dotfiles_download() {
