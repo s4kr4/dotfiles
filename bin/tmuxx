@@ -22,7 +22,6 @@ if is_screen_or_tmux_running; then
 		echo "This is on screen."
 	fi
 else
-#	if shell_has_started_interactively && ! is_ssh_running; then
 	if ! has 'tmux'; then
 		echo 'Error: tmux command not found' 2>&1
 		exit 1
@@ -54,9 +53,8 @@ else
 			tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
 			tmux -f <(echo "$tmux_config") new-session && echo "$(tmux -V) created new session supported OS X"
 		else
-			tmux -2 new-session && echo "tmux created new session"
+			tmux -2 new-session
 		fi
 	fi
-#	fi
 fi
 
