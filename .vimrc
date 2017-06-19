@@ -4,6 +4,5 @@ if has('win32') || has('win64') || has('win32unix')
 endif
 
 runtime! init/*.vim
-runtime! plugins.vim
 runtime! functions.vim
 
