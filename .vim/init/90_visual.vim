@@ -27,11 +27,9 @@ augroup highlightSpace
     autocmd VimEnter,WinEnter * match IdeographicSpace /\s\+$/
 augroup END
 
-" colorscheme badwolf
-set background=dark
-colorscheme solarized
+colorscheme badwolf
 
-highlight Normal ctermbg=none
+" Display cursorline
 hi CursorLine cterm=underline ctermfg=none ctermbg=none
 
 if has('gui')

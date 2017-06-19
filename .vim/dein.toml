@@ -17,7 +17,7 @@ repo = 'sjl/badwolf'
 hook_add = 'source ${HOME}/.vim/plugins/badwolf.vim'
 
 [[plugins]]
-repo = 'altercation/vim-colors-solarized'
+repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
 repo = 'terryma/vim-multiple-cursors'
