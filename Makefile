@@ -1,6 +1,6 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*) bin
-EXCLUSIONS := .git
+EXCLUSIONS := .git .gitignore .gvimrc .vsvimrc
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 deploy:
