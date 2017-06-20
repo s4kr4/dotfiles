@@ -1,1 +1,1 @@
-etc/init/common/git.sh
+../common/git.sh

@@ -1,1 +1,1 @@
-etc/init/common/zsh.sh
+../common/zsh.sh
