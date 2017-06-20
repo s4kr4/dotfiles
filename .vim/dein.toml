@@ -3,7 +3,7 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
-hook_add = 'source ${HOME}/.vim/plugins/unite.vim'
+hook_add = 'source $HOME/.vim/plugins/unite.vim'
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
@@ -14,14 +14,14 @@ build = 'make'
 
 [[plugins]]
 repo = 'sjl/badwolf'
-hook_add = 'source ${HOME}/.vim/plugins/badwolf.vim'
+hook_add = 'source $HOME/.vim/plugins/badwolf.vim'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
 repo = 'terryma/vim-multiple-cursors'
-hook_add = 'source ${HOME}/.vim/plugins/vim-multiple-cursors.vim'
+hook_add = 'source $HOME/.vim/plugins/vim-multiple-cursors.vim'
 
 [[plugins]]
 repo = 'tpope/vim-rails'
@@ -31,13 +31,13 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'kana/vim-submode'
-hook_add = 'source ${HOME}/.vim/plugins/vim-submode.vim'
+hook_add = 'source $HOME/.vim/plugins/vim-submode.vim'
 
 [[plugins]]
 repo = 'tyru/caw.vim'
-hook_add = 'source ${HOME}/.vim/plugins/caw.vim'
+hook_add = 'source $HOME/.vim/plugins/caw.vim'
 
 [[plugins]]
 repo = 'thinca/vim-splash'
-hook_add = 'source ${HOME}/.vim/plugins/vim-splash.vim'
+hook_add = 'source $HOME/.vim/plugins/vim-splash.vim'
 
