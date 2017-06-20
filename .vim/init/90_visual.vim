@@ -23,8 +23,7 @@ syntax enable
 augroup highlightSpace
     autocmd!
     autocmd Colorscheme * hi IdeographicSpace term=underline ctermbg=DarkRed guibg=DarkRed
-    autocmd VimEnter,WinEnter * match IdeographicSpace /　/
-    autocmd VimEnter,WinEnter * match IdeographicSpace /\s\+$/
+    autocmd VimEnter,WinEnter * match IdeographicSpace /　\|\s\+$/
 augroup END
 
 colorscheme badwolf
