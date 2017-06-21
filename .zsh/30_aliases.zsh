@@ -15,6 +15,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias rm='rm -v'
 alias rr='rm -r'
 
 alias grep='grep --color=auto'
