@@ -21,7 +21,7 @@ else
 	PROMPT_PATH="%{[38;5;045m%}%m:%(5~,.../%3~,%~)${color_end}"
 fi
 
-PROMPT="${PROMPT_USER}@${PROMPT_PATH} > "
+PROMPT=$'\n'"${PROMPT_USER}@${PROMPT_PATH} > "
 RPROMPT="%{[38;5;242m%}%y [%D{%m/%d} %*]${color_end}"
 PROMPT2="%_%% "
 
