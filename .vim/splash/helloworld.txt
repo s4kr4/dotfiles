@@ -9,4 +9,4 @@ s4kr4
 mail    : s4kr4m4@gmail.com
 github  : github.com/s4kr4
 qiita   : qiita.com/s4kr4
-twitter : @s4kr4
+twitter : @s4kr4m4
