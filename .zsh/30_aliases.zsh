@@ -3,11 +3,11 @@ alias crontab='crontab -i'
 
 case "${OSTYPE}" in
 darwin*)
-	alias ls='ls -G'
-	;;
+    alias ls='ls -G'
+    ;;
 *)
-	alias ls='ls --color=auto'
-	;;
+    alias ls='ls --color=auto'
+    ;;
 esac
 
 alias lr='ls -R'
@@ -24,37 +24,37 @@ alias egrep='egrep --color=auto'
 alias df='df -h'
 
 if is_cygwin; then
-	alias open='cygstart'
+    alias open='cygstart'
 fi
 
 if has 'tmux'; then
-	alias tmux='tmux -2'
-	alias tmls='tmux ls'
-	alias tmat='tmux a -t'
-	alias tmns='tmux new-session -s'
+    alias tmux='tmux -2'
+    alias tmls='tmux ls'
+    alias tmat='tmux a -t'
+    alias tmns='tmux new-session -s'
 fi
 
 if has 'vim'; then
-	alias v='vim'
-	alias vi='vim'
+    alias v='vim'
+    alias vi='vim'
 fi
 
 if has 'git'; then
-	alias ga='git add'
-	alias gaa='git add -A'
-	alias gc='git commit'
-	alias gcm='git commit -m'
-	alias gp='git push'
-	alias gs='git status'
-	alias gd='git diff'
-	alias gco='git checkout'
+    alias ga='git add'
+    alias gaa='git add -A'
+    alias gc='git commit'
+    alias gcm='git commit -m'
+    alias gp='git push'
+    alias gs='git status'
+    alias gd='git diff'
+    alias gco='git checkout'
 fi
 
 if has 'lxterminal'; then
-	alias lxterminal='lxterminal --geometry=100x35'
+    alias lxterminal='lxterminal --geometry=100x35'
 fi
 
 if [[ -e ${HOME}/.local_aliases ]]; then
-	source ${HOME}/.local_aliases
+    source ${HOME}/.local_aliases
 fi
 

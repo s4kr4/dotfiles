@@ -21,9 +21,9 @@ syntax enable
 
 " highlight ideographic spaces
 augroup highlightSpace
-    autocmd!
-    autocmd Colorscheme * hi IdeographicSpace term=underline ctermbg=DarkRed guibg=DarkRed
-    autocmd VimEnter,WinEnter * match IdeographicSpace /　\|\s\+$/
+  autocmd!
+  autocmd Colorscheme * hi IdeographicSpace term=underline ctermbg=DarkRed guibg=DarkRed
+  autocmd VimEnter,WinEnter * match IdeographicSpace /　\|\s\+$/
 augroup END
 
 colorscheme badwolf
@@ -32,14 +32,14 @@ colorscheme badwolf
 hi CursorLine cterm=underline ctermfg=none ctermbg=none
 
 if has('gui')
-    " Disable toolbar
-    set guioptions-=T
+  " Disable toolbar
+  set guioptions-=T
 
-    " Disable scroll bars
-    set guioptions-=r
-    set guioptions-=R
-    set guioptions-=l
-    set guioptions-=L
-    set guioptions-=b
+  " Disable scroll bars
+  set guioptions-=r
+  set guioptions-=R
+  set guioptions-=l
+  set guioptions-=L
+  set guioptions-=b
 endif
 
