@@ -3,7 +3,7 @@
 " --------------------------------------------------------------------
 
 augroup mAutoCmd
-    autocmd!
+  autocmd!
 augroup END
 
 set encoding=utf-8

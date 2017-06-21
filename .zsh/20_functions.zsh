@@ -1,85 +1,85 @@
 if [ -z "${DOTPATH:-}" ]; then
-	DOTPATH=~/.dotfiles; export DOTPATH
+    DOTPATH=~/.dotfiles; export DOTPATH
 fi
 
 is_exists()
 {
-	which "$1" >/dev/null 2>&1
-	return $?
+    which "$1" >/dev/null 2>&1
+    return $?
 }
 
 has()
 {
-	is_exists "$@"
+    is_exists "$@"
 }
 
 # ostype returns the lowercase OS name
 ostype() {
-	# shellcheck disable=SC2119
-	uname | lower
+    # shellcheck disable=SC2119
+    uname | lower
 }
 
 # os_detect export the PLATFORM variable as you see fit
 os_detect() {
-	export PLATFORM
-	case "$(ostype)" in
-		*'linux'*)  PLATFORM='linux'   ;;
-		*'darwin'*) PLATFORM='osx'     ;;
-		*'bsd'*)    PLATFORM='bsd'     ;;
-		*'cygwin'*) PLATFORM='cygwin'  ;;
-		*)          PLATFORM='unknown' ;;
-	esac
+    export PLATFORM
+    case "$(ostype)" in
+        *'linux'*)  PLATFORM='linux'   ;;
+        *'darwin'*) PLATFORM='osx'     ;;
+        *'bsd'*)    PLATFORM='bsd'     ;;
+        *'cygwin'*) PLATFORM='cygwin'  ;;
+        *)          PLATFORM='unknown' ;;
+    esac
 }
 
 # is_osx returns true if running OS is Macintosh
 is_osx() {
-	os_detect
-	if [ "$PLATFORM" = "osx" ]; then
-		return 0
-	else
-		return 1
-	fi
+    os_detect
+    if [ "$PLATFORM" = "osx" ]; then
+        return 0
+    else
+        return 1
+    fi
 }
 alias is_mac=is_osx
 
 # is_linux returns true if running OS is GNU/Linux
 is_linux() {
-	os_detect
-	if [ "$PLATFORM" = "linux" ]; then
-		return 0
-	else
-		return 1
-	fi
+    os_detect
+    if [ "$PLATFORM" = "linux" ]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 # is_bsd returns true if running OS is FreeBSD
 is_bsd() {
-	os_detect
-	if [ "$PLATFORM" = "bsd" ]; then
-		return 0
-	else
-		return 1
-	fi
+    os_detect
+    if [ "$PLATFORM" = "bsd" ]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 # is_cygwin returns true if running OS is cygwin
 is_cygwin() {
-	os_detect
-	if [ "$PLATFORM" = "cygwin" ]; then
-		return 0
-	else
-		return 1
-	fi
+    os_detect
+    if [ "$PLATFORM" = "cygwin" ]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 # get_os returns OS name of the platform that is running
 get_os() {
-	local os
-	for os in osx linux bsd cygwin; do
-		if is_$os; then
-			echo $os
-		fi
-	done
+    local os
+    for os in osx linux bsd cygwin; do
+        if is_$os; then
+            echo $os
+        fi
+    done
 }
 
 # is_screen_running returns true if GNU screen is running
@@ -98,7 +98,7 @@ is_screen_or_tmux_running() {
 }
 
 shell_has_started_interactively() {
-	[ ! -z "$PS1" ]
+    [ ! -z "$PS1" ]
 }
 
 # is_ssh_running returns true if the ssh deamon is available
@@ -315,93 +315,93 @@ install() {
 }
 
 dotfiles_download() {
-	if [ -d "$DOTPATH" ]; then
-		log_fail "$DOTPATH: already exists"
-		exit 1
-	fi
+    if [ -d "$DOTPATH" ]; then
+        log_fail "$DOTPATH: already exists"
+        exit 1
+    fi
 
-	e_newline
-	e_header "Downloading dotfiles..."
+    e_newline
+    e_header "Downloading dotfiles..."
 
-	if has "git"; then
-		git clone "$DOTFILES_GITHUB" "$DOTPATH"
-	elif has "curl" || has "wget"; then
-		tarball="https://github.com/s4kr4/dotfiles/archive/master.tar.gz"
+    if has "git"; then
+        git clone "$DOTFILES_GITHUB" "$DOTPATH"
+    elif has "curl" || has "wget"; then
+        tarball="https://github.com/s4kr4/dotfiles/archive/master.tar.gz"
 
-		if has "curl"; then
-			curl -L "$tarball"
-		elif has "wget"; then
-			wget -O - "$tarball"
-		fi | tar xvz
+        if has "curl"; then
+            curl -L "$tarball"
+        elif has "wget"; then
+            wget -O - "$tarball"
+        fi | tar xvz
 
-		if [ ! -d dotfiles-master ]; then
-			log_fail "dotfiles-master: not found"
-			exit 1
-		fi
+        if [ ! -d dotfiles-master ]; then
+            log_fail "dotfiles-master: not found"
+            exit 1
+        fi
 
-		mv -f dotfiles-master "$DOTPATH"
-	else
-		log_fail "ERROR: require curl or wget"
-		exit 1
-	fi
+        mv -f dotfiles-master "$DOTPATH"
+    else
+        log_fail "ERROR: require curl or wget"
+        exit 1
+    fi
 
-	e_newline
-	e_done "Download"
+    e_newline
+    e_done "Download"
 }
 
 dotfiles_deploy() {
-	e_newline
-	e_header "Deploying dotfiles..."
+    e_newline
+    e_header "Deploying dotfiles..."
 
-	if [ ! -d $DOTPATH ]; then
-		log_fail "$DOTPATH: not found"
-		exit 1
-	fi
+    if [ ! -d $DOTPATH ]; then
+        log_fail "$DOTPATH: not found"
+        exit 1
+    fi
 
-	cd $DOTPATH
+    cd $DOTPATH
 
-	make deploy &&
-		e_newline && e_done "Deploy"
+    make deploy &&
+        e_newline && e_done "Deploy"
 }
 
 dotfiles_initialize() {
-	if [ "$1" = "init" ]; then
-		e_newline
-		e_header "Initialize dotfiles..."
+    if [ "$1" = "init" ]; then
+        e_newline
+        e_header "Initialize dotfiles..."
 
-		if [ -f Makefile ]; then
-			make init
-		else
-			log_fail "Makefile: not found"
-			exit 1
-		fi &&
-			e_newline && e_done "Initialize"
-	fi
+        if [ -f Makefile ]; then
+            make init
+        else
+            log_fail "Makefile: not found"
+            exit 1
+        fi &&
+            e_newline && e_done "Initialize"
+    fi
 }
 
 dotfiles_install() {
-	dotfiles_download &&
-	dotfiles_deploy &&
-	dotfiles_initialize "$@"
+    dotfiles_download &&
+    dotfiles_deploy &&
+    dotfiles_initialize "$@"
 }
 
 mkcd() {
-	mkdir -p "$1"
-	[ $? -eq 0 ] && cd "$1"
+    mkdir -p "$1"
+    [ $? -eq 0 ] && cd "$1"
 }
 
 complete_action() {
-	if ! has "$0"; then
-		suffix=(c config cpp cc cs conf html jade java js json jsx lock log md php pug py rb sh slim toml ts txt vim yml zsh babelrc bashrc eslintrc gvimrc vimrc zsh_aliases zsh_history zshrc)
-		if [ -f "$1" ]; then
-			if echo "${suffix[*]}" | grep -q "${1##*.}"; then
-				if has vim; then
-					vim "$1"
-					return $?
-				fi
-			fi
-		fi
-		return 127
-	fi
+    if ! has "$0"; then
+        suffix=(c config cpp cc cs conf html jade java js json jsx lock log md php pug py rb sh slim toml ts txt vim yml zsh babelrc bashrc eslintrc gvimrc vimrc zsh_aliases zsh_history zshrc)
+        if [ -f "$1" ]; then
+            if echo "${suffix[*]}" | grep -q "${1##*.}"; then
+                if has vim; then
+                    vim "$1"
+                    return $?
+                fi
+            fi
+        fi
+        return 127
+    fi
 }
 

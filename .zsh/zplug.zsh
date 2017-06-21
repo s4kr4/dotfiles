@@ -1,14 +1,14 @@
 if [[ ! -e ~/.zplug/init.zsh ]]; then
-	git clone https://github.com/zplug/zplug ~/.zplug
+    git clone https://github.com/zplug/zplug ~/.zplug
 fi
 
 source ~/.zplug/init.zsh
 
 zplug "zsh-users/zsh-syntax-highlighting", \
-	defer:2
+    defer:2
 
 zplug "b4b4r07/enhancd", \
-	use:init.sh
+    use:init.sh
 
 zplug "b4b4r07/http_code"
 

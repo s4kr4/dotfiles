@@ -37,11 +37,11 @@ nnoremap <leader>v :call FzyCommand("find . -type f", ":vs")<CR>
 nnoremap <leader>s :call FzyCommand("find . -type f", ":sp")<CR>
 
 if has("gui_running")
-	nnoremap <silent> <S-CR> :<C-u>call append(expand('.'), '')<CR>j
+  nnoremap <silent> <S-CR> :<C-u>call append(expand('.'), '')<CR>j
 endif
 
 if has("mac")
-	nnoremap ; :
-	nnoremap : ;
+  nnoremap ; :
+  nnoremap : ;
 endif
 
