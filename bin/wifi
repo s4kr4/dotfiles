@@ -11,22 +11,22 @@ if [ is_cygwin ]; then
 
     case "${state}" in
         "connected")
-            signals=(▁ ▂ ▄ ▆ █)
-            signal_icon="#[underscore]"
+            signals=(▁ ▃ ▄ ▆ █)
+            signal_icon=""
             signal_=`echo $((${signal%\%} / 100.0 * 5 + 1))`
 
             for ((i=0; i < $signal_; i++ )); do
                 signal_icon="${signal_icon}${signals[$i]}"
             done
-            signal_icon="${signal_icon}#[default]"
-            ;;
-        "authenticating")
-            signal_icon="#[fg=yellow] ... #[default]"
+            signal_icon="${signal_icon} #[bg=colour027,fg=white] ${ssid} #[bg=default,fg=default]"
             ;;
         "disconnected")
-            signal_icon="#[fg=red] ✘ #[default]"
+            signal_icon="#[fg=red] ✘ #[default] #[bg=colour027,fg=white] DISCONNECTED #[bg=default,fg=default]"
+            ;;
+        *)
+            signal_icon="#[fg=yellow] ... #[default] #[bg=colour027,fg=white] ${ssid} #[bg=default,fg=default]"
             ;;
     esac
 
-    echo "${signal_icon} #[bg=colour027,fg=white] ${ssid} #[bg=default,fg=default]"
+    echo "${signal_icon}"
 fi
