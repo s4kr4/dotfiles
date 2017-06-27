@@ -303,11 +303,14 @@ install() {
             fi
             ;;
         cygwin)
-            if has "apt-cyg"; then
+            if has "cyg-fast"; then
+                log_echo "Install ${@} with cyg-fast"
+                cyg-fast -y install "$@"
+            elif has "apt-cyg"; then
                 log_echo "Install ${@} with Advanced Packaging Tool for Cygwin"
                 apt-cyg install "$@"
             else
-                log_fail "ERROR: Require apt-cyg"
+                log_fail "ERROR: Require cyg-fast or apt-cyg"
                 return 1
             fi
             ;;
