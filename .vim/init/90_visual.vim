@@ -14,7 +14,7 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:%,eol:<
 
 " display statusline
 set laststatus=2
-set statusline=%F%m%r%h%w%{fugitive#statusline()}%=[TYPE:%Y][FMT:%{&fileformat}][ENC:%{&fileencoding}][LOW:%l/%L]
+set statusline=%F%m%r%h%w%{fugitive#statusline()}%=[TYPE:%Y][FMT:%{&fileformat}][ENC:%{&fileencoding}][LINE:%l/%L]
 
 " Enable syntax highlight
 syntax enable
