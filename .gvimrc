@@ -11,13 +11,11 @@ endif
 set columns=110
 set lines=35
 
-syntax on
+syntax enable
 colorscheme badwolf
 hi CursorLine gui=underline guifg=NONE guibg=NONE
 
 set noundofile
 
-autocmd FileType markdown hi! def link markdownItalic Normal
-
-set guifont=Migu_1M:h10:cSHIFTJIS:qDRAFT
+set guifont=Ricty:h10:cSHIFTJIS:qDRAFT,Migu_1M:h10:cSHIFTJIS:qDRAFT
 
