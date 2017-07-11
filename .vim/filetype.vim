@@ -1,13 +1,3 @@
 augroup filetypedetect
-  au BufRead,BufNewFile *.rb setfiletype ruby
-  au BufRead,BufNewFile *.py setfiletype python
-  au BufRead,BufNewFile *.php setfiletype php
-  au BufRead,BufNewFile *.js setfiletype javascript
-  au BufRead,BufNewFile *.json setfiletype json
-  au BufRead,BufNewFile *.coffee setfiletype coffee
-  au BufRead,BufNewFile *.ts setfiletype typescript
-  au BufRead,BufNewFile *.slim setfiletype slim
-  au BufRead,BufNewFile *.jade setfiletype pug
-  au BufRead,BufNewFile *.pug setfiletype pug
-  au BufRead,BufNewFile *.vim setfiletype vim
+  autocmd BufRead,BufNewFile *.coffee setfiletype coffee
 augroup END
