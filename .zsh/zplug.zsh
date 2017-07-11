@@ -4,6 +4,8 @@ fi
 
 source ~/.zplug/init.zsh
 
+zplug "zplug/zplug"
+
 zplug "zsh-users/zsh-syntax-highlighting", \
     defer:2
 
@@ -18,6 +20,13 @@ zplug "jhawthorn/fzy", \
     hook-build:"make && sudo make install"
 
 zplug "zsh-users/zsh-autosuggestions"
+
+if [[ $OSTYPE == *darwin* ]]; then
+    zplug "github/hub", \
+        from:gh-r, \
+        as:command, \
+        use:"*darwin*amd64*"
+fi
 
 
 # Install plugins if there are plugins that have not been installed
