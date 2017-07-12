@@ -29,7 +29,12 @@ augroup END
 colorscheme badwolf
 
 " Display cursorline
-hi CursorLine cterm=underline ctermfg=none ctermbg=none
+highlight CursorLine cterm=underline ctermfg=none ctermbg=none
+
+" Transparent
+highlight LineNr ctermbg=none
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
 
 if has('gui')
   " Disable toolbar
