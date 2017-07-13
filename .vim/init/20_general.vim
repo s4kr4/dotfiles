@@ -38,3 +38,8 @@ set splitright
 
 set clipboard=unnamed
 
+" Expand QuickFix windows automatically
+augroup QuickFixCmd
+    autocmd!
+    autocmd QuickFixCmdPost *grep* cwindow
+augroup END
