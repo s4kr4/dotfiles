@@ -32,9 +32,11 @@ colorscheme badwolf
 highlight CursorLine cterm=underline ctermfg=none ctermbg=none
 
 " Transparent
-highlight LineNr ctermbg=none
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
+highlight SpecialKey ctermbg=none
+highlight EndOfBuffer ctermbg=none
+highlight LineNr ctermfg=none ctermbg=none
 
 if has('gui')
   " Disable toolbar
