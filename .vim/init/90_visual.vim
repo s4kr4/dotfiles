@@ -26,7 +26,7 @@ augroup highlightSpace
   autocmd VimEnter,WinEnter * match IdeographicSpace /　\|\s\+$/
 augroup END
 
-colorscheme badwolf
+colorscheme iceberg
 
 " Display cursorline
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
@@ -39,10 +39,13 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 highlight LineNr ctermfg=NONE ctermbg=NONE
 
 if has('gui')
-  " Disable toolbar
+  " Invalidate toolbar
   set guioptions-=T
 
-  " Disable scroll bars
+  " Invalidate menu bar
+  set guioptions-=m
+
+  " Invalidate scroll bars
   set guioptions-=r
   set guioptions-=R
   set guioptions-=l
