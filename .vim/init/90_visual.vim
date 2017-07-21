@@ -26,7 +26,7 @@ augroup highlightSpace
   autocmd VimEnter,WinEnter * match IdeographicSpace /　\|\s\+$/
 augroup END
 
-colorscheme badwolf
+colorscheme iceberg
 
 " Display cursorline
 highlight CursorLine cterm=underline ctermfg=none ctermbg=none
