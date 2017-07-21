@@ -39,10 +39,13 @@ highlight EndOfBuffer ctermbg=none
 highlight LineNr ctermfg=none ctermbg=none
 
 if has('gui')
-  " Disable toolbar
+  " Invalidate toolbar
   set guioptions-=T
 
-  " Disable scroll bars
+  " Invalidate menu bar
+  set guioptions-=m
+
+  " Invalidate scroll bars
   set guioptions-=r
   set guioptions-=R
   set guioptions-=l
