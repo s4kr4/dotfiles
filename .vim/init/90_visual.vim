@@ -19,6 +19,9 @@ set statusline=%F%m%r%h%w%{fugitive#statusline()}%=[TYPE:%Y][FMT:%{&fileformat}]
 " Enable syntax highlight
 syntax enable
 
+" Highlight search words
+set hlsearch
+
 " highlight ideographic spaces
 augroup highlightSpace
   autocmd!
