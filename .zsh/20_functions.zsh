@@ -224,7 +224,7 @@ e_arrow() {
 
 e_indent() {
     for ((i=0; i<${1:-4}; i++)); do
-        echon " "
+        echo " "
     done
     if [ -n "$2" ]; then
         echo "$2"
