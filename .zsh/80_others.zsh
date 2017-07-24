@@ -70,7 +70,7 @@ setopt pushd_ignore_dups
 
 # Enable hook functions
 autoload -Uz add-zsh-hook
-add-zsh-hook preexec complete_action
+#add-zsh-hook preexec complete_action
 
 # Prevent alert
 setopt no_beep
