@@ -29,14 +29,14 @@ augroup END
 colorscheme iceberg
 
 " Display cursorline
-highlight CursorLine cterm=underline ctermfg=none ctermbg=none
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
 " Transparent
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
-highlight SpecialKey ctermbg=none
-highlight EndOfBuffer ctermbg=none
-highlight LineNr ctermfg=none ctermbg=none
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+highlight SpecialKey ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
+highlight LineNr ctermfg=NONE ctermbg=NONE
 
 if has('gui')
   " Invalidate toolbar
