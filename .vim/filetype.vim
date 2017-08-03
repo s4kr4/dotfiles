@@ -5,6 +5,7 @@ augroup filetypedetect
   autocmd BufRead,BufNewFile *.jade setfiletype pug
   autocmd BufRead,BufNewFile *.js setfiletype javascript
   autocmd BufRead,BufNewFile *.json setfiletype json
+  autocmd BufRead,BufNewFile *.md setfiletype markdown
   autocmd BufRead,BufNewFile *.php setfiletype php
   autocmd BufRead,BufNewFile *.pug setfiletype pug
   autocmd BufRead,BufNewFile *.py setfiletype python
