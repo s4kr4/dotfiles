@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/bin/bash
 
-if [ $# -ne 2 ]; then
+if [ $# -lt 2 ]; then
     echo "Few arguments!" 1>&2
     exit 1
 fi
@@ -11,18 +11,15 @@ fi
 #     exit 1
 # fi
 
-message_array=${(Q)${(z)1}}
-message_length=${#1}
+length=$((${#1} - 1))
 wait_time=$2
 
-message=""
-
-for i in `seq 1 1 $message_length`
+for i in `seq 0 1 $length`
 do
-    message+=$message_array[i]
+    message=$message${1:$i:1}
     echo -en $message
 
-    if [ $i -ne $message_length ]; then
+    if [ $i -ne $length ]; then
         echo -en '\r'
         sleep $wait_time
     fi
