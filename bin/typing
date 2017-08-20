@@ -11,13 +11,14 @@ fi
 #     exit 1
 # fi
 
-length=$((${#1} - 1))
+input=$1
+length=$((${#input} - 1))
 wait_time=$2
 
 for i in `seq 0 1 $length`
 do
-    message=$message${1:$i:1}
-    echo -en $message
+    output=$output${input:$i:1}
+    echo -en $output
 
     if [ $i -ne $length ]; then
         echo -en '\r'
