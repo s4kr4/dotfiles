@@ -40,7 +40,3 @@ hook_add = 'source $HOME/.vim/plugins/caw.vim'
 [[plugins]]
 repo = 'thinca/vim-splash'
 hook_add = 'source $HOME/.vim/plugins/vim-splash.vim'
-
-[[plugins]]
-repo = 'kana/vim-smartchr'
-hook_add = 'source $HOME/.vim/plugins/vim-smartchr.vim'
