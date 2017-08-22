@@ -2,29 +2,15 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-hook_add = 'source $HOME/.vim/plugins/unite.vim'
-
-[[plugins]]
-repo = 'Shougo/unite-outline'
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
+repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
 repo = 'sjl/badwolf'
 hook_add = 'source $HOME/.vim/plugins/badwolf.vim'
 
 [[plugins]]
-repo = 'cocopon/iceberg.vim'
-
-[[plugins]]
 repo = 'terryma/vim-multiple-cursors'
 hook_add = 'source $HOME/.vim/plugins/vim-multiple-cursors.vim'
-
-[[plugins]]
-repo = 'tpope/vim-rails'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'

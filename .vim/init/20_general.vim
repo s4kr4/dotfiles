@@ -36,7 +36,8 @@ set completeopt=menuone
 set splitbelow
 set splitright
 
-set clipboard=unnamed
+" Share clipboard with other editor
+set clipboard=unnamed,autoselect
 
 " Expand QuickFix windows automatically
 augroup QuickFixCmd
