@@ -2,7 +2,7 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export LANG="en_US.UTF-8"
 export PATH=$PATH:$HOME/bin
 
-if [[ is_osx ]]; then
+if [[ is_osx -eq 0 ]]; then
     export PATH=$PATH:/usr/local/bin:/bin
 fi
 
