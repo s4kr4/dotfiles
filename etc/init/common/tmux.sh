@@ -15,6 +15,8 @@ if ! has "tmux"; then
             linux)
                 install libevent-dev
                 install libncurses5-dev
+                install automake
+                install pkg-config
                 if [ "$?" -eq 1 ]; then
                     exit 1
                 fi
@@ -30,7 +32,8 @@ if ! has "tmux"; then
         git clone https://github.com/tmux/tmux.git ${HOME}/tmp/tmux
         cd ${HOME}/tmp/tmux
         sh autogen.sh
-        ./configure && make && make install
+        ./configure && make
+        sudo make install
         cd "$cdirectory"
     fi
 
