@@ -10,7 +10,7 @@ if [ is_cygwin ]; then
 
         state=${network_info[5]}
         ssid=${network_info[6]}
-        signal=${network_info[15]}
+        signal=${network_info[16]}
 
         case "${state}" in
             "connected")
