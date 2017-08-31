@@ -12,6 +12,8 @@ nnoremap <silent> k gk
 nnoremap <silent> <C-j> <C-e>
 nnoremap <silent> <C-k> <C-y>
 
+nnoremap <silent> U <C-r>
+
 noremap <silent> <C-a> ^
 noremap <silent> <C-e> $
 
