@@ -1,10 +1,10 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*) bin
-EXCLUSIONS := .git .gitignore .gvimrc .vsvimrc
+EXCLUSIONS := .git .gitignore .gvimrc .vsvimrc .tmux.remote.conf
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 deploy:
-	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init/deploy.sh
 
 init:
 	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init/init.sh
@@ -17,6 +17,5 @@ install: update deploy init
 
 clean:
 	@echo "Remove dotfiles in your home directory..."
-	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
-	-rm -rf $(DOTPATH)
+	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/etc/init/clean.sh
 
