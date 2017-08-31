@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. "$DOTPATH"/.zsh/20_functions.zsh
+. "$DOTPATH"/etc/lib/util.zsh
 
 exclusion_dots=(. .. .git .gitignore .gvimrc .vsvimrc .tmux.remote.conf)
 inclusion_dirs=(bin)

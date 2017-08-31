@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. "$DOTPATH"/.zsh/20_functions.zsh
+. "$DOTPATH"/etc/lib/util.zsh
 
 if ! has "tmux"; then
     if ! has "git"; then

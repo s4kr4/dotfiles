@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. "$DOTPATH"/.zsh/20_functions.zsh
+. "$DOTPATH"/etc/lib/util.zsh
 
 if [ -z "$DOTPATH" ]; then
 	echo "$DOTPATH is not set" >&2

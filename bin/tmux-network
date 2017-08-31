@@ -1,8 +1,8 @@
 #!/bin/zsh
 
-. "$DOTPATH"/.zsh/20_functions.zsh
+. "$DOTPATH"/etc/lib/util.zsh
 
-if [ is_cygwin ]; then
+if is_cygwin; then
     wlan_status=`netsh wlan show interfaces | sed -e '/^\s*$/d'`
 
     if echo $wlan_status | grep -vq 'not running'; then
