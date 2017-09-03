@@ -7,7 +7,7 @@ autoload predict-on
 
 # Hilight ls command
 export LS_COLORS='no=00:fi=00:di=01;36:ln=36:pi=31:so=33:bd=44;37:cd=44;37:ex=01;32:mi=00:or=36'
-export LSCOLORS=gxfxcxdxbxegedabagacad
+export LSCOLORS=GxgxdxbxCxegedabagacad
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Ignore upper/lower cases
