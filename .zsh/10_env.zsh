@@ -8,10 +8,14 @@ if is_osx; then
     export PATH=$PATH:/usr/local/bin:/bin
 fi
 
-# rbenv settings
-if [[ -e ${HOME}/.rbenv/bin ]]; then
-    PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
+# anyenv settings
+if [[ -d ${HOME}/.anyenv ]]; then
+    PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
+
+    for d in `ls $HOME/.anyenv/envs`; do
+        export PATH="$HOME/.anyenv/envs/$d/shims:$PATH"
+    done
 fi
 
 # Deploy local settings
