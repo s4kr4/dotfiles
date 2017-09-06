@@ -20,6 +20,10 @@ repo = 'kana/vim-submode'
 hook_add = 'source $HOME/.vim/plugins/vim-submode.vim'
 
 [[plugins]]
+repo = 'osyo-manga/vim-over'
+hook_add = 'source $HOME/.vim/plugins/vim-over.vim'
+
+[[plugins]]
 repo = 'tyru/caw.vim'
 hook_add = 'source $HOME/.vim/plugins/caw.vim'
 
