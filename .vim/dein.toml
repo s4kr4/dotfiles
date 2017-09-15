@@ -5,6 +5,9 @@ repo = 'Shougo/dein.vim'
 repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
+repo = 'chriskempson/vim-tomorrow-theme'
+
+[[plugins]]
 repo = 'sjl/badwolf'
 hook_add = 'source $HOME/.vim/plugins/badwolf.vim'
 

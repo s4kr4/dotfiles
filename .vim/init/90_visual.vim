@@ -29,7 +29,7 @@ augroup highlightSpace
   autocmd VimEnter,WinEnter * match IdeographicSpace /　\|\s\+$/
 augroup END
 
-colorscheme iceberg
+colorscheme Tomorrow-Night-Bright
 
 " Display cursorline
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
