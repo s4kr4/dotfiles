@@ -12,6 +12,11 @@ nnoremap <silent> k gk
 nnoremap <silent> <C-j> <C-e>
 nnoremap <silent> <C-k> <C-y>
 
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+inoremap <C-p> <Up>
+inoremap <C-n> <Down>
+
 nnoremap <silent> U <C-r>
 
 noremap <silent> <C-a> ^
