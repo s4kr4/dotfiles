@@ -44,3 +44,6 @@ augroup QuickFixCmd
     autocmd!
     autocmd QuickFixCmdPost *grep* cwindow
 augroup END
+
+" Load matchit.vim
+runtime macros/matchit.vim
