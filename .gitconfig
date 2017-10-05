@@ -7,6 +7,8 @@
 	autocrlf = input
 [color]
 	ui = true
+[color "diff"]
+	meta = white bold
 [credential]
 	helper = cache --timeout=3600
 [merge]
@@ -31,3 +33,21 @@
 [user]
 	name = s4kr4
 	email = s4kr4m4@gmail.com
+[tig]
+	line-graphics = utf-8
+	tab-size = 4
+	ignore-space = at-eol
+	ignore-case = true
+	mouse = true
+	refresh-mode = auto
+[tig "bind"]
+    generic = g move-first-line
+	generic = G move-last-line
+	generic = <Ctrl-f> move-page-down
+	generic = <Ctrl-b> move-page-up
+	generic = E view-grep
+[tig "color"]
+    date = color081 default
+    cursor = white color022
+    graph-commit = color081 default
+    diff-stat = color081 default
