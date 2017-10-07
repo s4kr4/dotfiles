@@ -1,36 +1,40 @@
-#!/bin/zsh
+#!/bin/bash
 
 . "$DOTPATH"/etc/lib/util.zsh
 
 if is_cygwin; then
     wlan_status=`netsh wlan show interfaces | sed -e '/^\s*$/d'`
 
-    if echo $wlan_status | grep -vq 'not running'; then
-        network_info=(`echo $wlan_status | sed -e 's/\s//g' | awk -F : '{print $2}'`)
+    if echo "$wlan_status" | grep -vq 'not running'; then
+        network_info=`echo "$wlan_status" | sed -e 's/\s//g'`
 
-        state=${network_info[5]}
-        ssid=${network_info[6]}
-        signal=${network_info[16]}
+        state=`echo "$network_info" | grep "State" | awk -F : '{print $2}'`
+        ssid=`echo "$network_info" | grep "SSID" | awk -F : '{print $2}'`
+        signal=`echo "$network_info" | grep "Signal" | awk -F : '{print $2}'`
 
         case "${state}" in
             "connected")
                 signals=(▁ ▃ ▄ ▆ █)
                 signal_icon=""
-                signal_=`echo $((${signal%\%} / 100.0 * 5 + 1))`
+                if has bc; then
+                    signal_=`echo "scale=1; ${signal%\%} / 100.0 * 5 + 1" | bc`
 
-                for ((i=0; i < $signal_; i++ )); do
-                    signal_icon="${signal_icon}${signals[$i]}"
-                done
-                signal_icon="${signal_icon} #[bg=colour027,fg=white] ${ssid} #[bg=default,fg=default]"
+                    for ((i=0; i < ${signal_%.*}; i++ )); do
+                        signal_icon="${signal_icon}${signals[$i]}"
+                    done
+                else
+                    signal_icon="?"
+                fi
+                network_status="${signal_icon} #[bg=colour027,fg=white] ${ssid} #[bg=default,fg=default]"
                 ;;
             "disconnected")
-                signal_icon="#[fg=red] ✘ #[default] #[bg=colour027,fg=white] DISCONNECTED #[bg=default,fg=default]"
+                network_status="#[fg=red] ✘ #[default] #[bg=colour027,fg=white] DISCONNECTED #[bg=default,fg=default]"
                 ;;
             *)
-                signal_icon="#[fg=yellow] ... #[default]"
+                network_status="#[fg=yellow] ... #[default]"
                 ;;
         esac
     fi
 
-    echo "${signal_icon}"
+    echo "${network_status}"
 fi
