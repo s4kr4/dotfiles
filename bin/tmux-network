@@ -37,4 +37,32 @@ if is_cygwin; then
     fi
 
     echo "${network_status}"
+elif is_osx; then
+    airport_path="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
+
+    if air_info=($(eval "$airport_path" -I | grep -E "^ *(agrCtlRSSI|state|SSID):" | awk '{print $2}')); then
+
+        state=${air_info[1]}
+        ssid=${air_info[2]}
+        rssi=${air_info[0]}
+
+        case "$state" in
+            "running")
+                signals=(▁ ▂ ▄ ▆ █)
+                signal_icon=""
+                rssi_=$(expr 5 - ${rssi} / -20)
+                for ((i=0; i < $rssi_; i++ )); do
+                    signal_icon="${signal_icon}${signals[$i]}"
+                done
+                network_status="${signal_icon} #[bg=colour027,fg=white] ${ssid} #[bg=default,fg=default]"
+                ;;
+            "init")
+                network_status="#[fg=yellow] ... #[default]"
+                ;;
+            *)
+                network_status="#[fg=red] ✘ #[default] #[bg=colour027,fg=white] DISCONNECTED #[bg=default,fg=default]"
+                ;;
+        esac
+        echo "${network_status}"
+    fi
 fi
