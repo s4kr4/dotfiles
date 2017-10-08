@@ -40,7 +40,8 @@ if is_cygwin; then
 elif is_osx; then
     airport_path="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
 
-    if air_info=($(eval "$airport_path" -I | grep -E "^ *(agrCtlRSSI|state|SSID):" | awk '{print $2}')); then
+    IFS=$'\n'
+    if air_info=($(eval "$airport_path" -I | grep -E "^ *(agrCtlRSSI|state|SSID):" | awk -F ': ' '{print $2}')); then
 
         state=${air_info[1]}
         ssid=${air_info[2]}
