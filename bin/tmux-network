@@ -3,21 +3,22 @@
 . "$DOTPATH"/etc/lib/util.zsh
 
 if is_cygwin; then
-    wlan_status=`netsh wlan show interfaces | sed -e '/^\s*$/d'`
+    wlan_status=`netsh wlan show interfaces`
 
     if echo "$wlan_status" | grep -vq 'not running'; then
-        network_info=`echo "$wlan_status" | sed -e 's/\s//g'`
+        IFS=$'\r\n'
+        network_info=($(echo "$wlan_status" | grep -E "^\s*(State|SSID|Signal)" | awk -F ': ' '{print $2}'))
 
-        state=`echo "$network_info" | grep "State" | awk -F : '{print $2}'`
-        ssid=`echo "$network_info" | grep "SSID" | awk -F : '{print $2}'`
-        signal=`echo "$network_info" | grep "Signal" | awk -F : '{print $2}'`
+        state=${network_info[0]}
+        ssid=${network_info[1]}
+        signal=${network_info[2]}
 
         case "${state}" in
             "connected")
                 signals=(▁ ▃ ▄ ▆ █)
                 signal_icon=""
                 if has bc; then
-                    signal_=`echo "scale=1; ${signal%\%} / 100.0 * 5 + 1" | bc`
+                    signal_=`echo "scale=1; ${signal%\%*} / 100.0 * 5 + 1" | bc`
 
                     for ((i=0; i < ${signal_%.*}; i++ )); do
                         signal_icon="${signal_icon}${signals[$i]}"
