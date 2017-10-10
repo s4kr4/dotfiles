@@ -22,6 +22,9 @@ syntax enable
 " Highlight search words
 set hlsearch
 
+" Scroll offset
+set scrolloff=5
+
 " highlight ideographic spaces
 augroup highlightSpace
   autocmd!
