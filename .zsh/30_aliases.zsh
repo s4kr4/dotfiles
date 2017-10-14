@@ -51,6 +51,12 @@ if has 'git'; then
     alias gco='git checkout'
 fi
 
+if has 'vagrant'; then
+    alias vup='vagrant up'
+    alias vssh='vagrant ssh'
+    alias vhalt='vagrant halt'
+fi
+
 if has 'lxterminal'; then
     alias lxterminal='lxterminal --geometry=100x35'
 fi
