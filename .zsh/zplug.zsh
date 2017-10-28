@@ -29,17 +29,19 @@ if [[ $OSTYPE == *darwin* ]]; then
 fi
 
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
 # Then, source plugins and add commands to $PATH
 zplug load
 
 if zplug check --verbose "b4b4r07/enhancd"; then
     add-zsh-hook chpwd __enhancd::cd::after
 fi
+
+# Install plugins if there are plugins that have not been installed
+zplug_check() {
+    if ! zplug check --verbose; then
+        printf "Install? [y/N]: "
+        if read -q; then
+            echo; zplug install
+        fi
+    fi
+}

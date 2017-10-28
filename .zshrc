@@ -3,9 +3,14 @@ if [ -z "${DOTPATH:-}" ]; then
 fi
 
 # Load config files
-for file in "${DOTPATH}"/.zsh/*.zsh; do
+for file in "${DOTPATH}"/.zsh/init/*.zsh; do
     . "$file"
 done
+
+# Load zplug only in tmux
+if [[ -n "$TMUX" ]]; then
+    . "${DOTPATH}"/.zsh/zplug.zsh
+fi
 
 # if (which zprof > /dev/null); then
 #   zprof | less
@@ -15,4 +20,3 @@ done
 if has tmux; then
     tmuxx
 fi
-
