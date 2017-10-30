@@ -24,6 +24,8 @@ alias egrep='egrep --color=auto'
 
 alias df='df -h'
 
+alias zmv='noglob zmv -W'
+
 if is_cygwin; then
     alias open='cygstart'
 fi
