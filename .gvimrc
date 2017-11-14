@@ -12,7 +12,7 @@ set columns=110
 set lines=35
 
 syntax enable
-colorscheme badwolf
+colorscheme Tomorrow-Night-Bright
 hi CursorLine gui=underline guifg=NONE guibg=NONE
 
 set noundofile
