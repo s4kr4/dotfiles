@@ -44,6 +44,12 @@ highlight SpecialKey ctermbg=NONE guibg=NONE
 highlight EndOfBuffer ctermbg=NONE guibg=NONE
 highlight LineNr ctermfg=NONE ctermbg=NONE
 
+" vimdiff
+highlight DiffAdd ctermfg=15 ctermbg=22
+highlight DiffDelete ctermfg=52 ctermbg=52
+highlight DiffChange ctermfg=15 ctermbg=17
+highlight DiffText ctermfg=15 ctermbg=27
+
 if has('gui')
   " Invalidate toolbar
   set guioptions-=T
