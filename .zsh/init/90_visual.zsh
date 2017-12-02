@@ -1,4 +1,6 @@
 # Change prompt depends on environments
+color_red="%{[38;5;196m%}"
+color_green="%{[38;5;046m%}"
 color_blue="%{[38;5;045m%}"
 color_orange="%{[38;5;202m%}"
 color_gray="%{[38;5;242m%}"
@@ -7,12 +9,12 @@ color_end="%{[0m%}"
 case ${UID} in
     # root
     0)
-        PROMPT_USER="%{[38;5;196m%}%n${color_end}"
+        PROMPT_USER="${color_red}%n${color_end}"
         ;;
 
     # other
     *)
-        PROMPT_USER="%{[38;5;046m%}%n${color_end}"
+        PROMPT_USER="${color_green}%n${color_end}"
         ;;
 
 esac
