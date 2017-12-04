@@ -13,3 +13,4 @@ bindkey '^P' up-line-or-history
 bindkey -M viins '^B' backward-char
 bindkey -M viins '^F' forward-char
 
+bindkey '^R' cmd_history

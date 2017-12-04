@@ -76,6 +76,15 @@ mkcd() {
     [ $? -eq 0 ] && cd "$1"
 }
 
+cmd_history() {
+    if has fzy; then
+        BUFFER=$(history 1 | sed -e "s/[ ]*[0-9]\+[ ]\+//g" | fzy)
+        CURSOR=${#BUFFER}
+        zle accept-line
+    fi
+}
+zle -N cmd_history
+
 # complete_action() {
 #     if ! has "$0"; then
 #         suffix=(c config cpp cc cs conf html jade java js json jsx lock log md php pug py rb sh slim toml ts txt vim yml zsh babelrc bashrc eslintrc gvimrc vimrc zsh_aliases zsh_history zshrc)
