@@ -31,6 +31,20 @@ os_detect() {
     esac
 }
 
+distribution_detect() {
+    export DISTRIBUTION
+    if [ "$PLATFORM" = "linux" ]; then
+        local distribution
+        distribution=$(cat /etc/issue | lower)
+
+        case "${distribution}" in
+            *'centos'*) DISTRIBUTION='centos' ;;
+            *'ubuntu'*) DISTRIBUTION='ubuntu' ;;
+        esac
+    fi
+
+}
+
 # is_osx returns true if running OS is Macintosh
 is_osx() {
     os_detect
@@ -66,6 +80,24 @@ is_bsd() {
 is_cygwin() {
     os_detect
     if [ "$PLATFORM" = "cygwin" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+is_ubuntu() {
+    distribution_detect
+    if [ "$DISTRIBUTION" = "ubuntu" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+is_centos() {
+    distribution_detect
+    if [ "$DISTRIBUTION" = "centos" ]; then
         return 0
     else
         return 1
