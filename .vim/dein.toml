@@ -8,6 +8,24 @@ repo = 'cocopon/iceberg.vim'
 repo = 'chriskempson/vim-tomorrow-theme'
 
 [[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = 'source $HOME/.vim/plugins/vim-easymotion.vim'
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'
+hook_add = 'source $HOME/.vim/plugins/incsearch.vim'
+
+[[plugins]]
+repo = 'haya14busa/incsearch-fuzzy.vim'
+
+[[plugins]]
+repo = 'haya14busa/incsearch-easymotion.vim'
+
+[[plugins]]
+repo = 'kana/vim-submode'
+hook_add = 'source $HOME/.vim/plugins/vim-submode.vim'
+
+[[plugins]]
 repo = 'sjl/badwolf'
 hook_add = 'source $HOME/.vim/plugins/badwolf.vim'
 
@@ -17,10 +35,6 @@ hook_add = 'source $HOME/.vim/plugins/vim-multiple-cursors.vim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-
-[[plugins]]
-repo = 'kana/vim-submode'
-hook_add = 'source $HOME/.vim/plugins/vim-submode.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-over'
