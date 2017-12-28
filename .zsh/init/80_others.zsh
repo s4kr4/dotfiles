@@ -14,6 +14,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{a-z}={A-Z}'
 
 # Complete PID for killing
+zstyle ':completion:*:processes' command "ps au"
 zstyle ':completion:*:processes' menu yes select=2
 
 # Set separator between lists and descriptions
