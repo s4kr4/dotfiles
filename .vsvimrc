@@ -74,11 +74,17 @@ set vb t_vb=
 
 let mapleader='\<Space>'
 
-nnoremap j gj
-nnoremap k gk
+noremap <C-j> <ESC>
+noremap! <C-j> <ESC>
 
-inoremap <silent> jj <ESC>
-inoremap <C-j> <ESC>
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> <C-j> <C-e>
+nnoremap <silent> <C-k> <C-y>
+
+noremap <silent> <C-a> ^
+noremap <silent> <C-e> $
+
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap " ""<Left>
