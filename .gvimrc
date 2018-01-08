@@ -15,7 +15,4 @@ syntax enable
 colorscheme Tomorrow-Night-Bright
 hi CursorLine gui=underline guifg=NONE guibg=NONE
 
-set noundofile
-
 set guifont=Ricty:h10:cSHIFTJIS:qDRAFT,Migu_1M:h10:cSHIFTJIS:qDRAFT
-
