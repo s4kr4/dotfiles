@@ -24,6 +24,9 @@ noremap <silent> <C-e> $
 
 vnoremap G G$
 
+nnoremap <TAB> <C-w>w
+nnoremap <S-TAB> <C-w>W
+
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap "" ""<Left>
