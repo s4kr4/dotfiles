@@ -12,10 +12,12 @@ if [[ -z "$(vim --version | head -n 1 | grep 8.0)" ]]; then
                 if is_ubuntu; then
                     install lua5.2 lua5.2-dev luajit \
                         python-dev \
+                        python3-dev \
                         ncurses-dev
                 elif is_centos; then
                     install lua lua-devel luajit \
                         python-devel \
+                        python3-devel \
                         ncurses-devel
                 fi
                 if [ "$?" -eq 1 ]; then
@@ -35,18 +37,7 @@ if [[ -z "$(vim --version | head -n 1 | grep 8.0)" ]]; then
         sudo mv vim vim_old
         git clone https://github.com/vim/vim /tmp/vim
         cd /tmp/vim
-        ./configure \
-            --with-features=huge \
-            --enable-multibyte \
-            --enable-fontset \
-            --enable-cscope \
-            --enable-fail-if-missing \
-            --enable-gpm \
-            --enable-luainterp=dynamic \
-            --enable-pythoninterp=dynamic \
-            --enable-python3interp=dynamic \
-            --prefix=/usr/local
-        make
+        ./configure --with-features=huge --enable-multibyte --enable-fontset --enable-cscope --enable-fail-if-missing --enable-gpm --enable-luainterp=dynamic --enable-pythoninterp=dynamic --enable-python3interp=dynamic --prefix=/usr/local
         sudo make install
 
         cd "$cdirectory"
