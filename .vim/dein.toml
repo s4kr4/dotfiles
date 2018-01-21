@@ -22,10 +22,6 @@ repo = 'haya14busa/incsearch-fuzzy.vim'
 repo = 'haya14busa/incsearch-easymotion.vim'
 
 [[plugins]]
-repo = 'kana/vim-submode'
-hook_add = 'source $HOME/.vim/plugins/vim-submode.vim'
-
-[[plugins]]
 repo = 'sjl/badwolf'
 hook_add = 'source $HOME/.vim/plugins/badwolf.vim'
 
