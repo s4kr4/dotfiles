@@ -2,14 +2,11 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'cocopon/iceberg.vim'
-
-[[plugins]]
-repo = 'chriskempson/vim-tomorrow-theme'
-
-[[plugins]]
 repo = 'easymotion/vim-easymotion'
 hook_add = 'source $HOME/.vim/plugins/vim-easymotion.vim'
+
+[[plugins]]
+repo = 'flazz/vim-colorschemes'
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
@@ -20,10 +17,6 @@ repo = 'haya14busa/incsearch-fuzzy.vim'
 
 [[plugins]]
 repo = 'haya14busa/incsearch-easymotion.vim'
-
-[[plugins]]
-repo = 'sjl/badwolf'
-hook_add = 'source $HOME/.vim/plugins/badwolf.vim'
 
 [[plugins]]
 repo = 'terryma/vim-multiple-cursors'
