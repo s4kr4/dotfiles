@@ -55,8 +55,9 @@ fi
 
 if has 'vagrant'; then
     alias vup='vagrant up'
-    alias vssh='vagrant ssh'
-    alias vhalt='vagrant halt'
+    alias vsh='vagrant ssh'
+    alias vhl='vagrant halt'
+    alias vre='vagrant reload'
 fi
 
 if has 'lxterminal'; then
