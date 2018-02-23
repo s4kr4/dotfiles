@@ -9,6 +9,12 @@
 	ui = true
 [color "diff"]
 	meta = white bold
+    old = 196
+    new = 046
+[color "status"]
+    changed = 046
+    added = 046
+    untracked = 196
 [credential]
 	helper = cache --timeout=3600
 [diff]
