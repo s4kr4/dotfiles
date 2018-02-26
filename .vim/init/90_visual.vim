@@ -32,7 +32,7 @@ augroup highlightSpace
   autocmd VimEnter,WinEnter * match IdeographicSpace /　\|\s\+$/
 augroup END
 
-colorscheme badwolf
+colorscheme tender
 
 " Display cursorline
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
@@ -43,6 +43,12 @@ highlight NonText ctermbg=NONE guibg=NONE
 highlight SpecialKey ctermbg=NONE guibg=NONE
 highlight EndOfBuffer ctermbg=NONE guibg=NONE
 highlight LineNr ctermfg=NONE ctermbg=NONE
+
+" Comment
+highlight Comment ctermfg=79
+
+" Selection
+highlight Visual ctermbg=26
 
 " vimdiff
 highlight DiffAdd ctermfg=15 ctermbg=22

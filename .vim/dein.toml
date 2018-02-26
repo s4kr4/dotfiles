@@ -19,6 +19,9 @@ repo = 'haya14busa/incsearch-fuzzy.vim'
 repo = 'haya14busa/incsearch-easymotion.vim'
 
 [[plugins]]
+repo = 'jacoborus/tender.vim'
+
+[[plugins]]
 repo = 'terryma/vim-multiple-cursors'
 hook_add = 'source $HOME/.vim/plugins/vim-multiple-cursors.vim'
 
