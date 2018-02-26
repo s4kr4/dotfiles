@@ -29,8 +29,10 @@ nnoremap <S-TAB> <C-w>W
 
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
 inoremap "" ""<Left>
 inoremap '' ''<Left>
+inoremap `` ``<Left>
 
 nnoremap day <ESC>a<C-r>=strftime("%Y-%m-%d ")<CR><ESC>
 nnoremap time <ESC>a<C-r>=strftime("%H:%M:%S ")<CR><ESC>
