@@ -54,6 +54,7 @@
 	generic = <Ctrl-f> move-page-down
 	generic = <Ctrl-b> move-page-up
 	generic = E view-grep
+	status = + !git commit --amend
 [tig "color"]
     date = color081 default
     cursor = white color022
