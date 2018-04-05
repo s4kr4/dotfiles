@@ -37,7 +37,11 @@ set splitbelow
 set splitright
 
 " Share clipboard with other editor
-set clipboard=unnamed,autoselect
+if has('nvim')
+    set clipboard=unnamedplus
+else
+    set clipboard=unnamed,autoselect
+endif
 
 " Expand QuickFix windows automatically
 augroup QuickFixCmd

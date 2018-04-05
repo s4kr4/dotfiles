@@ -42,6 +42,10 @@ if has 'vim'; then
     alias vi='vim'
 fi
 
+if has 'nvim'; then
+    alias n='nvim'
+fi
+
 if has 'git'; then
     alias ga='git add'
     alias gaa='git add -A'
