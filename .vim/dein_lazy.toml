@@ -42,18 +42,27 @@ repo = 'posva/vim-vue'
 on_ft = 'vue'
 
 [[plugins]]
+repo = 'Shougo/deoplete.nvim'
+on_i = 1
+on_if = 'has("nvim")'
+hook_add = 'source $HOME/.vim/plugins/deoplete.vim'
+
+[[plugins]]
 repo = 'Shougo/neocomplete.vim'
 on_i = 1
+on_if = '!has("nvim")'
 hook_source = 'source $HOME/.vim/plugins/neocomplete.vim'
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 on_i = 1
+on_if = '!has("nvim")'
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
 depends = ['neosnippet-snippets']
 on_i = 1
+on_if = '!has("nvim")'
 hook_source = 'source $HOME/.vim/plugins/neosnippet.vim'
 
 [[plugins]]

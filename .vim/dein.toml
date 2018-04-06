@@ -2,6 +2,10 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'Shougo/denite.nvim'
+on_if = 'has("nvim")'
+
+[[plugins]]
 repo = 'easymotion/vim-easymotion'
 hook_add = 'source $HOME/.vim/plugins/vim-easymotion.vim'
 

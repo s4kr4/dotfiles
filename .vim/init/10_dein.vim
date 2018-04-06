@@ -17,13 +17,8 @@ if dein#load_state(s:dein_dir)
 
   let g:rc_dir    = expand($HOME.'/.vim/rc')
 
-  if has('nvim')
-      let s:toml      = $HOME.'/.vim/dein_nvim.toml'
-      let s:lazy_toml = $HOME.'/.vim/dein_lazy_nvim.toml'
-  else
-      let s:toml      = $HOME.'/.vim/dein.toml'
-      let s:lazy_toml = $HOME.'/.vim/dein_lazy.toml'
-  endif
+  let s:toml      = $HOME.'/.vim/dein.toml'
+  let s:lazy_toml = $HOME.'/.vim/dein_lazy.toml'
 
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
