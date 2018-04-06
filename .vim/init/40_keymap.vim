@@ -39,9 +39,11 @@ nnoremap time <ESC>a<C-r>=strftime("%H:%M:%S ")<CR><ESC>
 
 nnoremap <C-q> :q<CR>
 
-nnoremap <leader>e :call FzyCommand("find . -type f", ":e")<CR>
-nnoremap <leader>v :call FzyCommand("find . -type f", ":vs")<CR>
-nnoremap <leader>s :call FzyCommand("find . -type f", ":sp")<CR>
+if !has('nvim') && executable('fzy')
+  nnoremap <leader>e :call FzyCommand("find . -type f", ":e")<CR>
+  nnoremap <leader>v :call FzyCommand("find . -type f", ":vs")<CR>
+  nnoremap <leader>s :call FzyCommand("find . -type f", ":sp")<CR>
+endif
 
 if has("gui_running")
   nnoremap <silent> <S-CR> :<C-u>call append(expand('.'), '')<CR>j
