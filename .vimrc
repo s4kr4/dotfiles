@@ -1,9 +1,7 @@
+let $XDG_VIM_HOME = $HOME.'/.config/.vim'
 
-if has('win32') || has('win64') || has('win32unix')
-  set runtimepath+=$HOME/.vim
-  set runtimepath+=$HOME/.vim/after
-endif
+set runtimepath+=$XDG_VIM_HOME
+set runtimepath+=$XDG_VIM_HOME/after
 
 runtime! init/*.vim
 runtime! functions.vim
-

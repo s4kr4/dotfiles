@@ -2,5 +2,5 @@
 "  thinca/vim-splash
 " --------------------------------------------------------------------
 
-let g:splash#path = $HOME."/.vim/splash/helloworld.txt"
+let g:splash#path = $XDG_VIM_HOME."/splash/helloworld.txt"
 

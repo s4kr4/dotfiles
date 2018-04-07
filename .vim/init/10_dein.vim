@@ -15,10 +15,10 @@ endif
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  let g:rc_dir    = expand($HOME.'/.vim/rc')
+  let g:rc_dir    = expand($XDG_VIM_HOME.'/rc')
 
-  let s:toml      = $HOME.'/.vim/dein.toml'
-  let s:lazy_toml = $HOME.'/.vim/dein_lazy.toml'
+  let s:toml      = expand($XDG_VIM_HOME.'/dein.toml')
+  let s:lazy_toml = expand($XDG_VIM_HOME.'/dein_lazy.toml')
 
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})

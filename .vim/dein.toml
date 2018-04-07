@@ -4,18 +4,18 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 on_if = 'has("nvim")'
-hook_add = 'source $HOME/.vim/plugins/denite.vim'
+hook_add = 'source $XDG_VIM_HOME/plugins/denite.vim'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
-hook_add = 'source $HOME/.vim/plugins/vim-easymotion.vim'
+hook_add = 'source $XDG_VIM_HOME/plugins/vim-easymotion.vim'
 
 [[plugins]]
 repo = 'flazz/vim-colorschemes'
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
-hook_add = 'source $HOME/.vim/plugins/incsearch.vim'
+hook_add = 'source $XDG_VIM_HOME/plugins/incsearch.vim'
 
 [[plugins]]
 repo = 'haya14busa/incsearch-easymotion.vim'
@@ -25,22 +25,22 @@ repo = 'jacoborus/tender.vim'
 
 [[plugins]]
 repo = 'terryma/vim-multiple-cursors'
-hook_add = 'source $HOME/.vim/plugins/vim-multiple-cursors.vim'
+hook_add = 'source $XDG_VIM_HOME/plugins/vim-multiple-cursors.vim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'osyo-manga/vim-over'
-hook_add = 'source $HOME/.vim/plugins/vim-over.vim'
+hook_add = 'source $XDG_VIM_HOME/plugins/vim-over.vim'
 
 [[plugins]]
 repo = 'tyru/caw.vim'
-hook_add = 'source $HOME/.vim/plugins/caw.vim'
+hook_add = 'source $XDG_VIM_HOME/plugins/caw.vim'
 
 [[plugins]]
 repo = 'thinca/vim-splash'
-hook_add = 'source $HOME/.vim/plugins/vim-splash.vim'
+hook_add = 'source $XDG_VIM_HOME/plugins/vim-splash.vim'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'

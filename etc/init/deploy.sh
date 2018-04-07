@@ -4,14 +4,26 @@
 
 exclusion_dots=(. .. .git .gitignore .gvimrc .vsvimrc .tmux.conf .tmux.remote.conf)
 inclusion_dirs=(bin)
+rc_files=(.vimrc .zshrc .zshenv .gitconfig)
+config_dirs=(.vim .zsh)
+
+XDG_CONFIG_HOME=$HOME/.config
+
+if [ ! -d $XDG_CONFIG_HOME ]; then
+    mkdir -p $XDG_CONFIG_HOME
+fi
 
 log_info "Make symbolic links"
 
 for f in "$DOTPATH"/.*; do
     if [ -f "$f" ] || [ -d "$f" ]; then
-        if [[ ! " ${exclusion_dots[@]} " =~ " ${f##*/} " ]]; then
-            log_echo "${f##*/}"
-            ln -sfnv "$f" "$HOME/${f##*/}"
+        dotfile="${f##*/}"
+        if [[ " ${rc_files[@]} " =~ " ${dotfile} " ]]; then
+            log_echo ${dotfile}
+            ln -sfnv "$f" "$HOME/$dotfile"
+        elif [[ " ${config_dirs[@]} " =~ " ${dotfile} " ]]; then
+            log_echo ${dotfile}
+            ln -sfnv "$f" "$XDG_CONFIG_HOME/$dotfile"
         fi
     fi
 done
