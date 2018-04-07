@@ -85,4 +85,6 @@ setopt no_beep
 # Enable keymap 'Ctrl+q' on Vim
 stty -ixon
 
+unsetopt bg_nice
+
 autoload -Uz zmv
