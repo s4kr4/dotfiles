@@ -5,7 +5,7 @@
 exclusion_dots=(. .. .git .gitignore .gvimrc .vsvimrc .tmux.conf .tmux.remote.conf)
 inclusion_dirs=(bin)
 rc_files=(.vimrc .zshrc .zshenv .gitconfig)
-config_dirs=(.vim .zsh)
+config_dirs=(vim zsh)
 
 XDG_CONFIG_HOME=$HOME/.config
 
@@ -21,18 +21,19 @@ for f in "$DOTPATH"/.*; do
         if [[ " ${rc_files[@]} " =~ " ${dotfile} " ]]; then
             log_echo ${dotfile}
             ln -sfnv "$f" "$HOME/$dotfile"
-        elif [[ " ${config_dirs[@]} " =~ " ${dotfile} " ]]; then
-            log_echo ${dotfile}
-            ln -sfnv "$f" "$XDG_CONFIG_HOME/$dotfile"
         fi
     fi
 done
 
 for f in "$DOTPATH"/*; do
     if [ -d "$f" ]; then
-        if [[ " ${inclusion_dirs[@]} " =~ " ${f##*/} " ]]; then
-            log_echo "${f##*/}"
-            ln -sfnv "$f" "$HOME/${f##*/}"
+        dir="${f##*/}"
+        if [[ " ${inclusion_dirs[@]} " =~ " ${dir} " ]]; then
+            log_echo "${dir}"
+            ln -sfnv "$f" "$HOME/${dir}"
+        elif [[ " ${config_dirs[@]} " =~ " ${dir} " ]]; then
+            log_echo ${dir}
+            ln -sfnv "$f" "$XDG_CONFIG_HOME/${dir}"
         fi
     fi
 done
