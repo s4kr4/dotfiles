@@ -45,16 +45,16 @@ highlight EndOfBuffer ctermbg=NONE guibg=NONE
 highlight LineNr ctermfg=NONE ctermbg=NONE
 
 " Comment
-highlight Comment ctermfg=79
+highlight Comment ctermfg=79 guifg=#5fd7af
 
 " Selection
-highlight Visual ctermbg=26
+highlight Visual ctermbg=26 guibg=#005fd7
 
 " vimdiff
-highlight DiffAdd ctermfg=15 ctermbg=22
-highlight DiffDelete ctermfg=52 ctermbg=52
-highlight DiffChange ctermfg=15 ctermbg=17
-highlight DiffText ctermfg=15 ctermbg=27
+highlight DiffAdd ctermfg=15 ctermbg=22 guifg=#ffffff guibg=#005f00
+highlight DiffDelete ctermfg=52 ctermbg=52 guifg=#5f0000 guibg=#5f0000
+highlight DiffChange ctermfg=15 ctermbg=17 guifg=#ffffff guibg=#00005f
+highlight DiffText ctermfg=15 ctermbg=27 guifg=#ffffff guibg=#005fff
 
 if has('gui')
   " Invalidate toolbar
