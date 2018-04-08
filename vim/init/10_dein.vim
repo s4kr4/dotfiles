@@ -15,8 +15,6 @@ endif
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  let g:rc_dir    = expand($XDG_VIM_HOME.'/rc')
-
   let s:toml      = expand($XDG_VIM_HOME.'/dein.toml')
   let s:lazy_toml = expand($XDG_VIM_HOME.'/dein_lazy.toml')
 
