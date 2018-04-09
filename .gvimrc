@@ -12,7 +12,7 @@ set columns=110
 set lines=35
 
 syntax enable
-colorscheme Tomorrow-Night-Bright
+colorscheme tender
 hi CursorLine gui=underline guifg=NONE guibg=NONE
 
 set guifont=Ricty:h10:cSHIFTJIS:qDRAFT,Migu_1M:h10:cSHIFTJIS:qDRAFT
