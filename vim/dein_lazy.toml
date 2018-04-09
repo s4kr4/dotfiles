@@ -56,13 +56,12 @@ hook_source = 'source $XDG_VIM_HOME/plugins/neocomplete.vim'
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 on_i = 1
-on_if = '!has("nvim")'
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
 depends = ['neosnippet-snippets']
+on_ft = ['snippet']
 on_i = 1
-on_if = '!has("nvim")'
 hook_source = 'source $XDG_VIM_HOME/plugins/neosnippet.vim'
 
 [[plugins]]

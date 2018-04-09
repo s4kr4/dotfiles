@@ -19,10 +19,6 @@ endif
 " Ignore Japanese
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" Use <TAB> to move list
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-
 " Enable omni completion.
 augroup SetOmniCompletionSetting
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
