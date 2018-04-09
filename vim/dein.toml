@@ -39,8 +39,4 @@ repo = 'tyru/caw.vim'
 hook_add = 'source $XDG_VIM_HOME/plugins/caw.vim'
 
 [[plugins]]
-repo = 'thinca/vim-splash'
-hook_add = 'source $XDG_VIM_HOME/plugins/vim-splash.vim'
-
-[[plugins]]
 repo = 'thinca/vim-quickrun'
