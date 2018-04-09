@@ -2,7 +2,6 @@
 
 . "$DOTPATH"/etc/lib/util.zsh
 
-exclusion_dots=(. .. .git .gitignore .gvimrc .vsvimrc .tmux.conf .tmux.remote.conf)
 inclusion_dirs=(bin)
 rc_files=(.vimrc .zshrc .zshenv .gitconfig)
 config_dirs=(vim zsh)
