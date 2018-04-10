@@ -2,25 +2,31 @@
 
 . "$DOTPATH"/etc/lib/util.zsh
 
-exclusion_dots=(. .. .git .gitignore .gvimrc .vsvimrc .tmux.remote.conf)
 inclusion_dirs=(bin)
+rc_files=(.vimrc .zshrc .zshenv .gitconfig)
+config_dirs=(vim zsh)
 
-log_info "Make symbolic links"
+log_info "Clean symbolic links"
 
 for f in "$DOTPATH"/.*; do
     if [ -f "$f" ] || [ -d "$f" ]; then
-        if [[ ! " ${exclusion_dots[@]} " =~ " ${f##*/} " ]]; then
-            log_echo "${f##*/}"
-            unlink "$HOME/${f##*/}"
+        dotfile="${f##*/}"
+        if [[ " ${rc_files[@]} " =~ " ${dotfile} " ]]; then
+            log_echo "$HOME/${dotfile}"
+            unlink "$HOME/${dotfile}"
         fi
     fi
 done
 
 for f in "$DOTPATH"/*; do
     if [ -d "$f" ]; then
-        if [[ " ${inclusion_dirs[@]} " =~ " ${f##*/} " ]]; then
-            log_echo "${f##*/}"
-            unlink "$HOME/${f##*/}"
+        dir="${f##*/}"
+        if [[ " ${inclusion_dirs[@]} " =~ " ${dir} " ]]; then
+            log_echo "$HOME/${dir}"
+            unlink "$HOME/${dir}"
+        elif [[ " ${config_dirs[@]} " =~ " ${dir} " ]]; then
+            log_echo "$XDG_CONFIG_HOME/${dir}"
+            unlink "$XDG_CONFIG_HOME/${dir}"
         fi
     fi
 done
