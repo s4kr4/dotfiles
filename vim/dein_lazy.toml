@@ -60,7 +60,6 @@ on_i = 1
 [[plugins]]
 repo = 'Shougo/neosnippet'
 depends = ['neosnippet-snippets']
-on_ft = ['snippet']
 on_i = 1
 hook_source = 'source $XDG_VIM_HOME/plugins/neosnippet.vim'
 
