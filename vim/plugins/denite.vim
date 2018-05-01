@@ -22,5 +22,10 @@ call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_ign
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs', [
         \ '.git/',
         \ '.svn/',
-        \ 'node_modules/'
+        \ 'node_modules/',
+        \ '*.log'
     \ ])
+
+if executable('ag')
+    call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+endif
