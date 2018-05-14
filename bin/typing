@@ -21,8 +21,8 @@ do
     echo -en $output
 
     if [ $i -ne $length ]; then
-        echo -en '\r'
         sleep $wait_time
+        echo -en '\r'
     fi
 done
 
