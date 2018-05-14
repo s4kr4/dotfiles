@@ -8,6 +8,11 @@ on_ft = 'json'
 hook_source = 'source $XDG_VIM_HOME/plugins/vim-json.vim'
 
 [[plugins]]
+repo = 'zchee/deoplete-jedi'
+depends = ['deoplete.nvim']
+on_ft = 'python'
+
+[[plugins]]
 repo = 'hail2u/vim-css3-syntax'
 
 [[plugins]]
