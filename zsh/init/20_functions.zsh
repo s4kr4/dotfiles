@@ -86,7 +86,6 @@ cmd_history() {
         fi
         BUFFER=$(fc -l -n 1 | eval $tac | fzy)
         CURSOR=${#BUFFER}
-        zle accept-line
     fi
 }
 zle -N cmd_history
