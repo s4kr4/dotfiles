@@ -55,6 +55,7 @@
     generic = <Ctrl-b> move-page-up
     generic = E view-grep
     status = + !git commit --amend
+    main = P !git push
 [tig "color"]
     date = color081 default
     cursor = white color022
