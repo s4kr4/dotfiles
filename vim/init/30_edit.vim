@@ -26,3 +26,5 @@ set wrap
 
 " no break in the middle of words
 set linebreak
+
+set nofixeol
