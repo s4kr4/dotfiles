@@ -26,7 +26,7 @@ if is_cygwin; then
                 else
                     signal_icon="?"
                 fi
-                network_status="${signal_icon} #[bg=colour027,fg=white] ${ssid} #[bg=default,fg=default]"
+                network_status="#[bg=colour033,fg=black] ${signal_icon} (${ssid}) #[bg=default,fg=default]"
                 ;;
             "disconnected")
                 network_status="#[fg=red] ✘ #[default] #[bg=colour027,fg=white] DISCONNECTED #[bg=default,fg=default]"
@@ -56,13 +56,13 @@ elif is_osx; then
                 for ((i=0; i < $rssi_; i++ )); do
                     signal_icon="${signal_icon}${signals[$i]}"
                 done
-                network_status="${signal_icon} #[bg=colour027,fg=white] ${ssid} #[bg=default,fg=default]"
+                network_status="#[bg=colour033,fg=black] ${signal_icon} (${ssid}) #[bg=default,fg=default]"
                 ;;
             "init")
                 network_status="#[fg=yellow] ... #[default]"
                 ;;
             *)
-                network_status="#[fg=red] ✘ #[default] #[bg=colour027,fg=white] DISCONNECTED #[bg=default,fg=default]"
+                network_status="#[fg=red] ✘ #[default] DISCONNECTED #[bg=default,fg=default]"
                 ;;
         esac
         echo "${network_status}"
