@@ -42,6 +42,7 @@
     name = s4kr4
     email = s4kr4m4@gmail.com
 [tig]
+    main-view = id:width=8 date author commit-title:graph=yes,refs=yes
     line-graphics = utf-8
     tab-size = 4
     ignore-space = at-eol
