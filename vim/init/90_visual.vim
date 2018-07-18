@@ -23,7 +23,7 @@ syntax enable
 set hlsearch
 
 " Scroll offset
-set scrolloff=5
+set scrolloff=3
 
 " highlight ideographic spaces
 augroup highlightSpace
