@@ -28,3 +28,5 @@ set wrap
 set linebreak
 
 set nofixeol
+
+set conceallevel=0
