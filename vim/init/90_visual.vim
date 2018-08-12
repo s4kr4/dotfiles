@@ -38,11 +38,11 @@ colorscheme tender
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
 " Transparent
-highlight Normal ctermbg=NONE guibg=NONE
-highlight NonText ctermbg=NONE guibg=NONE
-highlight SpecialKey ctermbg=NONE guibg=NONE
-highlight EndOfBuffer ctermbg=NONE guibg=NONE
-highlight LineNr ctermfg=NONE ctermbg=NONE
+highlight Normal ctermbg=NONE
+highlight NonText ctermbg=NONE
+highlight SpecialKey ctermbg=NONE
+highlight EndOfBuffer ctermbg=NONE
+highlight LineNr ctermbg=NONE ctermfg=008
 
 " Comment
 highlight Comment ctermfg=79 guifg=#5fd7af
@@ -51,23 +51,7 @@ highlight Comment ctermfg=79 guifg=#5fd7af
 highlight Visual ctermbg=26 guibg=#005fd7
 
 " vimdiff
-highlight DiffAdd ctermfg=15 ctermbg=22 guifg=#ffffff guibg=#005f00
-highlight DiffDelete ctermfg=52 ctermbg=52 guifg=#5f0000 guibg=#5f0000
-highlight DiffChange ctermfg=15 ctermbg=17 guifg=#ffffff guibg=#00005f
-highlight DiffText ctermfg=15 ctermbg=27 guifg=#ffffff guibg=#005fff
-
-if has('gui')
-  " Invalidate toolbar
-  set guioptions-=T
-
-  " Invalidate menu bar
-  set guioptions-=m
-
-  " Invalidate scroll bars
-  set guioptions-=r
-  set guioptions-=R
-  set guioptions-=l
-  set guioptions-=L
-  set guioptions-=b
-endif
-
+highlight DiffAdd ctermfg=15 ctermbg=22
+highlight DiffDelete ctermfg=52 ctermbg=52
+highlight DiffChange ctermfg=15 ctermbg=17
+highlight DiffText ctermfg=15 ctermbg=27
