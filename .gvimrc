@@ -25,6 +25,9 @@ highlight CursorLine gui=underline guifg=NONE guibg=NONE
 " Transparent
 highlight LineNr guibg=NONE guifg=#777777
 
+" Comment
+highlight Comment guifg=#5fd7af
+
 " Selection
 highlight Visual guibg=#005fd7
 

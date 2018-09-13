@@ -45,10 +45,10 @@ highlight EndOfBuffer ctermbg=NONE
 highlight LineNr ctermbg=NONE ctermfg=008
 
 " Comment
-highlight Comment ctermfg=79 guifg=#5fd7af
+highlight Comment ctermfg=79
 
 " Selection
-highlight Visual ctermbg=26 guibg=#005fd7
+highlight Visual ctermbg=26
 
 " vimdiff
 highlight DiffAdd ctermfg=15 ctermbg=22
