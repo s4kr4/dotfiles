@@ -37,6 +37,9 @@ highlight DiffDelete guifg=#5f0000 guibg=#5f0000
 highlight DiffChange guifg=#ffffff guibg=#00005f
 highlight DiffText guifg=#ffffff guibg=#005fff
 
+" StatusLine
+highlight StatusLine guifg=#ffffff
+
 set guifont=Ricty:h10:cSHIFTJIS:qDRAFT,Migu_1M:h10:cSHIFTJIS:qDRAFT
 
 " --------------------------------------------------------------------
