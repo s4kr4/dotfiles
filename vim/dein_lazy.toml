@@ -20,6 +20,10 @@ on_ft = 'python'
 repo = 'hail2u/vim-css3-syntax'
 
 [[plugins]]
+repo = 'ianks/vim-tsx'
+on_ft = 'typescript'
+
+[[plugins]]
 repo = 'leafgarland/typescript-vim'
 on_ft = 'typescript'
 
