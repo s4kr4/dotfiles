@@ -1,6 +1,6 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*) bin
-EXCLUSIONS := .git .gitignore .gvimrc .vsvimrc .tmux.remote.conf
+EXCLUSIONS := .git .gitignore .gvimrc .vsvimrc .ideavimrc .tmux.remote.conf
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 deploy:
