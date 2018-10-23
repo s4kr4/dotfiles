@@ -18,6 +18,8 @@ filetype plugin indent on
 
 " Enable incremental search
 set incsearch
+set ignorecase
+set smartcase
 
 " Don't make backup files and swapfile
 set nowritebackup

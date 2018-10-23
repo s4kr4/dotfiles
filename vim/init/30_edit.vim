@@ -14,10 +14,6 @@ set autoindent
 set hidden
 set switchbuf=useopen
 
-set incsearch
-set ignorecase
-set smartcase
-
 " highlight corresponding brakets
 set showmatch
 
