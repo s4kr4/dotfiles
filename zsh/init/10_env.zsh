@@ -16,8 +16,6 @@ if [[ -d ${HOME}/.anyenv ]]; then
     for d in `ls $HOME/.anyenv/envs`; do
         export PATH="$HOME/.anyenv/envs/$d/shims:$PATH"
     done
-
-    export PATH="$HOME/.yarn/bin:$PATH"
 fi
 
 # Deploy local settings
