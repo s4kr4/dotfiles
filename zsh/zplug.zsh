@@ -34,6 +34,7 @@ zplug load
 
 if zplug check --verbose "b4b4r07/enhancd"; then
     add-zsh-hook chpwd __enhancd::cd::after
+    export ENHANCD_DIR="$XDG_CACHE_HOME/enhancd"
 fi
 
 # Install plugins if there are plugins that have not been installed
