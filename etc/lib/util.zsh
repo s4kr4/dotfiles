@@ -211,53 +211,23 @@ logging() {
 }
 
 log_pass() {
-    local text=
-    if [ -t 0 ]; then
-        text="$1"
-    else
-        text="$(cat -)"
-    fi
-    logging SUCCESS "$text"
+    logging SUCCESS "$1"
 }
 
 log_fail() {
-    local text=
-    if [ -t 0 ]; then
-        text="$1"
-    else
-        text="$(cat -)"
-    fi
-    logging ERROR "$text" 1>&2
+    logging ERROR "$1" 1>&2
 }
 
 log_fail() {
-    local text=
-    if [ -t 0 ]; then
-        text="$1"
-    else
-        text="$(cat -)"
-    fi
-    logging WARN "$text"
+    logging WARN "$1"
 }
 
 log_info() {
-    local text=
-    if [ -t 0 ]; then
-        text="$1"
-    else
-        text="$(cat -)"
-    fi
-    logging INFO "$text"
+    logging INFO "$1"
 }
 
 log_echo() {
-    local text=
-    if [ -t 0 ]; then
-        text="$1"
-    else
-        text="$(cat -)"
-    fi
-    logging TITLE "$text"
+    logging TITLE "$1"
 }
 
 e_newline() {

@@ -18,7 +18,8 @@ for f in "$DOTPATH"/.*; do
     if [ -f "$f" ] || [ -d "$f" ]; then
         dotfile="${f##*/}"
         if [[ " ${rc_files[@]} " =~ " ${dotfile} " ]]; then
-            ln -sfnv "$f" "$HOME/$dotfile" | log_echo
+            log_echo ${dotfile}
+            ln -sfnv "$f" "$HOME/$dotfile"
         fi
     fi
 done
@@ -27,15 +28,17 @@ for f in "$DOTPATH"/*; do
     if [ -d "$f" ]; then
         dir="${f##*/}"
         if [[ " ${inclusion_dirs[@]} " =~ " ${dir} " ]]; then
-            ln -sfnv "$f" "$HOME/${dir}" | log_echo
+            log_echo "${dir}"
+            ln -sfnv "$f" "$HOME/${dir}"
         elif [[ " ${config_dirs[@]} " =~ " ${dir} " ]]; then
-            ln -sfnv "$f" "$XDG_CONFIG_HOME/${dir}" | log_echo
+            log_echo ${dir}
+            ln -sfnv "$f" "$XDG_CONFIG_HOME/${dir}"
         fi
     fi
 done
 
 if is_ssh_running; then
-    ln -sfnv "$DOTPATH/.tmux.remote.conf" "$HOME/.tmux.conf" | log_echo
+    ln -sfnv "$DOTPATH/.tmux.remote.conf" "$HOME/.tmux.conf"
 else
-    ln -sfnv "$DOTPATH/.tmux.conf" "$HOME/.tmux.conf" | log_echo
+    ln -sfnv "$DOTPATH/.tmux.conf" "$HOME/.tmux.conf"
 fi
