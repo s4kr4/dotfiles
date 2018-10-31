@@ -20,7 +20,7 @@ if ! contains "${SHELL:-}" "zsh"; then
 
     if ! grep -xq "${zsh_path:=/bin/zsh}" /etc/shells; then
         log_fail "You should append '$zsh_path' to /etc/shells"
-        exit 1
+        return
     fi
 
     if [ -x "$zsh_path" ]; then
@@ -29,7 +29,7 @@ if ! contains "${SHELL:-}" "zsh"; then
         else
             log_fail "Cannot set '$zsh_path' as \$SHELL"
             log_fail "Check with '$zsh_path' to be described in /etc/shells"
-            exit 1
+            return
         fi
 
         if [ ${EUID:-${UID}} = 0 ]; then
@@ -39,7 +39,7 @@ if ! contains "${SHELL:-}" "zsh"; then
         fi
     else
         log_fail "invalid path: $zsh_path"
-        exit 1
+        return
     fi
 fi
 

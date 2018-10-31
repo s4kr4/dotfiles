@@ -9,7 +9,7 @@ if ! has "tmux"; then
     else
         case "$(get_os)" in
             osx)
-                exit 1
+                return
                 ;;
 
             linux)
@@ -18,13 +18,13 @@ if ! has "tmux"; then
                 install automake
                 install pkg-config
                 if [ "$?" -eq 1 ]; then
-                    exit 1
+                    return
                 fi
                 ;;
 
             *)
                 log_fail "ERROR: This script is only supported OSX or Linux"
-                exit 1
+                return
                 ;;
         esac
 

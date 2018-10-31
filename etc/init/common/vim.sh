@@ -5,7 +5,7 @@
 if [[ -z "$(vim --version | head -n 1 | grep 8.0)" ]]; then
     if ! has "git"; then
         log_fail "ERROR: Require git"
-        exit 1
+        return
     else
         case "$(get_os)" in
             linux)
@@ -21,13 +21,13 @@ if [[ -z "$(vim --version | head -n 1 | grep 8.0)" ]]; then
                         ncurses-devel
                 fi
                 if [ "$?" -eq 1 ]; then
-                    exit 1
+                    return
                 fi
                 ;;
 
             *)
                 log_fail "ERROR: This script is only supported OSX or Linux"
-                exit 1
+                return
                 ;;
         esac
 
