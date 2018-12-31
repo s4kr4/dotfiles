@@ -48,5 +48,5 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 # PROMPT=$'\n'"${PROMPT_STRING} > "
-RPROMPT="${color_gray}%y [%D{%m/%d} %*]${color_end}"
+RPROMPT='${color_gray}''${vcs_info_msg_0_}'" %y [%D{%m/%d} %*]${color_end}"
 PROMPT2="%_> "
