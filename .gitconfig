@@ -63,3 +63,8 @@
     cursor = white color022
     graph-commit = color081 default
     diff-stat = color081 default
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
