@@ -31,7 +31,7 @@ else
         # detached session exists
 
         tmux list-sessions
-        echo -n "Tmux: attach? (y/N/num) "
+        echo -n "Tmux: attach? (y/N/S/num) "
         read
         if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
             tmux -2 attach-session
@@ -45,6 +45,8 @@ else
                 echo "$(tmux -V) attached session"
                 exit
             fi
+        elif [[ "$REPLY" =~ ^[Ss]$ ]]; then
+            tmux -2 new-session
         fi
     else
         if is_osx && is_exists 'reattach-to-user-namespace'; then
