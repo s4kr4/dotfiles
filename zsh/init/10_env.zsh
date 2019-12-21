@@ -18,6 +18,10 @@ if [[ -d ${HOME}/.anyenv ]]; then
     done
 fi
 
+if [[ -d ${HOME}/.anyenv/envs/pyenv/plugins/pyenv-virtualenv ]]; then
+    eval "$(pyenv virtualenv-init -)"
+fi
+
 # Deploy local settings
 if [[ -e ${HOME}/bin_local ]]; then
     PATH="$HOME/bin_local:$PATH"
