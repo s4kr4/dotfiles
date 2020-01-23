@@ -68,7 +68,7 @@ if has 'lxterminal'; then
     alias lxterminal='lxterminal --geometry=100x35'
 fi
 
-if [[ -e ${HOME}/.local_aliases ]]; then
-    source ${HOME}/.local_aliases
+if [[ -e ${HOME}/.aliases_local.zsh ]]; then
+    source ${HOME}/.aliases_local.zsh
 fi
 
