@@ -4,7 +4,7 @@
 
 inclusion_dirs=(bin)
 rc_files=(.vimrc .zshrc .zshenv .gitconfig)
-config_dirs=(vim zsh)
+config_dirs=(vim zsh nvim)
 
 XDG_CONFIG_HOME=$HOME/.config
 
