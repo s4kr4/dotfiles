@@ -1,26 +1,24 @@
 " --------------------------------------------------------------------
-"  Shougo/deoplete.nvim
+"  Shougo/denite.nvim
 " --------------------------------------------------------------------
 
 let mapleader = "\<space>"
-nnoremap <silent> <leader>e :<C-u>Denite file_rec -highlight-mode-insert=Search<CR>
+nnoremap <silent> <leader>e :<C-u>Denite file/rec<CR>
 nnoremap <silent> <leader>g :<C-u>Denite grep -auto-preview<CR>
 nnoremap <silent> <leader>G :<C-u>DeniteCursorWord grep -auto-preview<CR>
 
-call denite#custom#map('normal', '<C-N>', '<denite:move_to_next_line>')
-call denite#custom#map('normal', '<C-J>', '<denite:move_to_next_line>')
-call denite#custom#map('insert', '<C-N>', '<denite:move_to_next_line>')
-call denite#custom#map('insert', '<C-J>', '<denite:move_to_next_line>')
-call denite#custom#map('normal', '<C-P>', '<denite:move_to_previous_line>')
-call denite#custom#map('normal', '<C-K>', '<denite:move_to_previous_line>')
-call denite#custom#map('insert', '<C-P>', '<denite:move_to_previous_line>')
-call denite#custom#map('insert', '<C-K>', '<denite:move_to_previous_line>')
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> <C-S> denite#do_map('do_action', 'split')
+    nnoremap <silent><buffer><expr> <C-V> denite#do_map('do_action', 'vsplit')
+    nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Esc> denite#do_map('quit')
+    nnoremap <silent><buffer><expr> q denite#do_map('quit')
+	nnoremap <silent><buffer><expr> f denite#do_map('toggle_select')
+endfunction
 
-call denite#custom#map('insert', '<C-S>', '<denite:do_action:split>')
-call denite#custom#map('insert', '<C-V>', '<denite:do_action:vsplit>')
-
-call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_ignore_globs'])
-call denite#custom#filter('matcher_ignore_globs', 'ignore_globs', [
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [
         \ '.git/',
         \ '.svn/',
         \ 'node_modules/',
@@ -28,10 +26,13 @@ call denite#custom#filter('matcher_ignore_globs', 'ignore_globs', [
     \ ])
 
 if executable('rg')
-    call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
-    call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'final_opts', [])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+    call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
+    call denite#custom#var('grep', {
+        \ 'command': ['rg', '--threads', '1'],
+        \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
+        \ 'recursive_opts': [],
+        \ 'pattern_opt': ['--regexp'],
+        \ 'separator': ['--'],
+        \ 'final_opts': [],
+        \ })
 endif
