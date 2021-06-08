@@ -27,7 +27,7 @@ else
         exit 1
     fi
 
-    if tmux has-session >/dev/null 2>&1 && tmux list-sessions | grep -qE '.*]$'; then
+    if tmux has-session >/dev/null 2>&1; then
         # detached session exists
 
         tmux list-sessions
