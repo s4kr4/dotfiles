@@ -14,10 +14,15 @@ zplug "b4b4r07/enhancd", \
 
 zplug "b4b4r07/http_code"
 
-zplug "jhawthorn/fzy", \
+zplug "junegunn/fzf", \
+    from:gh-r, \
     as:command, \
-    rename-to:fzy, \
-    hook-build:"make && sudo make install"
+    rename-to:fzf
+
+zplug "BurntSushi/ripgrep", \
+    from:gh-r, \
+    as:command, \
+    rename-to:rg
 
 zplug "zsh-users/zsh-autosuggestions"
 

@@ -3,6 +3,8 @@
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export LANG="en_US.UTF-8"
 export PATH=$PATH:$HOME/bin
+export FZF_DEFAULT_OPTS="--reverse --border --height 40%"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow"
 
 if is_osx; then
     export PATH=$PATH:/usr/local/bin:/bin
