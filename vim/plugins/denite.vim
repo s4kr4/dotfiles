@@ -26,7 +26,7 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [
     \ ])
 
 if executable('rg')
-    call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
+    call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
     call denite#custom#var('grep', {
         \ 'command': ['rg', '--threads', '1'],
         \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
