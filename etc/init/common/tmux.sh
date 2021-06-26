@@ -9,6 +9,9 @@ if ! has "tmux"; then
     else
         case "$(get_os)" in
             osx)
+                install libevent
+                install automake
+                install pkg-config
                 return
                 ;;
 
