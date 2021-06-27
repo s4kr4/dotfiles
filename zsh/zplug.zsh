@@ -26,6 +26,10 @@ zplug "BurntSushi/ripgrep", \
 
 zplug "zsh-users/zsh-autosuggestions"
 
+zplug "stedolan/jq", \
+    from:gh-r, \
+    as:command
+
 if [[ $OSTYPE == *darwin* ]]; then
     zplug "github/hub", \
         from:gh-r, \
