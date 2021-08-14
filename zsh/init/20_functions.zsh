@@ -77,14 +77,15 @@ mkcd() {
 }
 
 cmd_history() {
-    if has fzy; then
+    if has fzf; then
         local tac
         if which tac > /dev/null; then
             tac="tac"
         else
             tac="tail -r"
         fi
-        BUFFER=$(fc -l -n 1 | eval $tac | fzy)
+        BUFFER=$(fc -l -n 1 | eval $tac | fzf)
+        echo $PROMPT
         CURSOR=${#BUFFER}
     fi
 }
