@@ -7,34 +7,14 @@ augroup mAutoCmd
     autocmd!
 augroup END
 
-set encoding=utf-8
-scriptencoding utf-8
-set fileencoding=utf-8
 
 " ########## Visual Settings ##########
 
-" use 256 colors
-set t_Co=256
-
-" display row number and ruler
+" display row number
 set number
-set ruler
-
-" display cursor line
-set cursorline
-
-" highlight corresponding brakets
-set showmatch
 
 " wrap line
 set wrap
-
-" no break in the middle of words
-set linebreak
-
-" visible whitespace
-set list
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:%,eol:<
 
 " highlight full-width characters
 augroup highlightSpace
@@ -46,34 +26,14 @@ augroup END
 
 " ########## Edit ##########
 
-filetype plugin indent on
 set backspace=start,eol,indent
-" set paste
-set mouse=a
 set incsearch
-set wildmenu wildmode=list:full
 set noexpandtab
 set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set hidden
-set switchbuf=useopen
-set nowritebackup
-set nobackup
-set noswapfile
-
-set splitbelow
-set splitright
-
-" Other settings
-
-set completeopt=menuone
-set vb t_vb=
+set autoindent
+set whichwrap=b,s,<,>,[,],h,l
 
 " Key map
-
-let mapleader='\<Space>'
 
 noremap <C-j> <ESC>
 noremap! <C-j> <ESC>
@@ -83,18 +43,16 @@ nnoremap <silent> k gk
 nnoremap <silent> <C-j> <C-e>
 nnoremap <silent> <C-k> <C-y>
 
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+inoremap <C-p> <Up>
+inoremap <C-n> <Down>
+
 noremap <silent> <C-a> ^
 noremap <silent> <C-e> $
 
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-inoremap " ""<Left>
-inoremap ' ''<Left>
+nnoremap <TAB> <C-w>w
+nnoremap <S-TAB> <C-w>W
 
-filetype plugin indent on
-set autoindent
-
-syntax on
-
-set whichwrap=b,s,<,>,[,],h,l
+nnoremap <C-q> :q<CR>
 
