@@ -16,10 +16,12 @@ if ! has "tmux"; then
                 ;;
 
             linux)
+                install gcc
                 install libevent-dev
                 install libncurses5-dev
                 install automake
                 install pkg-config
+                install bison
                 if [ "$?" -eq 1 ]; then
                     return
                 fi
