@@ -10,7 +10,7 @@ if [[ -z "$(vim --version | head -n 1 | grep 8.0)" ]]; then
         case "$(get_os)" in
             linux)
                 if is_ubuntu; then
-                    install lua5.2 lua5.2-dev luajit \
+                    install lua5.3 liblua5.3-0 liblua5.3-dev luajit \
                         python-dev \
                         python3-dev \
                         ncurses-dev
