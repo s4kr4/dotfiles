@@ -55,6 +55,7 @@ if has 'git'; then
     alias gs='git status'
     alias gd='git diff'
     alias gco='git checkout'
+    alias gcb='git checkout $(git branch | cut -c 3- | fzf)'
 fi
 
 if has 'vagrant'; then
