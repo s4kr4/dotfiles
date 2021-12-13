@@ -16,7 +16,7 @@ showRule() {
         exit 1
     fi
 
-    if [ $2 = "now" ]; then
+    if [ $# -ne 2 ] || [ $2 = "now" ]; then
         index=0
     elif [ $2 = "next" ]; then
         index=1
