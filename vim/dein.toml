@@ -22,6 +22,7 @@ repo = 'haya14busa/incsearch-easymotion.vim'
 
 [[plugins]]
 repo = 'jacoborus/tender.vim'
+hook_add = 'source $XDG_VIM_HOME/plugins/tender.vim'
 
 [[plugins]]
 repo = 'terryma/vim-multiple-cursors'
@@ -29,6 +30,7 @@ hook_add = 'source $XDG_VIM_HOME/plugins/vim-multiple-cursors.vim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+hook_add = 'source $XDG_VIM_HOME/plugins/vim-fugitive.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-over'

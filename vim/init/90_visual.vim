@@ -14,7 +14,6 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:%,eol:<
 
 " display statusline
 set laststatus=2
-set statusline=%F%m%r%h%w%{fugitive#statusline()}%=[TYPE:%Y][FMT:%{&fileformat}][ENC:%{&fileencoding}][LINE:%l/%L]
 
 " Enable syntax highlight
 syntax enable
@@ -31,8 +30,6 @@ augroup highlightSpace
   autocmd Colorscheme * hi IdeographicSpace term=underline ctermbg=DarkRed guibg=DarkRed
   autocmd VimEnter,WinEnter * match IdeographicSpace /　\|\s\+$/
 augroup END
-
-colorscheme tender
 
 " Display cursorline
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
