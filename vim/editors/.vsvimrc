@@ -16,13 +16,6 @@ set number
 " wrap line
 set wrap
 
-" highlight full-width characters
-augroup highlightSpace
-    autocmd!
-    autocmd Colorscheme * hi IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
-    autocmd VimEnter,WinEnter * match IdeographicSpace /　/
-augroup END
-
 
 " ########## Edit ##########
 
