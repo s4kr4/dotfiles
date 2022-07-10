@@ -37,7 +37,7 @@ if ! has "tmux"; then
         git clone https://github.com/tmux/tmux.git ${HOME}/tmp/tmux
         cd ${HOME}/tmp/tmux
         sh autogen.sh
-        ./configure && make
+        ./configure --enable-utf8proc && make
         sudo make install
         cd "$cdirectory"
     fi
