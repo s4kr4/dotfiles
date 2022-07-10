@@ -9,4 +9,4 @@ call deoplete#custom#option({
 \ 'max_list': 30,
 \ 'num_processes': 0,
 \ 'skip_multibyte': v:true,
-})
+\ })
