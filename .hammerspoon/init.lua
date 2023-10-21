@@ -1,5 +1,4 @@
 local prefix = {"cmd", "ctrl"}
-hs.window.animationDuration = 0
 
 hs.hotkey.bind(prefix, "Up", function()
 	local win = hs.window.focusedWindow()
