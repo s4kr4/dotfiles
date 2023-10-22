@@ -7,25 +7,25 @@ local options = {
   wildmode = "list:full",
   wildignorecase = true,
   expandtab = true,
-  tabstop = 2,
-  softtabstop = 2,
-  shiftwidth = 2,
+  tabstop = 4,
+  softtabstop = 4,
+  shiftwidth = 4,
   shiftround = true,
   autoindent = true,
   hidden = true,
   switchbuf = "useopen",
-  
+
   -- highlight corresponding brakets
   showmatch = true,
-  
+
   -- wrap line
   wrap = true,
-  
+
   -- no break in the middle of words
   linebreak = true,
-  
+
   fixeol = false,
-  
+
   conceallevel = 0,
 }
 

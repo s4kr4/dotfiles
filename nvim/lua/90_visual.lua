@@ -5,10 +5,10 @@
 local options = {
   -- display row number
   number = true,
-  
+
   -- display cursor line
   cursorline = true,
-  
+
   -- visible whitespace
   list = true,
   listchars = {
@@ -19,16 +19,16 @@ local options = {
     nbsp="%",
     eol="↲",
   },
-  
+
   -- display statusline
   laststatus = 2,
-  
+
   -- Enable syntax highlight
   syntax = "enable",
-  
+
   -- Highlight search words
   hlsearch = true,
-  
+
   -- Scroll offset
   scrolloff = 3,
 }
