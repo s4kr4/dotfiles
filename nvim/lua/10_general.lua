@@ -48,18 +48,18 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-if vim.fn.has("wsl") == 1 then
+if vim.fn.has("wsl") == 1 and vim.fn.executable("win32yank.exe") then
   vim.g.clipboard = {
-        name = "win32yank-wsl",
-  copy = {
-    ["+"] = "win32yank.exe -i --crlf",
-    ["*"] = "win32yank.exe -i --crlf"
+    name = "win32yank-wsl",
+    copy = {
+      ["+"] = "win32yank.exe -i",
+      ["*"] = "win32yank.exe -i"
     },
-  paste = {
-    ["+"] = "win32yank.exe -o --crlf",
-    ["*"] = "win32yank.exe -o --crlf"
-  },
-  cache_enable = 0,
+    paste = {
+      ["+"] = "win32yank.exe -o",
+      ["*"] = "win32yank.exe -o"
+    },
+    cache_enable = 0,
   }
 end
 
