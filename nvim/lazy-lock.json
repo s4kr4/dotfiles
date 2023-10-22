@@ -1,4 +1,5 @@
 {
+  "caw.vim": { "branch": "master", "commit": "748f15cde4e9ba9ce4723fddf48703d2e97790de" },
   "lazy.nvim": { "branch": "main", "commit": "9788a19ec0b4036028e78aec702634b4b89d3470" },
   "tender": { "branch": "master", "commit": "7746453a045eaa97dc413a7209268345f33f3243" }
 }
