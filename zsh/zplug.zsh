@@ -1,8 +1,9 @@
-if [[ ! -e ~/.zplug/init.zsh ]]; then
-    git clone https://github.com/zplug/zplug ~/.zplug
+export ZPLUG_HOME=~/.zplug
+
+if [[ ! -e $ZPLUG_HOME/init.zsh ]]; then
+    git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
 
-export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug "zplug/zplug"
