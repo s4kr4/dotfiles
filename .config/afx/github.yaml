@@ -70,12 +70,13 @@ github:
     sources:
     - init.sh
 - name: zdharma-continuum/fast-syntax-highlighting
+- name: zsh-users/zsh-syntax-highlighting
   description: Syntax-highlighting for Zshell
-  owner: zdharma-continuum
-  repo: fast-syntax-highlighting
+  owner: zsh-users
+  repo: zsh-syntax-highlighting
   plugin:
     sources:
-    - fast-syntax-highlighting.plugin.zsh
+    - zsh-syntax-highlighting.plugin.zsh
 - name: zsh-users/zsh-autosuggestions
   description: Fish-like fast/unobtrusive autosuggestions for zsh
   owner: zsh-users
