@@ -16,8 +16,13 @@ for file in "${XDG_CONFIG_HOME}"/zsh/init/*.zsh; do
 done
 
 # Load zplug only in tmux
+# if [[ -n "$TMUX" ]]; then
+#     . "${XDG_CONFIG_HOME}"/zsh/zplug.zsh
+# fi
+
+# Load axf only in tmux
 if [[ -n "$TMUX" ]]; then
-    . "${XDG_CONFIG_HOME}"/zsh/zplug.zsh
+    . "${XDG_CONFIG_HOME}"/zsh/afx.zsh
 fi
 
 # if (which zprof > /dev/null); then
@@ -28,3 +33,4 @@ fi
 if has tmux; then
     tmuxx
 fi
+

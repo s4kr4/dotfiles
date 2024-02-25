@@ -26,9 +26,12 @@ fi
 
 # Deploy local settings
 if [[ -e ${HOME}/.local/bin ]]; then
+    mkdir -p ${HOME}/.local/bin
     PATH="$HOME/.local/bin:$PATH"
 fi
 if [[ -e ${HOME}/.local/env.zsh ]]; then
     source ${HOME}/.local/env.zsh
 fi
+
+export AFX_BIN_DIR="$HOME/.local/bin"
 
