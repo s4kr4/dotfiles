@@ -1,0 +1,54 @@
+github:
+- name: BurntSushi/ripgrep
+  description: ripgrep recursively searches directories for a regex pattern
+  owner: BurntSushi
+  repo: ripgrep
+  release:
+    name: ripgrep
+    tag: 11.0.2
+  command:
+    link:
+    - from: '**/rg'
+- name: ogham/exa
+  description: A modern version of 'ls'.
+  owner: ogham
+  repo: exa
+  release:
+    name: exa
+    tag: v0.10.1
+  command:
+    alias:
+      l: exa --group-directories-first -a -1 -F --git-ignore
+      lt: exa --group-directories-first -T --git-ignore --level 10
+      lta: exa --group-directories-first -a -T --git-ignore --level 10 --ignore-glob .git
+      la: exa --group-directories-first -a --header --git
+      ll: exa --group-directories-first -l --header --git
+      lla: exa --group-directories-first -la --header --git
+      ls: exa --group-directories-first
+    link:
+    - from: bin/exa*
+      to: exa
+- name: babarot/enhancd
+  description: A next-generation cd command with your interactive filter
+  owner: babarot
+  repo: enhancd
+  plugin:
+    env:
+      ENHANCD_FILTER: >
+        fzf --preview 'exa -al --tree --level 1 --group-directories-first --git-ignore
+        --header --git --no-user --no-time --no-filesize --no-permissions {}'
+        --preview-window right,50% --height 35% --reverse --ansi
+    sources:
+    - init.sh
+- name: zdharma-continuum/fast-syntax-highlighting
+  description: Syntax-highlighting for Zshell
+  owner: zdharma-continuum
+  repo: fast-syntax-highlighting
+  plugin:
+    sources:
+    - fast-syntax-highlighting.plugin.zsh
+- name: zsh-users/zsh-autosuggestions
+  description: Fish-like fast/unobtrusive autosuggestions for zsh
+  owner: zsh-users
+  repo: zsh-autosuggestions
+
