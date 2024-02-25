@@ -25,10 +25,10 @@ if [[ -d ${HOME}/.anyenv/envs/pyenv/plugins/pyenv-virtualenv ]]; then
 fi
 
 # Deploy local settings
-if [[ -e ${HOME}/bin_local ]]; then
-    PATH="$HOME/bin_local:$PATH"
+if [[ -e ${HOME}/.local/bin ]]; then
+    PATH="$HOME/.local/bin:$PATH"
 fi
-if [[ -e ${HOME}/.env_local.zsh ]]; then
-    source ${HOME}/.env_local.zsh
+if [[ -e ${HOME}/.local/env.zsh ]]; then
+    source ${HOME}/.local/env.zsh
 fi
 
