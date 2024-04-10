@@ -20,6 +20,8 @@ done
 #     . "${XDG_CONFIG_HOME}"/zsh/zplug.zsh
 # fi
 
+autoload -Uz compinit
+compinit
 # Load axf only in tmux
 if [[ -n "$TMUX" ]]; then
     . "${XDG_CONFIG_HOME}"/zsh/afx.zsh
