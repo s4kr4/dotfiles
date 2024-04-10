@@ -69,7 +69,6 @@ github:
         --preview-window right,50% --height 35% --reverse --ansi
     sources:
     - init.sh
-- name: zdharma-continuum/fast-syntax-highlighting
 - name: zsh-users/zsh-syntax-highlighting
   description: Syntax-highlighting for Zshell
   owner: zsh-users
