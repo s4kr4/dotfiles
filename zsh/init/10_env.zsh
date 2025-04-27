@@ -10,18 +10,9 @@ if is_osx; then
     export PATH=$PATH:/usr/local/bin:/bin
 fi
 
-# anyenv settings
-if [[ -d ${HOME}/.anyenv ]]; then
-    PATH="$HOME/.anyenv/bin:$PATH"
-    eval "$(anyenv init -)"
-
-    for d in `ls $HOME/.anyenv/envs`; do
-        export PATH="$HOME/.anyenv/envs/$d/shims:$PATH"
-    done
-fi
-
-if [[ -d ${HOME}/.anyenv/envs/pyenv/plugins/pyenv-virtualenv ]]; then
-    eval "$(pyenv virtualenv-init -)"
+# asdf settings
+if [[ -d ${HOME}/.asdf ]]; then
+    export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fi
 
 # Deploy local settings
