@@ -15,7 +15,7 @@ github:
   repo: ripgrep
   release:
     name: ripgrep
-    tag: 11.0.2
+    tag: 14.1.1
   command:
     link:
     - from: '**/rg'
