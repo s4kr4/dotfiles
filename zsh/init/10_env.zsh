@@ -10,9 +10,6 @@ export LOCAL_ENV_PATH="${HOME}/.local/env.zsh"
 export AFX_BIN_DIR="${LOCAL_BIN_PATH}"
 export AFX_COMMAND_PATH="${LOCAL_BIN_PATH}"
 
-export FZF_DEFAULT_OPTS="--reverse --border --height 40%"
-export FZF_DEFAULT_COMMAND="rg --files --hidden --follow"
-
 if is_osx; then
     export PATH=$PATH:/usr/local/bin:/bin
 fi
