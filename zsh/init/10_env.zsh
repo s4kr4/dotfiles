@@ -3,6 +3,12 @@
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export LANG="en_US.UTF-8"
 export PATH=$PATH:$HOME/bin
+export LOCAL_BIN_PATH="${HOME}/.local/bin"
+export LOCAL_ENV_PATH="${HOME}/.local/env.zsh"
+
+export AFX_BIN_DIR="${LOCAL_BIN_PATH}"
+export AFX_COMMAND_PATH="${LOCAL_BIN_PATH}"
+
 export FZF_DEFAULT_OPTS="--reverse --border --height 40%"
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow"
 
@@ -16,13 +22,11 @@ if [[ -d ${HOME}/.asdf ]]; then
 fi
 
 # Deploy local settings
-if [[ -e ${HOME}/.local/bin ]]; then
-    mkdir -p ${HOME}/.local/bin
-    PATH="$HOME/.local/bin:$PATH"
+if [[ -e ${LOCAL_BIN_PATH} ]]; then
+    mkdir -p ${LOCAL_BIN_PATH}
+    PATH="${LOCAL_BIN_PATH}:$PATH"
 fi
-if [[ -e ${HOME}/.local/env.zsh ]]; then
-    source ${HOME}/.local/env.zsh
+if [[ -e ${LOCAL_ENV_PATH} ]]; then
+    source ${LOCAL_ENV_PATH}
 fi
-
-export AFX_BIN_DIR="$HOME/.local/bin"
 
