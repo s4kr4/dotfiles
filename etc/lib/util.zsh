@@ -361,6 +361,7 @@ install() {
             ;;
     esac
 }
+alias i='install'
 
 uninstall() {
     case "$(get_os)" in
@@ -387,3 +388,4 @@ uninstall() {
             ;;
     esac
 }
+alias un='uninstall'
