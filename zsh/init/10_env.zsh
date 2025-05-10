@@ -3,6 +3,7 @@
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export LANG="en_US.UTF-8"
 export PATH=$PATH:$HOME/bin
+
 export LOCAL_BIN_PATH="${HOME}/.local/bin"
 export LOCAL_ENV_PATH="${HOME}/.local/env.zsh"
 
