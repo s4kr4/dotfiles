@@ -39,32 +39,28 @@ if is_cygwin; then
 
     echo "${network_status}"
 elif is_osx; then
-    airport_path="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
+    # 現在使用しているネットワークインターフェイス
+    current_network_interface_name=`route -n get default 2>/dev/null | grep 'interface: ' | awk '{print $2}'`
+    # ネットワークインターフェイスリスト
+    interface_list=`networksetup -listallhardwareports`
+    # 有線LANのネットワークインターフェイス名
+    wired_lan_device_name=`echo "${interface_list}" | grep -A 1 "USB.*LAN" | grep "Device:" | awk '{print $2}'`
+    # 無線LANのネットワークインターフェイス名
+    wifi_device_name=`echo "${interface_list}" | grep -A 1 "Wi-Fi" | grep "Device:" | awk '{print $2}'`
 
-    IFS=$'\n'
-    if air_info=($(eval "$airport_path" -I | grep -E "^ *(agrCtlRSSI|state|SSID):" | awk -F ': ' '{print $2}')); then
-
-        state=${air_info[1]}
-        ssid=${air_info[2]}
-        rssi=${air_info[0]}
-
-        case "$state" in
-            "running")
-                signals=(▁ ▂ ▄ ▆ █)
-                signal_icon=""
-                rssi_=$(expr 5 - ${rssi} / -20)
-                for ((i=0; i < $rssi_; i++ )); do
-                    signal_icon="${signal_icon}${signals[$i]}"
-                done
-                network_status="#[bg=colour033,fg=colour015] ${signal_icon} (${ssid}) #[bg=default,fg=default]"
-                ;;
-            "init")
-                network_status="#[bg=colour033,fg=yellow] ... #[default]"
-                ;;
-            *)
-                network_status="#[bg=colour033,fg=red] ✘ #[default] DISCONNECTED #[bg=default,fg=default]"
-                ;;
-        esac
-        echo "${network_status}"
+    if [ "${current_network_interface_name}" = "" ]; then
+        network_icon="DISCONNECTED"
+    elif [ "${current_network_interface_name}" = "${wired_lan_device_name}" ]; then
+        network_icon="🔗 CONNECTED"
+    elif [ "${current_network_interface_name}" = "${wifi_device_name}" ]; then
+        network_icon="🛜 CONNECTED"
     fi
+
+    if [ "${network_icon}" = "DISCONNECTED" ]; then
+        network_status="#[bg=colour033,fg=red] ${network_icon} #[bg=default,fg=default]"
+    else
+        network_status="#[bg=colour033,fg=colour015] ${network_icon} #[bg=default,fg=default]"
+    fi
+
+    echo "${network_status}"
 fi
