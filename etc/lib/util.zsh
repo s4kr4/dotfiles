@@ -361,3 +361,29 @@ install() {
             ;;
     esac
 }
+
+uninstall() {
+    case "$(get_os)" in
+        osx)
+            if has "brew"; then
+                log_echo "Uninstalling ${@} with Homebrew..."
+                brew uninstall "$@"
+            else
+                log_fail "ERROR: Require homebrew!"
+                return 1
+            fi
+            ;;
+        linux)
+            if has "yum"; then
+                log_echo "Uninstall ${@} with Yellowdog Updater Modified"
+                sudo yum -y uninstall "$@"
+            elif has "apt"; then
+                log_echo "Uninstall ${@} with Advanced Packaging Tool"
+                sudo apt -y remove "$@"
+            else
+                log_fail "ERROR: Require yum or apt"
+                return 1
+            fi
+            ;;
+    esac
+}
