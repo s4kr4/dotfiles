@@ -349,25 +349,13 @@ install() {
             ;;
         linux)
             if has "yum"; then
-                log_echo "Install ${@} with Yellowdog Updater Modified"
+                log_echo "Installing ${@} with Yellowdog Updater Modified"
                 sudo yum -y install "$@"
-            elif has "apt-get"; then
-                log_echo "Install ${@} with Advanced Packaging Tool"
-                sudo apt-get -y install "$@"
+            elif has "apt"; then
+                log_echo "Installing ${@} with Advanced Packaging Tool"
+                sudo apt -y install "$@"
             else
                 log_fail "ERROR: Require yum or apt"
-                return 1
-            fi
-            ;;
-        cygwin)
-            if has "cyg-fast"; then
-                log_echo "Install ${@} with cyg-fast"
-                cyg-fast -y install "$@"
-            elif has "apt-cyg"; then
-                log_echo "Install ${@} with Advanced Packaging Tool for Cygwin"
-                apt-cyg install "$@"
-            else
-                log_fail "ERROR: Require cyg-fast or apt-cyg"
                 return 1
             fi
             ;;
