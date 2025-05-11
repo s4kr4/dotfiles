@@ -14,11 +14,6 @@ if is_osx; then
     export PATH=$PATH:/usr/local/bin:/bin
 fi
 
-# asdf settings
-if [[ -d ${HOME}/.asdf ]]; then
-    export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-fi
-
 # Deploy local settings
 if [[ -e ${LOCAL_BIN_PATH} ]]; then
     mkdir -p ${LOCAL_BIN_PATH}
