@@ -1,14 +1,4 @@
 github:
-- name: asdf-vm/asdf
-  description: Manage envs
-  owner: asdf-vm
-  repo: asdf
-  release:
-    name: asdf
-    tag: v0.16.7
-  command:
-    link:
-    - from: asdf
 - name: BurntSushi/ripgrep
   description: ripgrep recursively searches directories for a regex pattern
   owner: BurntSushi
