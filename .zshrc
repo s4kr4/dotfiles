@@ -20,12 +20,13 @@ done
 #     . "${XDG_CONFIG_HOME}"/zsh/zplug.zsh
 # fi
 
+# Load axf
 autoload -Uz compinit
 compinit
-# Load axf only in tmux
-if [[ -n "$TMUX" ]]; then
-    . "${XDG_CONFIG_HOME}"/zsh/afx.zsh
-fi
+. "${XDG_CONFIG_HOME}"/zsh/afx.zsh
+
+# Load mise
+. "${XDG_CONFIG_HOME}"/zsh/mise.zsh
 
 # if (which zprof > /dev/null); then
 #   zprof | less
