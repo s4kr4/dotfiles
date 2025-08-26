@@ -50,6 +50,7 @@
     ignore-case = true
     mouse = true
     refresh-mode = auto
+    wrap-lines = true
 [tig "bind"]
     generic = g move-first-line
     generic = G move-last-line
