@@ -85,7 +85,7 @@ cmd_history() {
             tac="tail -r"
         fi
         BUFFER=$(fc -l -n 1 | eval $tac | fzf)
-        echo $PROMPT
+        print -nP "${PROMPT//[$'\n\r']/}"
         CURSOR=${#BUFFER}
     fi
 }
