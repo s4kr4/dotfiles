@@ -388,4 +388,4 @@ uninstall() {
             ;;
     esac
 }
-alias un='uninstall'
+alias uni='uninstall'
