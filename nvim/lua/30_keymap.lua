@@ -26,10 +26,10 @@ keymap("n", "<C-q>", ":q<CR>", options)
 keymap("n", "day", '<ESC>a<C-r>=strftime("%Y-%m-%d ")<CR><ESC>', options)
 keymap("n", "time", '<ESC>a<C-r>=strftime("%H:%M:%S ")<CR><ESC>', options)
 
--- if vim.fn.has("mac") then
---   keymap("n", ";", ":", options)
---   keymap("n", ":", ";", options)
--- end
+if vim.fn.has("mac") then
+  keymap("n", ";", ":", options)
+  keymap("n", ":", ";", options)
+end
 
 -- insert mode
 keymap("i", "<C-j>", "<ESC>", options)
