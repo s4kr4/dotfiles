@@ -1,0 +1,6 @@
+[naming]
+template = '{{.Host}}/{{.Owner}}/{{.Repository}}_{{.Branch}}'
+
+[worktree]
+basedir = '~/ghq'
+

@@ -83,4 +83,37 @@ github:
   plugin:
     sources:
     - zsh-autosuggestions.plugin.zsh
+- name: cli/cli
+  description: the GitHub CLI
+  owner: cli
+  repo: cli
+  release:
+    name: gh
+    tag: v2.83.2
+  command:
+    link:
+    - from: '*/bin/gh'
+      to: gh
+- name: x-motemen/ghq
+  description: Manage remote repository clones
+  owner: x-motemen
+  repo: ghq
+  release:
+    name: ghq
+    tag: v1.8.0
+  command:
+    link:
+    - from: '**/ghq'
+- name: d-kuro/gwq
+  description: Manage git worktree
+  owner: d-kuro
+  repo: gwq
+  release:
+    name: gwq
+    tag: v0.0.7
+  command:
+    link:
+    - from: '**/gwq'
+    snippet: |
+      source <(gwq completion zsh)
 

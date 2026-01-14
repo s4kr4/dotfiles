@@ -58,11 +58,8 @@ if has 'git'; then
     alias gcb='git checkout $(git branch | cut -c 3- | fzf)'
 fi
 
-if has 'vagrant'; then
-    alias vup='vagrant up'
-    alias vsh='vagrant ssh'
-    alias vhl='vagrant halt'
-    alias vre='vagrant reload'
+if has 'ghq'; then
+    alias cwd='cd $(ghq root)/$(ghq list | fzf)'
 fi
 
 if has 'lxterminal'; then
