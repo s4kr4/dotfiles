@@ -2,3 +2,9 @@
 /tmp/
 
 .netrwhist
+
+# Home Manager backups
+*.backup
+
+# Nix
+result
