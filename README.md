@@ -18,10 +18,13 @@ Homebrew で管理する dotfiles
 ├── scripts/
 │   ├── install-brew.sh    # Homebrew インストール
 │   └── deploy.sh          # シンボリンク作成
-├── zsh/
-│   ├── init/              # 基本設定 (env, aliases, functions, visual)
-│   └── plugins/           # ツール別設定 (fzf, eza, enhancd, gwq)
-├── nvim/                  # Neovim 設定
+├── config/                # ~/.config にリンクされる設定
+│   ├── zsh/
+│   │   ├── init/          # 基本設定 (env, aliases, functions, visual)
+│   │   └── plugins/       # ツール別設定 (fzf, eza, enhancd, gwq)
+│   ├── nvim/              # Neovim 設定
+│   ├── vim/               # Vim 設定
+│   └── gwq/               # gwq 設定
 └── bin/                   # カスタムスクリプト
 ```
 
@@ -91,11 +94,11 @@ brew bundle --file=~/.dotfiles/Brewfile
 
 ### エイリアスの追加
 
-`zsh/init/30_aliases.zsh` を編集
+`config/zsh/init/30_aliases.zsh` を編集
 
 ### ツール設定の追加
 
-`zsh/plugins/` に `tool-name.zsh` を作成：
+`config/zsh/plugins/` に `tool-name.zsh` を作成：
 
 ```bash
 if ! command -v tool-name &> /dev/null; then
