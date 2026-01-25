@@ -68,8 +68,9 @@ link_file "$DOTPATH/.vimrc" "$HOME/.vimrc"
 
 # XDG config
 mkdir -p "$HOME/.config"
-link_file "$DOTPATH/zsh" "$HOME/.config/zsh"
-link_file "$DOTPATH/nvim" "$HOME/.config/nvim"
+link_file "$DOTPATH/config/zsh" "$HOME/.config/zsh"
+link_file "$DOTPATH/config/nvim" "$HOME/.config/nvim"
+link_file "$DOTPATH/config/vim" "$HOME/.config/vim"
 
 # Custom scripts
 link_file "$DOTPATH/bin" "$HOME/bin"
