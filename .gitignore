@@ -1,10 +1,6 @@
-/.zplug/
 /tmp/
 
 .netrwhist
 
-# Home Manager backups
+# Backup files
 *.backup
-
-# Nix
-result

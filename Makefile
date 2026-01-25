@@ -1,41 +1,30 @@
 DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 UNAME   := $(shell uname -s)
-ARCH    := $(shell uname -m)
 
-# ホスト名の決定
-ifeq ($(UNAME),Linux)
-	HOST := linux
-else ifeq ($(UNAME),Darwin)
-	ifeq ($(ARCH),arm64)
-		HOST := darwin
-	else
-		HOST := darwin-x86
-	endif
-endif
+.PHONY: install brew deploy update clean help
 
-.PHONY: install nix home-manager update clean help
+install: brew deploy
+	@echo ""
+	@echo "Installation complete!"
 
-install: nix home-manager
-	@echo "Installation complete! Please restart your shell."
+brew:
+	@bash $(DOTPATH)/scripts/install-brew.sh
 
-nix:
-	@bash $(DOTPATH)/scripts/install-nix.sh
-
-home-manager:
-	@bash $(DOTPATH)/scripts/install-home-manager.sh $(HOST)
+deploy:
+	@bash $(DOTPATH)/scripts/deploy.sh
 
 update:
 	git pull origin master
-	@bash $(DOTPATH)/scripts/install-home-manager.sh $(HOST)
+	brew bundle --file=$(DOTPATH)/Brewfile
+	@bash $(DOTPATH)/scripts/deploy.sh
 
 clean:
-	@echo "Removing Home Manager generation..."
-	home-manager uninstall || true
+	@echo "Nothing to clean."
 
 help:
 	@echo "Usage:"
-	@echo "  make install      - Install Nix and apply Home Manager configuration"
-	@echo "  make nix          - Install Nix only"
-	@echo "  make home-manager - Apply Home Manager configuration"
-	@echo "  make update       - Pull latest changes and re-apply"
-	@echo "  make clean        - Uninstall Home Manager"
+	@echo "  ./install.sh  - Install and start zsh automatically"
+	@echo "  make install  - Install Homebrew and deploy dotfiles"
+	@echo "  make brew     - Install Homebrew and packages"
+	@echo "  make deploy   - Deploy dotfiles (create symlinks)"
+	@echo "  make update   - Pull latest and update"
