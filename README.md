@@ -5,7 +5,7 @@ Homebrew で管理する dotfiles
 ## 概要
 
 - **Homebrew**: クロスプラットフォームのパッケージ管理
-- **シンボリンク**: dotfiles の配置
+- **シンボリックリンク**: dotfiles の配置
 - Linux / macOS 両対応
 
 ## ディレクトリ構成
@@ -17,7 +17,7 @@ Homebrew で管理する dotfiles
 ├── install.sh             # インストールスクリプト
 ├── scripts/
 │   ├── install-brew.sh    # Homebrew インストール
-│   └── deploy.sh          # シンボリンク作成
+│   └── deploy.sh          # シンボリックリンク作成
 ├── config/                # ~/.config にリンクされる設定
 │   ├── zsh/
 │   │   ├── init/          # 基本設定 (env, aliases, functions, visual)
@@ -36,14 +36,19 @@ cd ~/.dotfiles
 ./install.sh
 ```
 
-自動的に zsh が起動します。
-
 ### 手動インストール
 
 ```bash
 make install    # Homebrew + dotfiles
 make brew       # Homebrew のみ
-make deploy     # シンボリンクのみ
+make deploy     # シンボリックリンクのみ
+```
+
+## 更新
+
+```bash
+cd ~/.dotfiles
+make update
 ```
 
 ## 含まれるツール
@@ -108,13 +113,6 @@ fi
 # 設定
 export TOOL_OPTION="value"
 alias t="tool-name"
-```
-
-## 更新
-
-```bash
-cd ~/.dotfiles
-make update
 ```
 
 ## ライセンス
