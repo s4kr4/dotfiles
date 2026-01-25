@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# util.zsh をソース
+if [ -z "${DOTPATH:-}" ]; then
+    DOTPATH=~/.dotfiles; export DOTPATH
+fi
+. "$DOTPATH"/etc/lib/util.zsh
+
+# Claude Code StatusLine Script
+# JSONデータを標準入力から受け取る
+input=$(cat)
+
+# プロジェクトルートディレクトリ名を取得
+project_dir=$(echo "$input" | jq -r '.workspace.project_dir')
+if [ -n "$project_dir" ] && [ "$project_dir" != "null" ]; then
+    project_name=$(basename "$project_dir")
+else
+    # プロジェクトディレクトリがない場合は現在のディレクトリ名を使用
+    current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
+    project_name=$(basename "$current_dir")
+fi
+
+# Gitブランチ名を取得（オプショナルロックをスキップ）
+current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
+if [ -d "$current_dir/.git" ]; then
+    git_branch=$(cd "$current_dir" && git -c core.useBuiltinFSMonitor=false branch --show-current 2>/dev/null)
+    if [ -z "$git_branch" ]; then
+        git_branch=""
+    fi
+else
+    git_branch=""
+fi
+
+# モデル表示名を取得
+model_name=$(echo "$input" | jq -r '.model.display_name')
+
+# トークン使用量を取得
+context_window=$(echo "$input" | jq '.context_window')
+context_size=$(echo "$context_window" | jq '.context_window_size')
+usage=$(echo "$context_window" | jq '.current_usage')
+
+if [ "$usage" != "null" ]; then
+    # 現在のコンテキストトークン数を計算
+    current_tokens=$(echo "$usage" | jq '.input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens')
+else
+    # 新しいセッションの場合はトークン消費量を0とする
+    current_tokens=0
+fi
+
+# パーセンテージを計算
+if [ "$context_size" -gt 0 ]; then
+    # トークン数とパーセンテージをk単位で表示（小数第1位まで）
+    current_k=$(awk "BEGIN {printf \"%.1f\", $current_tokens / 1000}")
+    context_k=$(awk "BEGIN {printf \"%.1f\", $context_size / 1000}")
+    pct=$(awk "BEGIN {printf \"%.1f\", ($current_tokens * 100) / $context_size}")
+    # printf で % が解釈されないように %% にエスケープ
+    token_display="${current_k}k/${context_k}k (${pct}%%)"
+else
+    token_display="N/A"
+fi
+
+# 各セクションを変数に格納
+# user@host セクション
+section_user="$(ink green "$(whoami)@$(hostname -s)")"
+
+# dirname@branchname セクション
+if [ -n "$git_branch" ]; then
+    section_project="$(ink256 51 "$project_name")$(ink yellow "[$git_branch]")"
+else
+    section_project="$(ink256 51 "$project_name")"
+fi
+
+# モデル名セクション
+section_model="$(ink blue "$model_name")"
+
+# トークン使用量セクション
+section_tokens="$(ink purple "⛁ $token_display")"
+
+# セパレーター
+sep="$(ink cyan "│")"
+
+# ステータスライン出力
+# フォーマット: user@host │ dirname@branchname │ モデル名 │ トークン使用量
+echo "${section_user} ${sep} ${section_project} ${sep} ${section_model} ${sep} ${section_tokens}"

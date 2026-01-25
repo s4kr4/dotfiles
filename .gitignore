@@ -4,3 +4,6 @@
 
 # Backup files
 *.backup
+
+# Claude Code local settings (machine-specific)
+.claude/settings.local.json

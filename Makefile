@@ -1,7 +1,7 @@
 DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 UNAME   := $(shell uname -s)
 
-.PHONY: install brew deploy update clean help
+.PHONY: install brew deploy update clean help claude
 
 install: brew deploy
 	@echo ""
@@ -21,10 +21,14 @@ update:
 clean:
 	@echo "Nothing to clean."
 
+claude:
+	@bash $(DOTPATH)/scripts/deploy-claude.sh
+
 help:
 	@echo "Usage:"
 	@echo "  ./install.sh  - Install and start zsh automatically"
 	@echo "  make install  - Install Homebrew and deploy dotfiles"
 	@echo "  make brew     - Install Homebrew and packages"
 	@echo "  make deploy   - Deploy dotfiles (create symlinks)"
+	@echo "  make claude   - Deploy Claude Code config (CLAUDE.md, agents, skills, rules)"
 	@echo "  make update   - Pull latest and update"
