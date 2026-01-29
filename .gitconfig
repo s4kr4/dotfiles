@@ -72,5 +72,5 @@
 	required = true
 	clean = git-lfs clean -- %f
 [ghq]
-    root = ~/ghq
+    root = ~/worktrees
 

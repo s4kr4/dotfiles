@@ -71,6 +71,7 @@ mkdir -p "$HOME/.config"
 link_file "$DOTPATH/config/zsh" "$HOME/.config/zsh"
 link_file "$DOTPATH/config/nvim" "$HOME/.config/nvim"
 link_file "$DOTPATH/config/vim" "$HOME/.config/vim"
+link_file "$DOTPATH/config/gwq" "$HOME/.config/gwq"
 
 # Custom scripts
 link_file "$DOTPATH/bin" "$HOME/bin"
