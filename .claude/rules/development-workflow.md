@@ -1,8 +1,8 @@
-# Agent Workflow & Responsibilities
+# 開発ワークフロー
 
-エージェント間の責任範囲を明確に定義します。
+エージェント間の責任範囲と開発フローを定義します。
 
-## 📊 Workflow Overview
+## Workflow Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -79,7 +79,7 @@ Phase 4-6: Verification & Quality Check
         ❌ 問題 → @code-implementer へフィードバック
 ```
 
-## 🎯 Responsibility Matrix
+## Responsibility Matrix
 
 | タスク | @code-investigator | @code-planner | @code-implementer | @code-safety-inspector |
 |--------|-------------------|---------------|-------------------|------------------------|
@@ -98,7 +98,7 @@ Phase 4-6: Verification & Quality Check
 | プロジェクト規約検証 | ❌ | ❌ | ❌ | ✅ |
 | 品質レポート作成 | ❌ | ❌ | ❌ | ✅ |
 
-## 📝 Usage Examples
+## Usage Examples
 
 ### 基本的な使い方（4ステップ）
 
@@ -164,7 +164,7 @@ Phase 4-6: Verification & Quality Check
 @code-safety-inspector: 再検証
 ```
 
-## 🔗 Related Resources
+## Related Resources
 
 - **TypeScript実装ベストプラクティス**:
   - `/ts-implement`
@@ -176,6 +176,3 @@ Phase 4-6: Verification & Quality Check
 - **グローバル開発ガイドライン**:
   - `~/.claude/CLAUDE.md`
 
----
-
-**最終更新**: 2026-01-21
