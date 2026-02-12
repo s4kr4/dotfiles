@@ -90,3 +90,90 @@ cmd_history() {
     fi
 }
 zle -N cmd_history
+
+# gwq add -t: worktree 作成後に tmux セッションを作成・切り替え
+gwq() {
+    if ! has gwq; then
+        echo "gwq: command not found" >&2
+        return 127
+    fi
+
+    # add サブコマンド以外はそのまま実行
+    if [[ "$1" != "add" ]]; then
+        command gwq "$@"
+        return $?
+    fi
+
+    # -t/--tmux オプションの検出と除去
+    local use_tmux=false
+    local -a args=()
+    shift  # "add" を除去
+
+    for arg in "$@"; do
+        case "$arg" in
+            -t|--tmux)
+                use_tmux=true
+                ;;
+            -*)
+                # -tb のような連結オプションから t を除去
+                if [[ "$arg" =~ ^-[^-]*t ]]; then
+                    use_tmux=true
+                    local new_arg="${arg//t/}"
+                    # -t のみだった場合は追加しない
+                    [[ "$new_arg" != "-" ]] && args+=("$new_arg")
+                else
+                    args+=("$arg")
+                fi
+                ;;
+            *)
+                args+=("$arg")
+                ;;
+        esac
+    done
+
+    # -t なしの場合はそのまま実行
+    if [[ "$use_tmux" == "false" ]]; then
+        command gwq add "$@"
+        return $?
+    fi
+
+    # gwq add を実行（-t を除去した引数で）
+    command gwq add "${args[@]}"
+    local gwq_status=$?
+
+    if [[ $gwq_status -ne 0 ]]; then
+        return $gwq_status
+    fi
+
+    # tmux/jq の存在チェック
+    if ! has tmux; then
+        return 0
+    fi
+    if ! has jq; then
+        echo "Warning: jq is required for tmux session creation" >&2
+        return 0
+    fi
+
+    # 最新の worktree パスを取得
+    local worktree_path
+    worktree_path=$(command gwq list --json | jq -r 'sort_by(.created_at) | last | .path // empty')
+
+    if [[ -z "$worktree_path" ]] || [[ ! -d "$worktree_path" ]]; then
+        echo "Warning: Failed to determine worktree directory" >&2
+        return 0
+    fi
+
+    # セッション名を生成（ディレクトリ名から、. を _ に置換）
+    local session_name
+    session_name=$(basename "$worktree_path" | tr '.' '_')
+
+    # tmux セッションを作成・切り替え
+    if is_tmux_running; then
+        if ! tmux has-session -t "$session_name" 2>/dev/null; then
+            tmux new-session -d -s "$session_name" -c "$worktree_path"
+        fi
+        tmux switch-client -t "$session_name"
+    else
+        tmux new-session -As "$session_name" -c "$worktree_path"
+    fi
+}
