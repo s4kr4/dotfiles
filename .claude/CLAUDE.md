@@ -53,6 +53,7 @@
 | セキュリティ | `~/.claude/rules/security.md` | コード実装時、レビュー時 |
 | エラーハンドリング | `~/.claude/rules/error-handling.md` | エラー処理の実装時 |
 | パフォーマンス | `~/.claude/rules/performance.md` | 最適化が必要な時 |
+| ファイル操作 | `~/.claude/rules/file-operations.md` | ファイルの作成・削除・移動・リネーム時 |
 | ドキュメント | `~/.claude/rules/documentation.md` | README/ドキュメント作成時 |
 
 ### 🚨 必須ルール
