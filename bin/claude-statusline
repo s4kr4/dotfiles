@@ -71,7 +71,7 @@ else
 fi
 
 # モデル名セクション
-section_model="$(ink blue "$model_name")"
+section_model="$(ink256 205 "$model_name")"
 
 # トークン使用量セクション
 section_tokens="$(ink purple "⛁ $token_display")"
