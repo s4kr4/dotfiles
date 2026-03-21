@@ -59,13 +59,25 @@ else
     token_display="N/A"
 fi
 
+# レートリミット使用状況を取得（浮動小数点を整数に丸める）
+five_hour_pct=$(echo "$input" | jq -r 'if (.rate_limits.five_hour.used_percentage | type) == "number" then (.rate_limits.five_hour.used_percentage | round | tostring) else "" end')
+seven_day_pct=$(echo "$input" | jq -r 'if (.rate_limits.seven_day.used_percentage | type) == "number" then (.rate_limits.seven_day.used_percentage | round | tostring) else "" end')
+
+if [ -n "$five_hour_pct" ] && [ -n "$seven_day_pct" ]; then
+    five_hour_rem=$((100 - five_hour_pct))
+    seven_day_rem=$((100 - seven_day_pct))
+    rate_display="5h:${five_hour_rem}%% rem 7d:${seven_day_rem}%% rem"
+else
+    rate_display="5h:-- 7d:--"
+fi
+
 # 各セクションを変数に格納
 # user@host セクション
 section_user="$(ink green "$(whoami)@$(hostname -s)")"
 
 # dirname@branchname セクション
 if [ -n "$git_branch" ]; then
-    section_project="$(ink256 51 "$project_name")$(ink yellow "[$git_branch]")"
+    section_project="$(ink256 51 "$project_name")⎇ $(ink yellow "$git_branch")"
 else
     section_project="$(ink256 51 "$project_name")"
 fi
@@ -76,9 +88,12 @@ section_model="$(ink256 205 "$model_name")"
 # トークン使用量セクション
 section_tokens="$(ink purple "⛁ $token_display")"
 
+# レートリミットセクション
+section_rate="$(ink256 208 "⚡ $rate_display")"
+
 # セパレーター
 sep="$(ink cyan "│")"
 
 # ステータスライン出力
-# フォーマット: user@host │ dirname@branchname │ モデル名 │ トークン使用量
-echo "${section_user} ${sep} ${section_project} ${sep} ${section_model} ${sep} ${section_tokens}"
+# フォーマット: user@host │ dirname@branchname │ モデル名 │ トークン使用量 │ レートリミット
+echo "${section_user} ${sep} ${section_project} ${sep} ${section_model} ${sep} ${section_tokens} ${sep} ${section_rate}"
