@@ -1,6 +1,3 @@
-# Taps
-tap "d-kuro/tap"
-
 # CLI Tools
 brew "bat"
 brew "eza"
@@ -34,9 +31,6 @@ brew "zip"
 # Build Tools
 brew "automake"
 brew "pkg-config"
-
-# Custom Taps
-brew "d-kuro/tap/gwq"
 
 # Linux only (install manually or skip on macOS)
 # brew "xclip"  # Linux clipboard

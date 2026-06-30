@@ -4,6 +4,7 @@ UNAME   := $(shell uname -s)
 .PHONY: install brew deploy update clean help
 
 install: brew deploy
+	@bash $(DOTPATH)/scripts/install-gwq.sh
 	@echo ""
 	@echo "Installation complete!"
 
@@ -16,6 +17,7 @@ deploy:
 update:
 	git pull origin master
 	brew bundle --file=$(DOTPATH)/Brewfile
+	@bash $(DOTPATH)/scripts/install-gwq.sh
 	@bash $(DOTPATH)/scripts/deploy.sh
 
 clean:
