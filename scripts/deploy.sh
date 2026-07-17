@@ -44,9 +44,42 @@ setup_locale
 echo "==> Deploying dotfiles..."
 
 # Create symlinks
+CONFIGIGNORE="$DOTPATH/.configignore"
+
+# Check if a DOTPATH-relative path is listed in .configignore
+is_ignored() {
+    local rel="$1"
+
+    if [[ ! -f "$CONFIGIGNORE" ]]; then
+        return 1
+    fi
+
+    local line
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        # Trim leading/trailing whitespace
+        line="${line#"${line%%[![:space:]]*}"}"
+        line="${line%"${line##*[![:space:]]}"}"
+
+        [[ -z "$line" ]] && continue
+        [[ "$line" == \#* ]] && continue
+
+        if [[ "$line" == "$rel" ]]; then
+            return 0
+        fi
+    done < "$CONFIGIGNORE"
+
+    return 1
+}
+
 link_file() {
     local src="$1"
     local dst="$2"
+    local rel="${src#$DOTPATH/}"
+
+    if is_ignored "$rel"; then
+        echo "  Skipped (ignored): $rel"
+        return 0
+    fi
 
     if [[ -L "$dst" ]]; then
         rm "$dst"

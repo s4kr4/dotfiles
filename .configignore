@@ -1,0 +1,13 @@
+# List of files/directories managed by scripts/deploy.sh.
+# Uncomment a line to skip deploying that entry with `make deploy`.
+
+# .zshrc
+# .zshenv
+# .gitconfig
+# .tmux.conf
+# .vimrc
+# config/zsh
+# config/nvim
+# config/vim
+# config/gwq
+# bin
