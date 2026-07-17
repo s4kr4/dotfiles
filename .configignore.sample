@@ -1,5 +1,6 @@
 # List of files/directories managed by scripts/deploy.sh.
-# Uncomment a line to skip deploying that entry with `make deploy`.
+# Copy this file to .configignore and uncomment lines to skip them
+# with `make deploy`.
 
 # .zshrc
 # .zshenv

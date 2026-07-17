@@ -7,3 +7,6 @@
 
 # Claude Code local settings (machine-specific)
 .claude/settings.local.json
+
+# Local deploy exclusion list (machine-specific)
+.configignore
