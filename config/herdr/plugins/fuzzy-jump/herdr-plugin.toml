@@ -1,6 +1,6 @@
 id = "s4kr4.fuzzy-jump"
 name = "Fuzzy Jump"
-version = "0.1.0"
+version = "0.2.0"
 min_herdr_version = "0.7.0"
 description = "Fuzzy-search tabs and panes with fzf and jump to the selection"
 platforms = ["macos", "linux"]

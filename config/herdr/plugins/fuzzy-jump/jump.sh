@@ -18,20 +18,32 @@ workspaces="$("$HERDR" workspace list | jq '.result.workspaces')"
 tabs="$("$HERDR" tab list | jq '.result.tabs')"
 panes="$("$HERDR" pane list | jq '.result.panes')"
 
+# cwd -> git branch map (query each unique cwd once)
+branches="$(jq -rn --argjson panes "$panes" '[$panes[].cwd] | unique[]' | while IFS= read -r dir; do
+    branch="$(git -C "$dir" symbolic-ref --short -q HEAD 2>/dev/null \
+        || git -C "$dir" rev-parse --short HEAD 2>/dev/null)" || true
+    if [[ -n "${branch:-}" ]]; then
+        jq -n --arg d "$dir" --arg b "$branch" '{($d): $b}'
+    fi
+done | jq -s 'add // {}')"
+
 # Candidate line: kind <TAB> target_id <TAB> tab_id <TAB> display...
 candidates="$(jq -rn \
     --argjson ws "$workspaces" \
     --argjson tabs "$tabs" \
     --argjson panes "$panes" \
-    --arg self "${HERDR_PANE_ID:-}" '
+    --arg self "${HERDR_PANE_ID:-}" \
+    --argjson branches "$branches" '
     ($ws | map({key: .workspace_id, value: .}) | from_entries) as $wsmap |
     ($tabs | map({key: .tab_id, value: .}) | from_entries) as $tabmap |
+    ($panes | map({key: .tab_id, value: .cwd}) | from_entries) as $tabcwd |
     def wslabel($id): $wsmap[$id].label // $id;
     def status: if .agent_status == "unknown" then "" else " [\(.agent_status)]" end;
+    def branch($cwd): if $branches[$cwd] then " ⎇ \($branches[$cwd])" else "" end;
     ($tabs[] |
-        "tab\t\(.tab_id)\t\(.tab_id)\t[tab]  \(wslabel(.workspace_id)) > \(.label)\t(\(.pane_count) panes)\(status)"),
+        "tab\t\(.tab_id)\t\(.tab_id)\t[tab]  \(wslabel(.workspace_id)) > \(.label)\t(\(.pane_count) panes)\(status)\(branch($tabcwd[.tab_id] // ""))"),
     ($panes[] | select(.pane_id != $self) |
-        "pane\t\(.pane_id)\t\(.tab_id)\t[pane] \(wslabel(.workspace_id)) > \($tabmap[.tab_id].label // "?") > \(.pane_id | split(":")[1])\t\(if .agent then "\(.agent)" else "" end)\(status)  \(.cwd | sub("^\(env.HOME)"; "~"))")
+        "pane\t\(.pane_id)\t\(.tab_id)\t[pane] \(wslabel(.workspace_id)) > \($tabmap[.tab_id].label // "?") > \(.pane_id | split(":")[1])\t\(if .agent then "\(.agent)" else "" end)\(status)  \(.cwd | sub("^\(env.HOME)"; "~"))\(branch(.cwd))")
 ')"
 
 selected="$(fzf --delimiter '\t' --with-nth 4.. --prompt 'jump> ' \
