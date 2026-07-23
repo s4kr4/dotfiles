@@ -1,0 +1,12 @@
+onboarding = false
+
+[keys]
+new_tab = "prefix+t"
+split_vertical = "prefix+/"
+
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "s4kr4.fuzzy-jump.open"
+description = "fuzzy jump to tab/pane"
+

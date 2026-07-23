@@ -63,7 +63,8 @@ is_ignored() {
         [[ -z "$line" ]] && continue
         [[ "$line" == \#* ]] && continue
 
-        if [[ "$line" == "$rel" ]]; then
+        # Exact match, or directory entry covering everything beneath it
+        if [[ "$rel" == "$line" || "$rel" == "$line"/* ]]; then
             return 0
         fi
     done < "$CONFIGIGNORE"
@@ -105,6 +106,28 @@ link_file "$DOTPATH/config/zsh" "$HOME/.config/zsh"
 link_file "$DOTPATH/config/nvim" "$HOME/.config/nvim"
 link_file "$DOTPATH/config/vim" "$HOME/.config/vim"
 link_file "$DOTPATH/config/gwq" "$HOME/.config/gwq"
+
+# herdr writes runtime files (socket, logs, session) into ~/.config/herdr,
+# so link config.toml alone instead of the whole directory
+mkdir -p "$HOME/.config/herdr"
+link_file "$DOTPATH/config/herdr/config.toml" "$HOME/.config/herdr/config.toml"
+
+# herdr plugins are registered by path, not symlink
+if command -v herdr &> /dev/null && herdr status server &> /dev/null; then
+    for plugin in "$DOTPATH"/config/herdr/plugins/*/; do
+        plugin="${plugin%/}"
+        rel="${plugin#$DOTPATH/}"
+
+        if is_ignored "$rel"; then
+            echo "  Skipped (ignored): $rel"
+            continue
+        fi
+
+        if herdr plugin link "$plugin" > /dev/null 2>&1; then
+            echo "  Linked herdr plugin: $rel"
+        fi
+    done
+fi
 
 # Custom scripts
 link_file "$DOTPATH/bin" "$HOME/bin"
