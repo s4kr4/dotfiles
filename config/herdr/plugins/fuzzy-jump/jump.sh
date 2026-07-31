@@ -36,14 +36,11 @@ candidates="$(jq -rn \
     --argjson branches "$branches" '
     ($ws | map({key: .workspace_id, value: .}) | from_entries) as $wsmap |
     ($tabs | map({key: .tab_id, value: .}) | from_entries) as $tabmap |
-    ($panes | map({key: .tab_id, value: .cwd}) | from_entries) as $tabcwd |
     def wslabel($id): $wsmap[$id].label // $id;
     def status: if .agent_status == "unknown" then "" else " [\(.agent_status)]" end;
     def branch($cwd): if $branches[$cwd] then " ⎇ \($branches[$cwd])" else "" end;
-    ($tabs[] |
-        "tab\t\(.tab_id)\t\(.tab_id)\t[tab]  \(wslabel(.workspace_id)) > \(.label)\t(\(.pane_count) panes)\(status)\(branch($tabcwd[.tab_id] // ""))"),
     ($panes[] | select(.pane_id != $self) |
-        "pane\t\(.pane_id)\t\(.tab_id)\t[pane] \(wslabel(.workspace_id)) > \($tabmap[.tab_id].label // "?") > \(.pane_id | split(":")[1])\t\(if .agent then "\(.agent)" else "" end)\(status)  \(.cwd | sub("^\(env.HOME)"; "~"))\(branch(.cwd))")
+        "pane\t\(.pane_id)\t\(.tab_id)\t\(wslabel(.workspace_id)) > \($tabmap[.tab_id].label // "?") > \(.pane_id | split(":")[1])\t\(if .agent then "\(.agent)" else "" end)\(status)  \(.cwd | sub("^\(env.HOME)"; "~"))\(branch(.cwd))")
 ')"
 
 selected="$(fzf --delimiter '\t' --with-nth 4.. --prompt 'jump> ' \
