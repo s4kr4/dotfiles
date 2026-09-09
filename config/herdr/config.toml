@@ -15,6 +15,12 @@ description = "fuzzy jump to tab/pane"
 prompt_new_tab_name = false
 show_agent_labels_on_pane_borders = true
 status_indicators = "symbols"
+# タブバー右端に Claude のレートリミット残量を表示する。
+# command は herdr サーバー側で解決されるため絶対パス（~ / $HOME は使えない）。
+# このマシン固有の設定であり、別マシンではパスの読み替えが必要。
+tab_bar_right = [
+  { type = "command", command = "/home/s4kr4/.agents/scripts/claude-rate-status", interval_seconds = 30, timeout_seconds = 2 }
+]
 
 [ui.sidebar.agents]
 row_gap = 0
