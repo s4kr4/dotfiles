@@ -20,7 +20,7 @@ status_indicators = "symbols"
 # 実体へのリンクは ~/.agents/scripts/deploy.sh が ~/.local/bin に張るため、
 # ベース名で指定してどのマシンでもそのまま動く。
 tab_bar_right = [
-  { type = "command", command = "claude-rate-status", interval_seconds = 30, timeout_seconds = 2 }
+  { type = "command", command = "agent-rate-status", interval_seconds = 30, timeout_seconds = 2 }
 ]
 
 [ui.sidebar.agents]
