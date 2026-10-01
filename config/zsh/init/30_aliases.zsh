@@ -59,7 +59,17 @@ if has 'git'; then
 fi
 
 if has 'ghq'; then
-    alias cwd='cd $(ghq root)/$(ghq list | fzf)'
+    # 旧定義の alias cwd が残るシェルで再 source すると、alias が関数より優先されて
+    # 新しい定義が使われないため、先に外す
+    (( ${+aliases[cwd]} )) && unalias cwd
+    function cwd {
+        local root selected
+        root=$(ghq root) || return
+        selected=$(ghq list | fzf)
+        # fzf のキャンセル・マッチなしでは選択が空になるため、移動しない
+        [[ -n $selected ]] || return 0
+        cd -- "$root/$selected"
+    }
 fi
 
 if has 'lxterminal'; then
